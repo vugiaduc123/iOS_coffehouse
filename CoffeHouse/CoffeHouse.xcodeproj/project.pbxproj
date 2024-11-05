@@ -432,11 +432,6 @@
 				B140B7B82CD8D21500573E2F /* LoginViewController.xib in Resources */,
 				B1B42A602CDA40FD00DC5FB1 /* Topping.json in Resources */,
 				B1968D8D2CD52501001FE3C2 /* Assets.xcassets in Resources */,
-<<<<<<< HEAD
-				B1B42A5F2CDA40FD00DC5FB1 /* Size.json in Resources */,
-=======
-				1819D9302CD9230700E5F1EC /* RegisterViewController.xib in Resources */,
->>>>>>> origin/QuangHuy
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
