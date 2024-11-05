@@ -1,0 +1,22 @@
+[
+    {
+        "id": 0,
+        "name_topping": "Thêm Phở",
+        "price_topping": 0.2
+    },
+    {
+        "id": 1,
+        "name_topping": "Bò",
+        "price_topping": 0.2
+    },
+    {
+        "id": 2,
+        "name_topping": "Trứng",
+        "price_topping": 0.2
+    },
+    {
+        "id": 3,
+        "name_topping": "Mì",
+        "price_topping": 0.2
+    }
+]
