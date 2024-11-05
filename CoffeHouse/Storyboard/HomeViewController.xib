@@ -21,10 +21,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rfz-8x-C5U">
-                    <rect key="frame" x="0.0" y="58.999999999999993" width="430" height="113.33333333333331"/>
+                    <rect key="frame" x="0.0" y="58.999999999999993" width="430" height="119.33333333333331"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vqB-dz-hC0">
-                            <rect key="frame" x="35" y="0.0" width="307" height="38.333333333333336"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vqB-dz-hC0">
+                            <rect key="frame" x="20" y="0.0" width="322" height="38.333333333333336"/>
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" image="ic_location" title="Ukraine, Ivano-Frankivsk"/>
@@ -32,10 +32,10 @@
                                 <action selector="didTapLocation:" destination="-1" eventType="touchUpInside" id="ToZ-fQ-iDl"/>
                             </connections>
                         </button>
-                        <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="1Qm-ni-3xa">
-                            <rect key="frame" x="35" y="53.333333333333329" width="385" height="50"/>
+                        <searchBar contentMode="redraw" placeholder="Search..." translatesAutoresizingMaskIntoConstraints="NO" id="1Qm-ni-3xa">
+                            <rect key="frame" x="35" y="53.333333333333329" width="385" height="56"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="50" id="0Q8-cJ-fMy"/>
+                                <constraint firstAttribute="height" constant="56" id="0Q8-cJ-fMy"/>
                             </constraints>
                             <textInputTraits key="textInputTraits"/>
                             <scopeButtonTitles>
@@ -54,7 +54,7 @@
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstItem="vqB-dz-hC0" firstAttribute="leading" secondItem="Rfz-8x-C5U" secondAttribute="leading" constant="35" id="BxO-60-pbL"/>
+                        <constraint firstItem="vqB-dz-hC0" firstAttribute="leading" secondItem="Rfz-8x-C5U" secondAttribute="leading" constant="20" id="BxO-60-pbL"/>
                         <constraint firstAttribute="trailing" secondItem="1Qm-ni-3xa" secondAttribute="trailing" constant="10" id="TWG-fZ-nRx"/>
                         <constraint firstAttribute="bottom" secondItem="1Qm-ni-3xa" secondAttribute="bottom" constant="10" id="YsA-Dg-eOk"/>
                         <constraint firstAttribute="trailing" secondItem="NO8-Ua-3NW" secondAttribute="trailing" constant="20" id="c3e-GI-6l4"/>
