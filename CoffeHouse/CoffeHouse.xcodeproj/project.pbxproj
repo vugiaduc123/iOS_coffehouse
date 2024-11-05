@@ -7,8 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+<<<<<<< HEAD
 		1819D92F2CD9230700E5F1EC /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1819D92D2CD9230700E5F1EC /* RegisterViewController.swift */; };
 		1819D9302CD9230700E5F1EC /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1819D92E2CD9230700E5F1EC /* RegisterViewController.xib */; };
+=======
+		222D87822CD9F2C400153952 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D87802CD9F2C400153952 /* HomeViewController.swift */; };
+		222D87832CD9F2C400153952 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 222D87812CD9F2C400153952 /* HomeViewController.xib */; };
+		222D87862CD9F31A00153952 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D87842CD9F31A00153952 /* LocationViewController.swift */; };
+		222D87872CD9F31A00153952 /* LocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 222D87852CD9F31A00153952 /* LocationViewController.xib */; };
+>>>>>>> kimduc
 		B140B7B72CD8D21500573E2F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B140B7B52CD8D21500573E2F /* LoginViewController.swift */; };
 		B140B7B82CD8D21500573E2F /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B140B7B62CD8D21500573E2F /* LoginViewController.xib */; };
 		B140B7C52CD8DB3600573E2F /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = B140B7C42CD8DB3600573E2F /* Storyboards.swift */; };
@@ -41,11 +48,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+<<<<<<< HEAD
 		1819D92D2CD9230700E5F1EC /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		1819D92E2CD9230700E5F1EC /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		B140B7B52CD8D21500573E2F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B140B7B62CD8D21500573E2F /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		B140B7C12CD8D44900573E2F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; name = Info.plist; path = "/Users/apple/Documents/ios/iOS_coffehouse/CoffeHouse/../../../../../vuduc/Desktop/Swift/IOS-LCK/iOS_coffehouse/CoffeHouse/CoffeHouse/Supporting_files/Info.plist"; sourceTree = "<absolute>"; };
+=======
+		222D87802CD9F2C400153952 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = SOURCE_ROOT; };
+		222D87812CD9F2C400153952 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = HomeViewController.xib; path = Storyboard/HomeViewController.xib; sourceTree = SOURCE_ROOT; };
+		222D87842CD9F31A00153952 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = SOURCE_ROOT; };
+		222D87852CD9F31A00153952 /* LocationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = LocationViewController.xib; path = Storyboard/LocationViewController.xib; sourceTree = SOURCE_ROOT; };
+		222D87882CD9FBC300153952 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = /Users/macos/Desktop/iOS_coffehouse/CoffeHouse/CoffeHouse/Supporting_files/Info.plist; sourceTree = "<absolute>"; };
+		B140B7B52CD8D21500573E2F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		B140B7B62CD8D21500573E2F /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+>>>>>>> kimduc
 		B140B7C42CD8DB3600573E2F /* Storyboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
 		B1968D802CD524FD001FE3C2 /* CoffeHouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeHouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1968D832CD524FD001FE3C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -107,6 +124,8 @@
 			isa = PBXGroup;
 			children = (
 				B140B7BA2CD8D23900573E2F /* Storyboard */,
+				222D87802CD9F2C400153952 /* HomeViewController.swift */,
+				222D87842CD9F31A00153952 /* LocationViewController.swift */,
 			);
 			name = Home;
 			path = Home/Storyboard;
@@ -172,7 +191,7 @@
 		B140B7AC2CD8D02E00573E2F /* Supporting_files */ = {
 			isa = PBXGroup;
 			children = (
-				B140B7C12CD8D44900573E2F /* Info.plist */,
+				222D87882CD9FBC300153952 /* Info.plist */,
 			);
 			path = Supporting_files;
 			sourceTree = "<group>";
@@ -197,6 +216,8 @@
 		B140B7BA2CD8D23900573E2F /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				222D87852CD9F31A00153952 /* LocationViewController.xib */,
+				222D87812CD9F2C400153952 /* HomeViewController.xib */,
 			);
 			name = Storyboard;
 			sourceTree = "<group>";
@@ -432,6 +453,8 @@
 				B140B7B82CD8D21500573E2F /* LoginViewController.xib in Resources */,
 				B1B42A602CDA40FD00DC5FB1 /* Topping.json in Resources */,
 				B1968D8D2CD52501001FE3C2 /* Assets.xcassets in Resources */,
+				222D87832CD9F2C400153952 /* HomeViewController.xib in Resources */,
+				222D87872CD9F31A00153952 /* LocationViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,10 +479,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				222D87862CD9F31A00153952 /* LocationViewController.swift in Sources */,
 				B140B7C52CD8DB3600573E2F /* Storyboards.swift in Sources */,
 				B140B7B72CD8D21500573E2F /* LoginViewController.swift in Sources */,
 				B1968D842CD524FD001FE3C2 /* AppDelegate.swift in Sources */,
+<<<<<<< HEAD
 				1819D92F2CD9230700E5F1EC /* RegisterViewController.swift in Sources */,
+=======
+				222D87822CD9F2C400153952 /* HomeViewController.swift in Sources */,
+>>>>>>> kimduc
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -624,7 +652,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = F8FC62T239;
 				GENERATE_INFOPLIST_FILE = YES;
+<<<<<<< HEAD
 				INFOPLIST_FILE = /Users/apple/Documents/ios/iOS_coffehouse/CoffeHouse/CoffeHouse/Supporting_files/Info.plist;
+=======
+				INFOPLIST_FILE = /Users/macos/Desktop/iOS_coffehouse/CoffeHouse/CoffeHouse/Supporting_files/Info.plist;
+>>>>>>> kimduc
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -652,7 +684,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = F8FC62T239;
 				GENERATE_INFOPLIST_FILE = YES;
+<<<<<<< HEAD
 				INFOPLIST_FILE = /Users/apple/Documents/ios/iOS_coffehouse/CoffeHouse/CoffeHouse/Supporting_files/Info.plist;
+=======
+				INFOPLIST_FILE = /Users/macos/Desktop/iOS_coffehouse/CoffeHouse/CoffeHouse/Supporting_files/Info.plist;
+>>>>>>> kimduc
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
