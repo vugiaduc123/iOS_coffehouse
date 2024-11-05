@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="CoffeHouse" customModuleProvider="target">
             <connections>
+                <outlet property="searchBar" destination="1Qm-ni-3xa" id="Jdh-TL-7cK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,18 +21,19 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rfz-8x-C5U">
-                    <rect key="frame" x="0.0" y="59" width="430" height="114"/>
+                    <rect key="frame" x="0.0" y="58.999999999999993" width="430" height="113.33333333333331"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vqB-dz-hC0">
-                            <rect key="frame" x="35" y="0.0" width="95" height="39"/>
+                            <rect key="frame" x="35" y="0.0" width="307" height="38.333333333333336"/>
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" image="ic_location" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" image="ic_location" title="Ukraine, Ivano-Frankivsk"/>
                             <connections>
                                 <action selector="didTapLocation:" destination="-1" eventType="touchUpInside" id="ToZ-fQ-iDl"/>
                             </connections>
                         </button>
                         <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="1Qm-ni-3xa">
-                            <rect key="frame" x="35" y="54" width="385" height="50"/>
+                            <rect key="frame" x="35" y="53.333333333333329" width="385" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="0Q8-cJ-fMy"/>
                             </constraints>
@@ -44,8 +46,8 @@
                                 <outlet property="delegate" destination="-1" id="Nvd-C9-kGb"/>
                             </connections>
                         </searchBar>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NO8-Ua-3NW">
-                            <rect key="frame" x="347" y="0.6666666666666643" width="48" height="38"/>
+                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NO8-Ua-3NW">
+                            <rect key="frame" x="362" y="0.0" width="48" height="38"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" image="ic_phone"/>
                         </button>
@@ -54,12 +56,13 @@
                     <constraints>
                         <constraint firstItem="vqB-dz-hC0" firstAttribute="leading" secondItem="Rfz-8x-C5U" secondAttribute="leading" constant="35" id="BxO-60-pbL"/>
                         <constraint firstAttribute="trailing" secondItem="1Qm-ni-3xa" secondAttribute="trailing" constant="10" id="TWG-fZ-nRx"/>
-                        <constraint firstAttribute="trailing" secondItem="NO8-Ua-3NW" secondAttribute="trailing" constant="35" id="TpA-eO-Of4"/>
                         <constraint firstAttribute="bottom" secondItem="1Qm-ni-3xa" secondAttribute="bottom" constant="10" id="YsA-Dg-eOk"/>
+                        <constraint firstAttribute="trailing" secondItem="NO8-Ua-3NW" secondAttribute="trailing" constant="20" id="c3e-GI-6l4"/>
                         <constraint firstItem="vqB-dz-hC0" firstAttribute="top" secondItem="Rfz-8x-C5U" secondAttribute="top" id="cP7-Ii-8J7"/>
+                        <constraint firstItem="NO8-Ua-3NW" firstAttribute="top" secondItem="Rfz-8x-C5U" secondAttribute="top" id="foG-BI-b1N"/>
                         <constraint firstItem="1Qm-ni-3xa" firstAttribute="leading" secondItem="Rfz-8x-C5U" secondAttribute="leading" constant="35" id="k6M-qJ-tYd"/>
+                        <constraint firstItem="NO8-Ua-3NW" firstAttribute="leading" secondItem="vqB-dz-hC0" secondAttribute="trailing" constant="20" id="mfu-TQ-FSg"/>
                         <constraint firstItem="1Qm-ni-3xa" firstAttribute="top" secondItem="vqB-dz-hC0" secondAttribute="bottom" constant="15" id="nd9-2Z-uVV"/>
-                        <constraint firstItem="NO8-Ua-3NW" firstAttribute="centerY" secondItem="vqB-dz-hC0" secondAttribute="centerY" id="zMz-84-xnN"/>
                     </constraints>
                 </view>
             </subviews>
@@ -70,7 +73,7 @@
                 <constraint firstItem="Rfz-8x-C5U" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="hLx-Yt-RnL"/>
                 <constraint firstItem="Rfz-8x-C5U" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="jKD-MO-J4l"/>
             </constraints>
-            <point key="canvasLocation" x="46.875" y="20.070422535211268"/>
+            <point key="canvasLocation" x="46.046511627906973" y="19.95708154506438"/>
         </view>
     </objects>
     <resources>
