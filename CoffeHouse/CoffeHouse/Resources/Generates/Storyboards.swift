@@ -13,6 +13,7 @@ enum Storyboard {
     
      enum Login{
          static var loginVC = LoginViewController()
+         static var registerVC = RegisterViewController()
      }
     
     enum Home{
