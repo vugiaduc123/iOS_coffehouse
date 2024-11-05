@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Map view configurations" minToolsVersion="14.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LocationViewController" customModule="CoffeHouse" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y4W-vo-e6H">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <standardMapConfiguration key="preferredConfiguration"/>
+                </mapView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uGk-6H-lwD">
+                    <rect key="frame" x="35" y="40" width="36" height="36"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="36" id="Mdl-hd-Ne2"/>
+                        <constraint firstAttribute="width" constant="36" id="vCb-IW-JtV"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" image="ic_next"/>
+                    <connections>
+                        <action selector="didTap:" destination="-1" eventType="touchUpInside" id="cdd-2k-irW"/>
+                    </connections>
+                </button>
+                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="MFw-hj-PeV">
+                    <rect key="frame" x="81" y="30" width="223" height="56"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="YDQ-sx-jma"/>
+                    </connections>
+                </searchBar>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="uGk-6H-lwD" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="35" id="3w1-Ts-ESr"/>
+                <constraint firstItem="y4W-vo-e6H" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="FRe-Mt-sZj"/>
+                <constraint firstItem="MFw-hj-PeV" firstAttribute="centerY" secondItem="uGk-6H-lwD" secondAttribute="centerY" id="K3r-uh-qIZ"/>
+                <constraint firstItem="uGk-6H-lwD" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="LDN-0n-hEn"/>
+                <constraint firstItem="y4W-vo-e6H" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="ZLn-SQ-xPx"/>
+                <constraint firstItem="y4W-vo-e6H" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="fLW-7G-Neh"/>
+                <constraint firstItem="MFw-hj-PeV" firstAttribute="leading" secondItem="uGk-6H-lwD" secondAttribute="trailing" constant="10" id="pGU-EX-0Op"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="MFw-hj-PeV" secondAttribute="trailing" constant="16" id="wNg-OP-nHy"/>
+                <constraint firstItem="y4W-vo-e6H" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="yjE-ce-nwF"/>
+            </constraints>
+            <point key="canvasLocation" x="20.625" y="20.070422535211268"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_next" width="11.5" height="16.5"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

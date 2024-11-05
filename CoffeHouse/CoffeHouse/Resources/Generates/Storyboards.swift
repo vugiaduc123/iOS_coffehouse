@@ -16,7 +16,7 @@ enum Storyboard {
      }
     
     enum Home{
-        
+        static var homeVC = HomeViewController()
     }
     
     enum Favourite{
