@@ -8,23 +8,29 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-
+    @IBOutlet weak var username: UITextField!
+    
+    @IBOutlet weak var password: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        changeBackground()
+        
         
     }
 
-
+    @IBAction func btLogin(_ sender: Any) {
+        if username.text == "admin1" && password.text == "123"{
+            print("Đăng nhập thành công")
+        } else {
+            print("Đăng nhập thất bại")
+        }
+    }
+    
 }
 
 // MARK Layout - Config
 extension LoginViewController{
- 
-    func changeBackground(){
-        self.view.backgroundColor = .red
+    
     }
-}
 
 
 // MARK Method

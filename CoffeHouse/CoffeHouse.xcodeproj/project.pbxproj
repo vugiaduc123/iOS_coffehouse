@@ -37,7 +37,6 @@
 /* Begin PBXFileReference section */
 		B140B7B52CD8D21500573E2F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B140B7B62CD8D21500573E2F /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
-		B140B7C12CD8D44900573E2F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "/Users/vuduc/Desktop/Swift/IOS-LCK/iOS_coffehouse/CoffeHouse/CoffeHouse/Supporting_files/Info.plist"; sourceTree = "<absolute>"; };
 		B140B7C42CD8DB3600573E2F /* Storyboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
 		B1968D802CD524FD001FE3C2 /* CoffeHouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeHouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1968D832CD524FD001FE3C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +46,7 @@
 		B1968DA02CD52502001FE3C2 /* CoffeHouseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoffeHouseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1968DA42CD52502001FE3C2 /* CoffeHouseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeHouseUITests.swift; sourceTree = "<group>"; };
 		B1968DA62CD52502001FE3C2 /* CoffeHouseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeHouseUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		FA15F2002CD9FA2600B614B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = /Users/macbook/Documents/xcode/iOS_coffehouse/CoffeHouse/CoffeHouse/Supporting_files/Info.plist; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,7 +139,7 @@
 		B140B7AC2CD8D02E00573E2F /* Supporting_files */ = {
 			isa = PBXGroup;
 			children = (
-				B140B7C12CD8D44900573E2F /* Info.plist */,
+				FA15F2002CD9FA2600B614B4 /* Info.plist */,
 			);
 			path = Supporting_files;
 			sourceTree = "<group>";
@@ -348,7 +348,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1540;
-				LastUpgradeCheck = 1540;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					B1968D7F2CD524FC001FE3C2 = {
 						CreatedOnToolsVersion = 15.4;
@@ -581,7 +581,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = F8FC62T239;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "/Users/vuduc/Desktop/Swift/IOS-LCK/iOS_coffehouse/CoffeHouse/CoffeHouse/Supporting_files/Info.plist";
+				INFOPLIST_FILE = /Users/macbook/Documents/xcode/iOS_coffehouse/CoffeHouse/CoffeHouse/Supporting_files/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -609,7 +609,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = F8FC62T239;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "/Users/vuduc/Desktop/Swift/IOS-LCK/iOS_coffehouse/CoffeHouse/CoffeHouse/Supporting_files/Info.plist";
+				INFOPLIST_FILE = /Users/macbook/Documents/xcode/iOS_coffehouse/CoffeHouse/CoffeHouse/Supporting_files/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -631,7 +631,6 @@
 		B1968DAE2CD52502001FE3C2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -650,7 +649,6 @@
 		B1968DAF2CD52502001FE3C2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -669,7 +667,6 @@
 		B1968DB12CD52502001FE3C2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -686,7 +683,6 @@
 		B1968DB22CD52502001FE3C2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
