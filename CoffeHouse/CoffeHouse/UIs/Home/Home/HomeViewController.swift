@@ -20,6 +20,11 @@ class HomeViewController: UIViewController {
         self.navigationController?.pushViewController(LocationViewController(), animated: true)
         self.navigationController?.isNavigationBarHidden = true
     }
+
+}
+
+// MARK: Layout and Config
+extension HomeViewController{
     func setUpSearchBar(){
         if let textFieldInsideSearchBar = self.searchBar.value(forKey: "searchField") as? UITextField {
             textFieldInsideSearchBar.backgroundColor = UIColor.white
@@ -30,3 +35,10 @@ class HomeViewController: UIViewController {
         searchBar.layer.borderWidth = 1.0
     }
 }
+
+// MARK: METHOD
+extension HomeViewController{
+   
+}
+
+// MARK: COLLETION, TABLEVIEW

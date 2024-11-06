@@ -20,7 +20,12 @@ class LocationViewController: UIViewController {
     @IBAction func didTap(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-    
+
+}
+
+
+// MARK: Layout and Config
+extension LocationViewController{
     func setUpSearchBar(){
         if let textFieldInsideSearchBar = self.searchBar.value(forKey: "searchField") as? UITextField {
             textFieldInsideSearchBar.backgroundColor = UIColor.white
@@ -30,5 +35,11 @@ class LocationViewController: UIViewController {
         searchBar.layer.borderColor = UIColor(.black).cgColor
         searchBar.layer.borderWidth = 1.0
     }
-
 }
+
+// MARK: METHOD
+extension LocationViewController{
+   
+}
+
+// MARK: COLLETION, TABLEVIEW
