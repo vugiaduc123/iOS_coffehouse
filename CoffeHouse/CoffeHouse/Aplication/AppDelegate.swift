@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navigationVC = UINavigationController(rootViewController: view)
         window?.rootViewController = navigationVC
         window?.makeKeyAndVisible()
-        
+        print("Register Layout")
         return true
     }
 
