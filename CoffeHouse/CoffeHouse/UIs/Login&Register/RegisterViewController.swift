@@ -27,9 +27,6 @@ class RegisterViewController: UIViewController {
         
         configTextField()
         
-        tfPassword.isSecureTextEntry = true
-        tfRePassword.isSecureTextEntry = true
-        
         updatePasswordVisibilityButton(button: btnShowPassword, isSecure: tfPassword.isSecureTextEntry)
         updatePasswordVisibilityButton(button: btnReShowPassword, isSecure: tfPassword.isSecureTextEntry)
     }
@@ -73,6 +70,9 @@ extension RegisterViewController {
         self.tfRePassword.layer.cornerRadius = 5
         self.tfRePassword.layer.borderColor = UIColor.brown.cgColor
         self.tfRePassword.layer.borderWidth = 1
+        
+        tfPassword.isSecureTextEntry = true
+        tfRePassword.isSecureTextEntry = true
     }
 }
 
