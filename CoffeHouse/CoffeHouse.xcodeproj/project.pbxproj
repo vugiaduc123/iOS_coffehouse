@@ -11,10 +11,9 @@
 		B15E25962CDB635A002CD47E /* Size.json in Resources */ = {isa = PBXBuildFile; fileRef = B15E25922CDB635A002CD47E /* Size.json */; };
 		B15E25972CDB635A002CD47E /* Topping.json in Resources */ = {isa = PBXBuildFile; fileRef = B15E25932CDB635A002CD47E /* Topping.json */; };
 		B15E25982CDB635A002CD47E /* Product.json in Resources */ = {isa = PBXBuildFile; fileRef = B15E25942CDB635A002CD47E /* Product.json */; };
+		B18040E72CDC4B9C00CF101A /* ExampleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18040E62CDC4B9C00CF101A /* ExampleModel.swift */; };
+		B18040EA2CDC4C0700CF101A /* ExampleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18040E92CDC4C0700CF101A /* ExampleManager.swift */; };
 		B1B42A742CDA7A9500DC5FB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B42A732CDA7A9500DC5FB1 /* AppDelegate.swift */; };
-		B1B42A8B2CDA7A9900DC5FB1 /* CoffeHouseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B42A8A2CDA7A9900DC5FB1 /* CoffeHouseTests.swift */; };
-		B1B42A952CDA7A9900DC5FB1 /* CoffeHouseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B42A942CDA7A9900DC5FB1 /* CoffeHouseUITests.swift */; };
-		B1B42A972CDA7A9900DC5FB1 /* CoffeHouseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B42A962CDA7A9900DC5FB1 /* CoffeHouseUITestsLaunchTests.swift */; };
 		B1B42AA72CDA7B2900DC5FB1 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1B42AA62CDA7B2900DC5FB1 /* LoginViewController.xib */; };
 		B1B42AA82CDA7B2900DC5FB1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B42AA52CDA7B2900DC5FB1 /* LoginViewController.swift */; };
 		B1B42AAE2CDA7DBA00DC5FB1 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B42AAD2CDA7DBA00DC5FB1 /* Storyboards.swift */; };
@@ -50,15 +49,14 @@
 		B15E25932CDB635A002CD47E /* Topping.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Topping.json; sourceTree = "<group>"; };
 		B15E25942CDB635A002CD47E /* Product.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Product.json; sourceTree = "<group>"; };
 		B15E25992CDB64A9002CD47E /* User.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = User.json; sourceTree = "<group>"; };
+		B18040E62CDC4B9C00CF101A /* ExampleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExampleModel.swift; path = ../../../../../NhanlucSwiftUI/ios_anocha/Nhanluc/UIs/SupportLayout/ExampleModel.swift; sourceTree = "<group>"; };
+		B18040E92CDC4C0700CF101A /* ExampleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExampleManager.swift; path = ../../../../../NhanlucSwiftUI/ios_anocha/Nhanluc/UIs/SupportLayout/ExampleManager.swift; sourceTree = "<group>"; };
 		B1B42A702CDA7A9500DC5FB1 /* CoffeHouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeHouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1B42A732CDA7A9500DC5FB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1B42A7C2CDA7A9800DC5FB1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B1B42A812CDA7A9800DC5FB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B1B42A862CDA7A9900DC5FB1 /* CoffeHouseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoffeHouseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B1B42A8A2CDA7A9900DC5FB1 /* CoffeHouseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeHouseTests.swift; sourceTree = "<group>"; };
 		B1B42A902CDA7A9900DC5FB1 /* CoffeHouseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoffeHouseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B1B42A942CDA7A9900DC5FB1 /* CoffeHouseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeHouseUITests.swift; sourceTree = "<group>"; };
-		B1B42A962CDA7A9900DC5FB1 /* CoffeHouseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeHouseUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B1B42AA52CDA7B2900DC5FB1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B1B42AA62CDA7B2900DC5FB1 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		B1B42AAD2CDA7DBA00DC5FB1 /* Storyboards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
@@ -107,12 +105,26 @@
 			path = JsonLocal;
 			sourceTree = "<group>";
 		};
+		B18040E52CDC4B5D00CF101A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B18040E62CDC4B9C00CF101A /* ExampleModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B18040E82CDC4BEF00CF101A /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				B18040E92CDC4C0700CF101A /* ExampleManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		B1B42A672CDA7A9500DC5FB1 = {
 			isa = PBXGroup;
 			children = (
 				B1B42A722CDA7A9500DC5FB1 /* CoffeHouse */,
-				B1B42A892CDA7A9900DC5FB1 /* CoffeHouseTests */,
-				B1B42A932CDA7A9900DC5FB1 /* CoffeHouseUITests */,
 				B1B42A712CDA7A9500DC5FB1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -137,23 +149,6 @@
 				B1B42AA32CDA7AEC00DC5FB1 /* UIs */,
 			);
 			path = CoffeHouse;
-			sourceTree = "<group>";
-		};
-		B1B42A892CDA7A9900DC5FB1 /* CoffeHouseTests */ = {
-			isa = PBXGroup;
-			children = (
-				B1B42A8A2CDA7A9900DC5FB1 /* CoffeHouseTests.swift */,
-			);
-			path = CoffeHouseTests;
-			sourceTree = "<group>";
-		};
-		B1B42A932CDA7A9900DC5FB1 /* CoffeHouseUITests */ = {
-			isa = PBXGroup;
-			children = (
-				B1B42A942CDA7A9900DC5FB1 /* CoffeHouseUITests.swift */,
-				B1B42A962CDA7A9900DC5FB1 /* CoffeHouseUITestsLaunchTests.swift */,
-			);
-			path = CoffeHouseUITests;
 			sourceTree = "<group>";
 		};
 		B1B42AA32CDA7AEC00DC5FB1 /* UIs */ = {
@@ -223,6 +218,8 @@
 			isa = PBXGroup;
 			children = (
 				B15E25902CDB6346002CD47E /* JsonLocal */,
+				B18040E52CDC4B5D00CF101A /* Model */,
+				B18040E82CDC4BEF00CF101A /* Managers */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -387,7 +384,9 @@
 				B1B42AAE2CDA7DBA00DC5FB1 /* Storyboards.swift in Sources */,
 				B1B42AA82CDA7B2900DC5FB1 /* LoginViewController.swift in Sources */,
 				B1B42A742CDA7A9500DC5FB1 /* AppDelegate.swift in Sources */,
+				B18040E72CDC4B9C00CF101A /* ExampleModel.swift in Sources */,
 				B1B42AB62CDA7ED300DC5FB1 /* RegisterViewController.swift in Sources */,
+				B18040EA2CDC4C0700CF101A /* ExampleManager.swift in Sources */,
 				B1B42AC32CDA814300DC5FB1 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -396,7 +395,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1B42A8B2CDA7A9900DC5FB1 /* CoffeHouseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,8 +402,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1B42A952CDA7A9900DC5FB1 /* CoffeHouseUITests.swift in Sources */,
-				B1B42A972CDA7A9900DC5FB1 /* CoffeHouseUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
