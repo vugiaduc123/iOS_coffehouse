@@ -1,13 +1,15 @@
-{
-    "id"    : 0,
-    "user_name" : "Nguyen Van A",
-    "email" : "nguyenvana@gmail.com",
-    "phone" : "0792732025",
-    "password" : "nguyenvan2000",
-    "address" : "736"
-    "full_path" : ""
-    "latitude" : 0.0,
-    "longitude" : 0.0,
-    "isActive" : true,
-}
+[
+    {
+        "id" : 0,
+        "user_name" : "Nguyen Van A",
+        "phone" : "0792732025",
+        "password" : "nguyenvan2000",
+        "address" : "736",
+        "latitude": 0.0,
+        "longitude": 0.0,
+        "full_path" : "",
+        "isActive" : true,
+    }
+]
+
 
