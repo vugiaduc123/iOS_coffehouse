@@ -74,7 +74,6 @@ class RegisterViewController: UIViewController {
             print(error.localizedDescription)
             return nil
         }
-        
     }
     
     //MARK: - Save user data
@@ -91,25 +90,35 @@ class RegisterViewController: UIViewController {
             
             let newUser: UserEntity = .init(id: newId,
                                             name: tfUsername.text ?? "",
+                                            email: "",
                                             phone: tfPhone.text ?? "",
                                             password: tfPassword.text ?? "",
                                             address: "",
                                             latitude: 0.0,
                                             longitude: 0.0,
                                             fullPath: "",
-                                            isActive: true)
+                                            isActive: false)
             if existingUsers.contains(where: { $0.phone == newUser.phone })  {
                 print("phone number has already existed. Choose another.")
+                lbErrorPhone.text = "This phone number has already existed"
+                lbErrorPhone.isHidden = false
                 return
             }
             
             existingUsers.append(newUser)
             
-            let defaults = UserDefaults.standard
+            let filePath = "/Users/apple/Documents/ios/iOS_coffehouse/CoffeHouse/CoffeHouse/Services/JsonLocal/User.json"
+            
             do {
-                let encodedUser = try JSONEncoder().encode(newUser)
-                defaults.set(encodedUser, forKey: "registeredUser")
+                let jsonEncoder = JSONEncoder()
+                jsonEncoder.outputFormatting = .prettyPrinted
+                
+                let encodedUsers = try? jsonEncoder.encode(existingUsers)
+                let pathAsURL = URL(fileURLWithPath: filePath)
+                
+                try encodedUsers?.write(to: pathAsURL)
                 print("User data save successfully")
+                print(pathAsURL.path)
                 showAlert(on: self)
             } catch {
                 print(error.localizedDescription)

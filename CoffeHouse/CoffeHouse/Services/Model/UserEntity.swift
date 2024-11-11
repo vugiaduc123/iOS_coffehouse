@@ -10,6 +10,7 @@ import Foundation
 struct UserEntity: Codable {
     let id: Int
     let name: String
+    let email: String
     let phone: String
     let password: String
     let address: String
@@ -21,6 +22,7 @@ struct UserEntity: Codable {
     enum CodingKeys: String, CodingKey {
         case id
         case name = "user_name"
+        case email
         case phone
         case password
         case address
@@ -30,9 +32,10 @@ struct UserEntity: Codable {
         case isActive
     }
     
-    init(id: Int, name: String, phone: String, password: String, address: String, latitude: Double, longitude: Double, fullPath: String, isActive: Bool) {
+    init(id: Int, name: String, email: String, phone: String, password: String, address: String, latitude: Double, longitude: Double, fullPath: String, isActive: Bool) {
         self.id = id
         self.name = name
+        self.email = email
         self.phone = phone
         self.password = password
         self.address = address
