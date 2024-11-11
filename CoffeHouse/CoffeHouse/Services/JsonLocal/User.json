@@ -1,13 +1,26 @@
-{
-    "id"    : 0,
+[
+  {
+    "isActive" : true,
+    "longitude" : 0,
+    "id" : 0,
     "user_name" : "Nguyen Van A",
+    "address" : "736",
+    "latitude" : 0,
+    "full_path" : "",
     "email" : "nguyenvana@gmail.com",
     "phone" : "0792732025",
-    "password" : "nguyenvan2000",
-    "address" : "736"
-    "full_path" : ""
-    "latitude" : 0.0,
-    "longitude" : 0.0,
-    "isActive" : true,
-}
-
+    "password" : "nguyenvan2000"
+  },
+  {
+    "address" : "",
+    "email" : "",
+    "full_path" : "",
+    "phone" : "0967708250",
+    "latitude" : 0,
+    "id" : 1,
+    "user_name" : "huy",
+    "longitude" : 0,
+    "isActive" : false,
+    "password" : "12345"
+  }
+]
