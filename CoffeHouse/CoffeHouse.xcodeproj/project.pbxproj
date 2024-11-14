@@ -7,21 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B100D1602CE50ABF000813D4 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100D15E2CE50ABF000813D4 /* TabBar.swift */; };
+		B100D16C2CE50C2A000813D4 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B100D1652CE50C2A000813D4 /* HomeViewController.xib */; };
+		B100D16D2CE50C2A000813D4 /* LocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B100D1662CE50C2A000813D4 /* LocationViewController.xib */; };
+		B100D16E2CE50C2A000813D4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100D1682CE50C2A000813D4 /* HomeViewController.swift */; };
+		B100D16F2CE50C2A000813D4 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100D1692CE50C2A000813D4 /* LocationViewController.swift */; };
+		B100D1702CE50C2A000813D4 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100D16B2CE50C2A000813D4 /* CustomTabBar.swift */; };
+		B100D1722CE50E70000813D4 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B100D1712CE50E70000813D4 /* LoginViewController.xib */; };
+		B100D1742CE50EE2000813D4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100D1732CE50EE2000813D4 /* LoginViewController.swift */; };
 		B15E25952CDB635A002CD47E /* Category.json in Resources */ = {isa = PBXBuildFile; fileRef = B15E25912CDB6359002CD47E /* Category.json */; };
 		B15E25962CDB635A002CD47E /* Size.json in Resources */ = {isa = PBXBuildFile; fileRef = B15E25922CDB635A002CD47E /* Size.json */; };
 		B15E25972CDB635A002CD47E /* Topping.json in Resources */ = {isa = PBXBuildFile; fileRef = B15E25932CDB635A002CD47E /* Topping.json */; };
 		B15E25982CDB635A002CD47E /* Product.json in Resources */ = {isa = PBXBuildFile; fileRef = B15E25942CDB635A002CD47E /* Product.json */; };
 		B1B42A742CDA7A9500DC5FB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B42A732CDA7A9500DC5FB1 /* AppDelegate.swift */; };
-		B1B42AA72CDA7B2900DC5FB1 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1B42AA62CDA7B2900DC5FB1 /* LoginViewController.xib */; };
-		B1B42AA82CDA7B2900DC5FB1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B42AA52CDA7B2900DC5FB1 /* LoginViewController.swift */; };
 		B1B42AAE2CDA7DBA00DC5FB1 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B42AAD2CDA7DBA00DC5FB1 /* Storyboards.swift */; };
 		B1B42AB52CDA7ED300DC5FB1 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1B42AB32CDA7ED300DC5FB1 /* RegisterViewController.xib */; };
 		B1B42AB62CDA7ED300DC5FB1 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B42AB42CDA7ED300DC5FB1 /* RegisterViewController.swift */; };
 		B1B42AB72CDA7F7E00DC5FB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1B42A7C2CDA7A9800DC5FB1 /* Assets.xcassets */; };
-		B1B42AC02CDA814300DC5FB1 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B42ABC2CDA814300DC5FB1 /* LocationViewController.swift */; };
-		B1B42AC12CDA814300DC5FB1 /* LocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1B42ABD2CDA814300DC5FB1 /* LocationViewController.xib */; };
-		B1B42AC22CDA814300DC5FB1 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1B42ABE2CDA814300DC5FB1 /* HomeViewController.xib */; };
-		B1B42AC32CDA814300DC5FB1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B42ABF2CDA814300DC5FB1 /* HomeViewController.swift */; };
 		B1F3775B2CE26F6D00E418E6 /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F3775A2CE26F6D00E418E6 /* UserEntity.swift */; };
 		B1F3775D2CE26F7700E418E6 /* CartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F3775C2CE26F7700E418E6 /* CartManager.swift */; };
 		B1F377652CE2700100E418E6 /* CartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F3775E2CE2700100E418E6 /* CartModel.swift */; };
@@ -50,6 +52,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B100D15E2CE50ABF000813D4 /* TabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		B100D1652CE50C2A000813D4 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		B100D1662CE50C2A000813D4 /* LocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationViewController.xib; sourceTree = "<group>"; };
+		B100D1682CE50C2A000813D4 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		B100D1692CE50C2A000813D4 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		B100D16B2CE50C2A000813D4 /* CustomTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomTabBar.swift; path = ../CustomTabBar.swift; sourceTree = "<group>"; };
+		B100D1712CE50E70000813D4 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		B100D1732CE50EE2000813D4 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B15E25912CDB6359002CD47E /* Category.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Category.json; sourceTree = "<group>"; };
 		B15E25922CDB635A002CD47E /* Size.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Size.json; sourceTree = "<group>"; };
 		B15E25932CDB635A002CD47E /* Topping.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Topping.json; sourceTree = "<group>"; };
@@ -61,15 +71,9 @@
 		B1B42A812CDA7A9800DC5FB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B1B42A862CDA7A9900DC5FB1 /* CoffeHouseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoffeHouseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1B42A902CDA7A9900DC5FB1 /* CoffeHouseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoffeHouseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B1B42AA52CDA7B2900DC5FB1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		B1B42AA62CDA7B2900DC5FB1 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		B1B42AAD2CDA7DBA00DC5FB1 /* Storyboards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
 		B1B42AB32CDA7ED300DC5FB1 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		B1B42AB42CDA7ED300DC5FB1 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		B1B42ABC2CDA814300DC5FB1 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
-		B1B42ABD2CDA814300DC5FB1 /* LocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationViewController.xib; sourceTree = "<group>"; };
-		B1B42ABE2CDA814300DC5FB1 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
-		B1B42ABF2CDA814300DC5FB1 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B1F3775A2CE26F6D00E418E6 /* UserEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
 		B1F3775C2CE26F7700E418E6 /* CartManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartManager.swift; sourceTree = "<group>"; };
 		B1F3775E2CE2700100E418E6 /* CartModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartModel.swift; sourceTree = "<group>"; };
@@ -104,6 +108,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B100D15F2CE50ABF000813D4 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				B100D15E2CE50ABF000813D4 /* TabBar.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		B100D1672CE50C2A000813D4 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				B100D1652CE50C2A000813D4 /* HomeViewController.xib */,
+				B100D1662CE50C2A000813D4 /* LocationViewController.xib */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		B100D16A2CE50C2A000813D4 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				B100D1672CE50C2A000813D4 /* Storyboard */,
+				B100D1682CE50C2A000813D4 /* HomeViewController.swift */,
+				B100D1692CE50C2A000813D4 /* LocationViewController.swift */,
+				B100D16B2CE50C2A000813D4 /* CustomTabBar.swift */,
+			);
+			name = Home;
+			path = "../../../../../../../../../Library/Mobile Documents/.Trash/maincoffee/iOS_coffehouse/CoffeHouse/CoffeHouse/UIs/Home/Home";
+			sourceTree = "<group>";
+		};
 		B15E25902CDB6346002CD47E /* JsonLocal */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +187,7 @@
 		B1B42A722CDA7A9500DC5FB1 /* CoffeHouse */ = {
 			isa = PBXGroup;
 			children = (
+				B100D15F2CE50ABF000813D4 /* Enums */,
 				B1B42AAB2CDA7CFC00DC5FB1 /* Resources */,
 				B1B42AAF2CDA7E5D00DC5FB1 /* Supporting_files */,
 				B1B42AB02CDA7E7100DC5FB1 /* Services */,
@@ -166,8 +200,8 @@
 		B1B42AA32CDA7AEC00DC5FB1 /* UIs */ = {
 			isa = PBXGroup;
 			children = (
+				B100D16A2CE50C2A000813D4 /* Home */,
 				B1B42AA42CDA7AF600DC5FB1 /* Login&Register */,
-				B1B42ABB2CDA812B00DC5FB1 /* Home */,
 			);
 			name = UIs;
 			path = UIs/Home;
@@ -177,8 +211,8 @@
 			isa = PBXGroup;
 			children = (
 				B1B42AA92CDA7B2E00DC5FB1 /* Storyboard */,
-				B1B42AA52CDA7B2900DC5FB1 /* LoginViewController.swift */,
 				B1B42AB42CDA7ED300DC5FB1 /* RegisterViewController.swift */,
+				B100D1732CE50EE2000813D4 /* LoginViewController.swift */,
 			);
 			name = "Login&Register";
 			path = "../Login&Register";
@@ -187,7 +221,7 @@
 		B1B42AA92CDA7B2E00DC5FB1 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				B1B42AA62CDA7B2900DC5FB1 /* LoginViewController.xib */,
+				B100D1712CE50E70000813D4 /* LoginViewController.xib */,
 				B1B42AB32CDA7ED300DC5FB1 /* RegisterViewController.xib */,
 			);
 			path = Storyboard;
@@ -235,25 +269,6 @@
 				B18040E82CDC4BEF00CF101A /* Managers */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		B1B42ABB2CDA812B00DC5FB1 /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				B1B42AC42CDA814E00DC5FB1 /* Storyboard */,
-				B1B42ABF2CDA814300DC5FB1 /* HomeViewController.swift */,
-				B1B42ABC2CDA814300DC5FB1 /* LocationViewController.swift */,
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
-		B1B42AC42CDA814E00DC5FB1 /* Storyboard */ = {
-			isa = PBXGroup;
-			children = (
-				B1B42ABE2CDA814300DC5FB1 /* HomeViewController.xib */,
-				B1B42ABD2CDA814300DC5FB1 /* LocationViewController.xib */,
-			);
-			path = Storyboard;
 			sourceTree = "<group>";
 		};
 		B1F377622CE2700100E418E6 /* Cart */ = {
@@ -381,14 +396,14 @@
 			files = (
 				B1F3776C2CE2706C00E418E6 /* User.json in Resources */,
 				B1B42AB72CDA7F7E00DC5FB1 /* Assets.xcassets in Resources */,
+				B100D1722CE50E70000813D4 /* LoginViewController.xib in Resources */,
 				B15E25982CDB635A002CD47E /* Product.json in Resources */,
 				B15E25952CDB635A002CD47E /* Category.json in Resources */,
-				B1B42AA72CDA7B2900DC5FB1 /* LoginViewController.xib in Resources */,
-				B1B42AC22CDA814300DC5FB1 /* HomeViewController.xib in Resources */,
 				B1B42AB52CDA7ED300DC5FB1 /* RegisterViewController.xib in Resources */,
+				B100D16D2CE50C2A000813D4 /* LocationViewController.xib in Resources */,
 				B15E25972CDB635A002CD47E /* Topping.json in Resources */,
+				B100D16C2CE50C2A000813D4 /* HomeViewController.xib in Resources */,
 				B15E25962CDB635A002CD47E /* Size.json in Resources */,
-				B1B42AC12CDA814300DC5FB1 /* LocationViewController.xib in Resources */,
 				B1F3776B2CE2705300E418E6 /* Carttt.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -414,18 +429,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B100D1742CE50EE2000813D4 /* LoginViewController.swift in Sources */,
 				B1F377682CE2700100E418E6 /* ToppingModelMain.swift in Sources */,
 				B1F377652CE2700100E418E6 /* CartModel.swift in Sources */,
-				B1B42AC02CDA814300DC5FB1 /* LocationViewController.swift in Sources */,
+				B100D1702CE50C2A000813D4 /* CustomTabBar.swift in Sources */,
 				B1F3775D2CE26F7700E418E6 /* CartManager.swift in Sources */,
 				B1F377662CE2700100E418E6 /* ProductCart.swift in Sources */,
 				B1F377672CE2700100E418E6 /* SizeModelMain.swift in Sources */,
 				B1B42AAE2CDA7DBA00DC5FB1 /* Storyboards.swift in Sources */,
-				B1B42AA82CDA7B2900DC5FB1 /* LoginViewController.swift in Sources */,
+				B100D16F2CE50C2A000813D4 /* LocationViewController.swift in Sources */,
 				B1B42A742CDA7A9500DC5FB1 /* AppDelegate.swift in Sources */,
+				B100D1602CE50ABF000813D4 /* TabBar.swift in Sources */,
 				B1F3775B2CE26F6D00E418E6 /* UserEntity.swift in Sources */,
 				B1B42AB62CDA7ED300DC5FB1 /* RegisterViewController.swift in Sources */,
-				B1B42AC32CDA814300DC5FB1 /* HomeViewController.swift in Sources */,
+				B100D16E2CE50C2A000813D4 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

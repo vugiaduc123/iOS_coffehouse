@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow()
-        let view = Storyboard.Login.registerVC
+        let view = CustomTabBarController()
         let navigationVC = UINavigationController(rootViewController: view)
         window?.rootViewController = navigationVC
         window?.makeKeyAndVisible()
