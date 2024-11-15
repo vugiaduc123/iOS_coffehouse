@@ -12,7 +12,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordText: UITextField!
     
     @IBOutlet weak var lbMissInfomation: UILabel!
-    private var users: [User_Entity] = []
+    private var users: [UserEntity] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -83,7 +83,7 @@ extension LoginViewController{
         }
         do {
             let userData = try Data(contentsOf: fileURL)
-            self.users = try JSONDecoder().decode([User_Entity].self, from: userData)
+            self.users = try JSONDecoder().decode([UserEntity].self, from: userData)
         } catch {
             print(String(describing: error))
         }
