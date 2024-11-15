@@ -9,42 +9,36 @@ import Foundation
 import UIKit
 
 class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
-    var movingView: UIView!
     var movingViewCenterXConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.delegate = self
-        
+        setUpTabBar()
+    }
+    // UITabBarControllerDelegate method
+    func setUpTabBar() {
         let homeVC = HomeViewController()
         let homeNavigationVC = UINavigationController(rootViewController: homeVC)
-        let tab1 = Tabbar.home
-        homeNavigationVC.tabBarItem = UITabBarItem(title: tab1.name(),
-                                                   image: tab1.icon(isSelected: false),
-                                                   selectedImage: tab1.icon(isSelected: true))
-
-       
-
-        
+        homeVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "ic_home_unselected"), selectedImage: UIImage(named: "ic_home_selected"))
         self.viewControllers = [homeNavigationVC]
         self.tabBar.backgroundColor = .white
-        self.tabBar.tintColor = .CB_8_A_58
-
-        self.movingView = UIView()
-        self.movingView.translatesAutoresizingMaskIntoConstraints = false
-        self.movingView.backgroundColor = .CB_8_A_58
-        self.view.addSubview(self.movingView)
+        self.tabBar.tintColor = .colorCustomBrown
+        setUpMovingView()
+    }
+    func setUpMovingView() {
+        var movingView = UIView()
+        movingView.translatesAutoresizingMaskIntoConstraints = false
+        movingView.backgroundColor = .colorCustomBrown
+        self.view.addSubview(movingView)
         NSLayoutConstraint.activate([
-            self.movingView.heightAnchor.constraint(equalToConstant: 3),
-            self.movingView.widthAnchor.constraint(equalToConstant: 33),
-            self.movingView.bottomAnchor.constraint(equalTo: self.tabBar.topAnchor, constant: -10),
+            movingView.heightAnchor.constraint(equalToConstant: 3),
+            movingView.widthAnchor.constraint(equalToConstant: 33),
+            movingView.bottomAnchor.constraint(equalTo: self.tabBar.topAnchor, constant: -10),
         ])
-        self.movingViewCenterXConstraint = self.movingView.centerXAnchor.constraint(equalTo: self.tabBar.centerXAnchor)
+        self.movingViewCenterXConstraint = movingView.centerXAnchor.constraint(equalTo: self.tabBar.centerXAnchor)
         self.movingViewCenterXConstraint.isActive = true
     }
-    
-    // UITabBarControllerDelegate method
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         if let selectedIndex = tabBarController.viewControllers?.firstIndex(of: viewController) {
             let tabBarWidth = tabBarController.tabBar.frame.width / CGFloat(tabBarController.viewControllers!.count)
