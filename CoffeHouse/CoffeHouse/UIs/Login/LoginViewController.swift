@@ -38,10 +38,8 @@ class LoginViewController: UIViewController {
                             isLoginSuccessful = true
                             lbMissInfomation.isHidden = true
                             UserDefaults.standard.set(true, forKey: "isActive")
-//                            let homeVC = HomeViewController()
-//                            self.navigationController?.pushViewController(homeVC, animated: true)
-                            let profileVC = ProfileViewController()
-                            self.navigationController?.pushViewController(profileVC, animated: true)
+                            let homeVC = HomeViewController()
+                            self.navigationController?.pushViewController(homeVC, animated: true)
                             break
                         }
                     }
