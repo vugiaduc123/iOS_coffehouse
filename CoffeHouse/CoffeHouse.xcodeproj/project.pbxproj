@@ -7,18 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B100D1602CE50ABF000813D4 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100D15E2CE50ABF000813D4 /* TabBar.swift */; };
 		B100D16C2CE50C2A000813D4 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B100D1652CE50C2A000813D4 /* HomeViewController.xib */; };
 		B100D16D2CE50C2A000813D4 /* LocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B100D1662CE50C2A000813D4 /* LocationViewController.xib */; };
 		B100D16E2CE50C2A000813D4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100D1682CE50C2A000813D4 /* HomeViewController.swift */; };
 		B100D16F2CE50C2A000813D4 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100D1692CE50C2A000813D4 /* LocationViewController.swift */; };
-		B100D1702CE50C2A000813D4 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100D16B2CE50C2A000813D4 /* CustomTabBar.swift */; };
 		B100D1722CE50E70000813D4 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B100D1712CE50E70000813D4 /* LoginViewController.xib */; };
 		B100D1742CE50EE2000813D4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100D1732CE50EE2000813D4 /* LoginViewController.swift */; };
 		B15E25952CDB635A002CD47E /* Category.json in Resources */ = {isa = PBXBuildFile; fileRef = B15E25912CDB6359002CD47E /* Category.json */; };
 		B15E25962CDB635A002CD47E /* Size.json in Resources */ = {isa = PBXBuildFile; fileRef = B15E25922CDB635A002CD47E /* Size.json */; };
 		B15E25972CDB635A002CD47E /* Topping.json in Resources */ = {isa = PBXBuildFile; fileRef = B15E25932CDB635A002CD47E /* Topping.json */; };
 		B15E25982CDB635A002CD47E /* Product.json in Resources */ = {isa = PBXBuildFile; fileRef = B15E25942CDB635A002CD47E /* Product.json */; };
+		B17584542CE7028E00D5B835 /* Order.json in Resources */ = {isa = PBXBuildFile; fileRef = B17584532CE7028E00D5B835 /* Order.json */; };
+		B175845C2CE703F000D5B835 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B175845A2CE703F000D5B835 /* CustomTabBar.swift */; };
 		B1B42A742CDA7A9500DC5FB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B42A732CDA7A9500DC5FB1 /* AppDelegate.swift */; };
 		B1B42AAE2CDA7DBA00DC5FB1 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B42AAD2CDA7DBA00DC5FB1 /* Storyboards.swift */; };
 		B1B42AB52CDA7ED300DC5FB1 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1B42AB32CDA7ED300DC5FB1 /* RegisterViewController.xib */; };
@@ -52,12 +52,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B100D15E2CE50ABF000813D4 /* TabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		B100D1652CE50C2A000813D4 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		B100D1662CE50C2A000813D4 /* LocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationViewController.xib; sourceTree = "<group>"; };
 		B100D1682CE50C2A000813D4 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B100D1692CE50C2A000813D4 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
-		B100D16B2CE50C2A000813D4 /* CustomTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomTabBar.swift; path = ../CustomTabBar.swift; sourceTree = "<group>"; };
 		B100D1712CE50E70000813D4 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		B100D1732CE50EE2000813D4 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B15E25912CDB6359002CD47E /* Category.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Category.json; sourceTree = "<group>"; };
@@ -65,6 +63,8 @@
 		B15E25932CDB635A002CD47E /* Topping.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Topping.json; sourceTree = "<group>"; };
 		B15E25942CDB635A002CD47E /* Product.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Product.json; sourceTree = "<group>"; };
 		B15E25992CDB64A9002CD47E /* User.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = User.json; sourceTree = "<group>"; };
+		B17584532CE7028E00D5B835 /* Order.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Order.json; sourceTree = "<group>"; };
+		B175845A2CE703F000D5B835 /* CustomTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		B1B42A702CDA7A9500DC5FB1 /* CoffeHouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeHouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1B42A732CDA7A9500DC5FB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1B42A7C2CDA7A9800DC5FB1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -108,14 +108,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B100D15F2CE50ABF000813D4 /* Enums */ = {
-			isa = PBXGroup;
-			children = (
-				B100D15E2CE50ABF000813D4 /* TabBar.swift */,
-			);
-			path = Enums;
-			sourceTree = "<group>";
-		};
 		B100D1672CE50C2A000813D4 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,7 +123,6 @@
 				B100D1672CE50C2A000813D4 /* Storyboard */,
 				B100D1682CE50C2A000813D4 /* HomeViewController.swift */,
 				B100D1692CE50C2A000813D4 /* LocationViewController.swift */,
-				B100D16B2CE50C2A000813D4 /* CustomTabBar.swift */,
 			);
 			name = Home;
 			path = "../../../../../../../../../Library/Mobile Documents/.Trash/maincoffee/iOS_coffehouse/CoffeHouse/CoffeHouse/UIs/Home/Home";
@@ -140,6 +131,7 @@
 		B15E25902CDB6346002CD47E /* JsonLocal */ = {
 			isa = PBXGroup;
 			children = (
+				B17584532CE7028E00D5B835 /* Order.json */,
 				B1F3776A2CE2705300E418E6 /* Carttt.json */,
 				B15E25912CDB6359002CD47E /* Category.json */,
 				B15E25942CDB635A002CD47E /* Product.json */,
@@ -149,6 +141,15 @@
 			);
 			path = JsonLocal;
 			sourceTree = "<group>";
+		};
+		B175845B2CE703F000D5B835 /* CustomTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				B175845A2CE703F000D5B835 /* CustomTabBar.swift */,
+			);
+			name = CustomTabBar;
+			path = CoffeHouse/UIs/CustomTabBar;
+			sourceTree = SOURCE_ROOT;
 		};
 		B18040E52CDC4B5D00CF101A /* Model */ = {
 			isa = PBXGroup;
@@ -187,7 +188,6 @@
 		B1B42A722CDA7A9500DC5FB1 /* CoffeHouse */ = {
 			isa = PBXGroup;
 			children = (
-				B100D15F2CE50ABF000813D4 /* Enums */,
 				B1B42AAB2CDA7CFC00DC5FB1 /* Resources */,
 				B1B42AAF2CDA7E5D00DC5FB1 /* Supporting_files */,
 				B1B42AB02CDA7E7100DC5FB1 /* Services */,
@@ -200,6 +200,7 @@
 		B1B42AA32CDA7AEC00DC5FB1 /* UIs */ = {
 			isa = PBXGroup;
 			children = (
+				B175845B2CE703F000D5B835 /* CustomTabBar */,
 				B100D16A2CE50C2A000813D4 /* Home */,
 				B1B42AA42CDA7AF600DC5FB1 /* Login&Register */,
 			);
@@ -396,6 +397,7 @@
 			files = (
 				B1F3776C2CE2706C00E418E6 /* User.json in Resources */,
 				B1B42AB72CDA7F7E00DC5FB1 /* Assets.xcassets in Resources */,
+				B17584542CE7028E00D5B835 /* Order.json in Resources */,
 				B100D1722CE50E70000813D4 /* LoginViewController.xib in Resources */,
 				B15E25982CDB635A002CD47E /* Product.json in Resources */,
 				B15E25952CDB635A002CD47E /* Category.json in Resources */,
@@ -431,15 +433,14 @@
 			files = (
 				B100D1742CE50EE2000813D4 /* LoginViewController.swift in Sources */,
 				B1F377682CE2700100E418E6 /* ToppingModelMain.swift in Sources */,
+				B175845C2CE703F000D5B835 /* CustomTabBar.swift in Sources */,
 				B1F377652CE2700100E418E6 /* CartModel.swift in Sources */,
-				B100D1702CE50C2A000813D4 /* CustomTabBar.swift in Sources */,
 				B1F3775D2CE26F7700E418E6 /* CartManager.swift in Sources */,
 				B1F377662CE2700100E418E6 /* ProductCart.swift in Sources */,
 				B1F377672CE2700100E418E6 /* SizeModelMain.swift in Sources */,
 				B1B42AAE2CDA7DBA00DC5FB1 /* Storyboards.swift in Sources */,
 				B100D16F2CE50C2A000813D4 /* LocationViewController.swift in Sources */,
 				B1B42A742CDA7A9500DC5FB1 /* AppDelegate.swift in Sources */,
-				B100D1602CE50ABF000813D4 /* TabBar.swift in Sources */,
 				B1F3775B2CE26F6D00E418E6 /* UserEntity.swift in Sources */,
 				B1B42AB62CDA7ED300DC5FB1 /* RegisterViewController.swift in Sources */,
 				B100D16E2CE50C2A000813D4 /* HomeViewController.swift in Sources */,
