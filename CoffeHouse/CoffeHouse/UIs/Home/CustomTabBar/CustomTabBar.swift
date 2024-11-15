@@ -17,7 +17,7 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
         setUpTabBar()
     }
     // UITabBarControllerDelegate method
-    func setUpTabBar(){
+    func setUpTabBar() {
         let homeVC = HomeViewController()
         let homeNavigationVC = UINavigationController(rootViewController: homeVC)
         homeVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "ic_home_unselected"), selectedImage: UIImage(named: "ic_home_selected"))
@@ -26,7 +26,7 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
         self.tabBar.tintColor = .colorCustomBrown
         setUpMovingView()
     }
-    func setUpMovingView(){
+    func setUpMovingView() {
         var movingView = UIView()
         movingView.translatesAutoresizingMaskIntoConstraints = false
         movingView.backgroundColor = .colorCustomBrown
