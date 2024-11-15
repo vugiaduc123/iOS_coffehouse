@@ -8,7 +8,6 @@
 import Foundation
 
 class OrderService {
-    // tên file json
     private let fileName = "Orders.json"
     
     // get url Order.json in bundle
@@ -22,31 +21,33 @@ class OrderService {
         }
     }
     // add item to Order.json
-    func addOrder(newOrder: [String: Any]) {
+    func addOrder(newOrder: Order) {
         guard let fileURL = getFileUrl() else { return }
         
-        // read data from Order.json
-        var ordersArray: [[String: Any]] = []
-        if let data = try? Data(contentsOf: fileURL),
-           let jsonArray = try? JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]] {
-            ordersArray = jsonArray
+        // Read data from Order.json
+        var ordersArray: [Order] = []
+        if let data = try? Data(contentsOf: fileURL) {
+            let decoder = JSONDecoder()
+            if let jsonArray = try? decoder.decode([Order].self, from: data) {
+                ordersArray = jsonArray
+            }
         }
         
         // add new order to array
         ordersArray.append(newOrder)
         
         // write updated data to Order.json
-        if let updatedData = try? JSONSerialization.data(withJSONObject: ordersArray, options: .prettyPrinted) {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted
+        if let updatedData = try? encoder.encode(ordersArray) {
             do {
                 try updatedData.write(to: fileURL)
                 print("Add new order to Order.json successfully")
             } catch {
-                print("Error")
+                print("Error writing data to file")
             }
         } else {
-            print("Error converting data")
+            print("Error encoding data")
         }
     }
-    
-    
 }
