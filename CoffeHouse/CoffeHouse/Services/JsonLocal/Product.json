@@ -223,7 +223,7 @@
             },
             {
                 "id": 3,
-                "name_topping": "Grape"
+                "name_topping": "Grape",
                 "price_topping": 0.5
             }
         ]
@@ -256,7 +256,7 @@
             },
             {
                 "id": 3,
-                "name_topping": "Grape"
+                "name_topping": "Grape",
                 "price_topping": 0.5
             }
         ]
@@ -289,7 +289,7 @@
             },
             {
                 "id": 3,
-                "name_topping": "Grape"
+                "name_topping": "Grape",
                 "price_topping": 0.5
             }
         ]
@@ -322,7 +322,7 @@
             },
             {
                 "id": 3,
-                "name_topping": "Grape"
+                "name_topping": "Grape",
                 "price_topping": 0.5
             }
         ]
@@ -355,7 +355,7 @@
             },
             {
                 "id": 3,
-                "name_topping": "Grape"
+                "name_topping": "Grape",
                 "price_topping": 0.5
             }
         ]
@@ -388,7 +388,7 @@
             },
             {
                 "id": 3,
-                "name_topping": "Grape"
+                "name_topping": "Grape",
                 "price_topping": 0.5
             }
         ]
@@ -410,12 +410,12 @@
         },
         {
             "id": 1,
-            "name_size": "M"
+            "name_size": "M",
             "price_size": 3.0,
         },
         {
             "id": 2,
-            "name_size": "L"
+            "name_size": "L",
             "price_size": 5.0,
         }
         ],
@@ -438,12 +438,12 @@
         },
         {
             "id": 1,
-            "name_size": "M"
+            "name_size": "M",
             "price_size": 3.0,
         },
         {
             "id": 2,
-            "name_size": "L"
+            "name_size": "L",
             "price_size": 5.0,
         }
         ],
@@ -466,12 +466,12 @@
         },
         {
             "id": 1,
-            "name_size": "M"
+            "name_size": "M",
             "price_size": 3.0,
         },
         {
             "id": 2,
-            "name_size": "L"
+            "name_size": "L",
             "price_size": 5.0,
         }
         ],
@@ -494,13 +494,13 @@
         },
         {
             "id": 1,
-            "name_size": "M"
-            "price_size": 3.0,
+            "name_size": "M",
+            "price_size": 3.0
         },
         {
             "id": 2,
-            "name_size": "L"
-            "price_size": 5.0,
+            "name_size": "L",
+            "price_size": 5.0
         }
         ],
         "topping": []
@@ -522,13 +522,13 @@
         },
         {
             "id": 1,
-            "name_size": "M"
-            "price_size": 3.0,
+            "name_size": "M",
+            "price_size": 3.0
         },
         {
             "id": 2,
-            "name_size": "L"
-            "price_size": 5.0,
+            "name_size": "L",
+            "price_size": 5.0
         }
         ],
         "topping": []
@@ -550,12 +550,12 @@
         },
         {
             "id": 1,
-            "name_size": "M"
+            "name_size": "M",
             "price_size": 3.0,
         },
         {
             "id": 2,
-            "name_size": "L"
+            "name_size": "L",
             "price_size": 5.0,
         }
         ],
@@ -578,7 +578,7 @@
         },
         {
             "id": 2,
-            "name_size": "L"
+            "name_size": "L",
             "price_size": 5.0,
         }
         ],
@@ -601,12 +601,12 @@
         },
         {
             "id": 1,
-            "name_size": "M"
+            "name_size": "M",
             "price_size": 3.0,
         },
         {
             "id": 2,
-            "name_size": "L"
+            "name_size": "L",
             "price_size": 5.0,
         }
         ],
@@ -624,12 +624,12 @@
         "size": [
         {
             "id": 1,
-            "name_size": "M"
+            "name_size": "M",
             "price_size": 3.0,
         },
         {
             "id": 2,
-            "name_size": "L"
+            "name_size": "L",
             "price_size": 5.0,
         }
         ],
