@@ -15,13 +15,8 @@ class LoginViewController: UIViewController {
     private var users: [UserEntity] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        passwordText.isSecureTextEntry = true
-        lbMissInfomation.isHidden = true
-        
+        setupView()
     }
-    
-    
     
     @IBAction func btLogin(_ sender: Any) {
         loadData()
@@ -31,24 +26,25 @@ class LoginViewController: UIViewController {
             lbMissInfomation.isHidden = false
             return
         }
-        do {
             var isLoginSuccessful = false
                     for user in users {
                         if user.email == enterEmail && user.password == enterPassword {
                             isLoginSuccessful = true
                             lbMissInfomation.isHidden = true
                             UserDefaults.standard.set(true, forKey: "isActive")
+                            if let encodedUser = try? JSONEncoder().encode(user) {
+                                        UserDefaults.standard.set(encodedUser, forKey: "loggedInUser")
+                                    }
                             let homeVC = HomeViewController()
                             self.navigationController?.pushViewController(homeVC, animated: true)
                             break
                         }
-                    }
-                    
+
                     if !isLoginSuccessful {
                         lbMissInfomation.isHidden = true
-                        wrongNotificationLogin()
+                        alertLogin()
+                        }
                     }
-            }
     }
 
     @IBAction func btRegister(_ sender: Any) {
@@ -58,34 +54,47 @@ class LoginViewController: UIViewController {
     
 }
 
-// MARK Layout - Config
+// MARK: Layout - Config
 extension LoginViewController{
     
-    func wrongNotificationLogin() {
-        let wrongNotificationController = UIAlertController(title: "Wrong email or password", message: "", preferredStyle: .alert)
-        wrongNotificationController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        present(wrongNotificationController, animated: true, completion: nil)
+    private func setupView() {
+        emailText.spellCheckingType = .no
+        passwordText.isSecureTextEntry = true
+        lbMissInfomation.isHidden = true
+    }
+    
+    func alertLogin() {
+        let alertController = UIAlertController(title: "Wrong email or password", message: "", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alertController, animated: true, completion: nil)
     }
 }
 
-
-// MARK Method
+//MARK: - Load Jsonfile
 extension LoginViewController{
-    
-}
-
-// MARK Load Jsonfile
-extension LoginViewController{
-    private func loadData(){
-        guard let fileURL = Bundle.main.url(forResource: "User", withExtension: "json") else {
-            print("File not found")
-            return
-        }
-        do {
-            let userData = try Data(contentsOf: fileURL)
-            self.users = try JSONDecoder().decode([UserEntity].self, from: userData)
-        } catch {
-            print(String(describing: error))
+    class JSONLoader {
+        static func load<T: Decodable>(fileName: String, fileType: String = "json", type: T.Type) -> T? {
+            guard let fileURL = Bundle.main.url(forResource: fileName, withExtension: fileType) else {
+                print("File not found")
+                return nil
+            }
+            do {
+                let data = try Data(contentsOf: fileURL)
+                let decodedData = try JSONDecoder().decode(T.self, from: data)
+                return decodedData
+            } catch {
+                print("Error loading JSON: \(error)")
+                return nil
+            }
         }
     }
+        private func loadData() {
+            if let loadedUsers: [UserEntity] = JSONLoader.load(fileName: "User", type: [UserEntity].self) {
+                self.users = loadedUsers
+            } else {
+                print("Failed to load user data")
+            }
+        }
 }
+
+
