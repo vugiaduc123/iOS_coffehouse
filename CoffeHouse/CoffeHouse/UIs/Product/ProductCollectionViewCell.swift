@@ -22,6 +22,9 @@ class ProductCollectionViewCell: UICollectionViewCell {
         setUpLabel(sizeS)
         setUpLabel(sizeM)
         setUpLabel(sizeL)
+        self.layer.borderWidth = 1
+        self.layer.borderColor = UIColor.lightGray.cgColor
+        self.layer.cornerRadius = 25
     }
 
     func setUpImageSize() {

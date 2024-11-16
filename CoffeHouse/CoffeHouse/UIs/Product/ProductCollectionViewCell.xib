@@ -85,6 +85,15 @@
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" image="ic_add"/>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jzc-qo-U0P">
+                        <rect key="frame" x="111" y="15" width="14" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14" id="KH0-l6-1ob"/>
+                            <constraint firstAttribute="width" constant="14" id="eEd-a5-Hro"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" image="ic_favories"/>
+                    </button>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
@@ -97,7 +106,9 @@
                 <constraint firstItem="gXY-eY-VkZ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="Pj6-Q7-gI2"/>
                 <constraint firstItem="9QS-1l-3mX" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="ROz-JY-srC"/>
                 <constraint firstItem="9QS-1l-3mX" firstAttribute="top" secondItem="TGM-3A-4Sc" secondAttribute="bottom" constant="5" id="UTU-QD-vEz"/>
+                <constraint firstAttribute="trailing" secondItem="jzc-qo-U0P" secondAttribute="trailing" constant="15" id="WRb-FJ-K5v"/>
                 <constraint firstItem="TGM-3A-4Sc" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="X9L-FO-zoN"/>
+                <constraint firstItem="jzc-qo-U0P" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="15" id="dpg-vS-J6s"/>
                 <constraint firstAttribute="trailing" secondItem="rum-N3-fIG" secondAttribute="trailing" constant="10" id="e8o-yl-8Zi"/>
                 <constraint firstAttribute="trailing" secondItem="TGM-3A-4Sc" secondAttribute="trailing" constant="5" id="uLk-Dy-UyE"/>
             </constraints>
@@ -115,5 +126,6 @@
     </objects>
     <resources>
         <image name="ic_add" width="30.333333969116211" height="30"/>
+        <image name="ic_favories" width="12.666666984558105" height="11.333333015441895"/>
     </resources>
 </document>
