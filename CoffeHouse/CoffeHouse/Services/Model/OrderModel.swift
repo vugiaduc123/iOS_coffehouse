@@ -9,29 +9,29 @@ import Foundation
 
 struct Order: Codable {
     var order_id: Int
-    var product: Product
-    var size: [Size]
-    var topping: [Topping]
+    var product: Product_Order
+    var size: [Size_Order]
+    var topping: [Topping_Order]
     var user_id: Int
     var status: Int
     var address: String
     var payment_method: Int
 }
 
-struct Product: Codable {
+struct Product_Order: Codable {
     var id: Int
     var product_name: String
     var ori_price: Double
     var full_path: String
 }
 
-struct Size: Codable {
+struct Size_Order: Codable {
     var id: Int
     var name_size: String
     var price_size: Double
 }
 
-struct Topping: Codable {
+struct Topping_Order: Codable {
     var id: Int
     var name_topping: String
     var price_topping: Double
