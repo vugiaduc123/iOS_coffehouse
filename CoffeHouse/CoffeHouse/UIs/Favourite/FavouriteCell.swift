@@ -38,11 +38,11 @@ class FavouriteCell: UITableViewCell {
         favButtonPressed()
     }
         
-    func bind(with product: ProductEntity) {
-        name.text = product.name
+    func bind(with product: ProductModel) {
+        name.text = product.nameProduct
         price.text = String(product.price)
         rate.text = String(product.rate)
-        imageProduct.sd_setImage(with: URL(string: product.fullPath), placeholderImage: UIImage(named: "placeholder.png"))
+        imageProduct.sd_setImage(with: URL(string: product.urlImage), placeholderImage: UIImage(named: "placeholder.png"))
     }
     
     func config() {

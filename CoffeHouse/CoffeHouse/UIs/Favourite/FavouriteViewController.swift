@@ -13,9 +13,9 @@ class FavouriteViewController: UIViewController {
     
     let cellSpacingHeight: CGFloat = 1
     
-    var favouriteProducts: [ProductEntity] =  []
-    var filterProducts: [ProductEntity] = []
-    var products: [ProductEntity] = []
+    var favouriteProducts: [ProductModel] =  []
+    var filterProducts: [ProductModel] = []
+    var products: [ProductModel] = []
     var isFiltering: Bool = false
     
     override func viewDidLoad() {
@@ -50,7 +50,7 @@ extension FavouriteViewController {
         
         do {
                let data = try Data(contentsOf: fileURL)
-               products = try JSONDecoder().decode([ProductEntity].self, from: data)
+               products = try JSONDecoder().decode([ProductModel].self, from: data)
            } catch {
                print(error.localizedDescription)
            }
@@ -61,7 +61,7 @@ extension FavouriteViewController {
         let favouriteIds = UserDefaults.standard.array(forKey: "drinkFavourite") as? [Int] ?? []
         print(favouriteIds)
         
-        favouriteProducts = products.filter {favouriteIds.contains($0.id)}
+        favouriteProducts = products.filter {favouriteIds.contains($0.idProduct)}
 //        print(favouriteProducts)
         
         tableView.reloadData()
@@ -110,12 +110,12 @@ extension FavouriteViewController: UITableViewDataSource {
         cell.favButtonPressed = { [weak self] in
             var favouriteIds = UserDefaults.standard.array(forKey: "drinkFavourite") as? [Int] ?? []
             
-            if favouriteIds.contains(product.id) {
-                if let index = favouriteIds.lastIndex(where: { $0 == product.id }) {
+            if favouriteIds.contains(product.idProduct) {
+                if let index = favouriteIds.lastIndex(where: { $0 == product.idProduct }) {
                     favouriteIds.remove(at: index)
                 }
             }
-            self?.favouriteProducts.removeAll { $0.id == product.id }
+            self?.favouriteProducts.removeAll { $0.idProduct == product.idProduct }
             UserDefaults.standard.setValue(favouriteIds, forKey: "drinkFavourite")
             self?.tableView.reloadData()
         }
@@ -153,7 +153,7 @@ extension FavouriteViewController: UISearchBarDelegate {
         } else {
             isFiltering = true
             filterProducts = favouriteProducts.filter { product in
-                return product.name.lowercased().contains(searchText.lowercased())
+                return product.nameProduct.lowercased().contains(searchText.lowercased())
             }
         }
         tableView.reloadData()
