@@ -13,12 +13,13 @@ class CartViewController: UIViewController, UIGestureRecognizerDelegate {
     //
     private let widthSize: CGFloat = UIScreen.main.bounds.width
     private let heightSize: CGFloat = UIScreen.main.bounds.height
-    private let paddingLeading: CGFloat = 20
+    private let paddingLeft: CGFloat = 20
     private let paddingRight: CGFloat = -20
     private var cellCart = "cellCart"
     private var cellEmpty = "cellEmpty"
     
     // view
+    private let mainView = UIView()
     private let topView = UIView()
     private let bottomView = UIView()
     private var collectionView: UICollectionView!
@@ -26,12 +27,12 @@ class CartViewController: UIViewController, UIGestureRecognizerDelegate {
     
     // data
     private let service = Cart.shared
+    
     private var listItems:[CartModel] = []
     private var totalPrice = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // configure
         configureNavigationBar()
         configureView()
@@ -39,7 +40,6 @@ class CartViewController: UIViewController, UIGestureRecognizerDelegate {
         // API
         getDataCart()
     }
-    
 
 }
 
@@ -69,7 +69,11 @@ extension CartViewController {
 extension CartViewController{
     // Configure navigation bar
     private func configureNavigationBar() {
-        self.navigationItem.rightBarButtonItem = NavigationItem().itemBarbtn(target: self, selector: #selector(pushToViewOrder), sizeIcon: 35)
+        let asset = Asset.self
+        let btnOrder = NavigationItem().itemBarbtn(icon: asset.CartIcon.ic_orderNav,target: self, selector: #selector(pushToViewOrder), sizeIcon: 35)
+        let editCart = NavigationItem().itemBarbtnSystem(icon: asset.CartIcon.ic_edit, color: UIColor(named: asset.CartColor.icon_color), target: self, selector: #selector(pushToViewOrder), sizeIcon: 30)
+        self.navigationController?.navigationBar.changeBackgroundColor(backroundColor: .white)
+        self.navigationItem.rightBarButtonItems = [btnOrder, editCart]
     }
 }
 
@@ -80,12 +84,14 @@ extension CartViewController {
     private func configureView() {
         
         // Addd View
+        configureMainView()
         configureTopView()
         configureCollectionView()
         configureBottomView()
         configurelbPrice()
         
         // Main Constraint
+        constraintMainView()
         constraintTopView()
         constraintCollectionView() // collectionView
         constraintbottomView()
@@ -102,7 +108,7 @@ extension CartViewController {
         self.bottomView.addSubview(btnGoToCart)
         btnGoToCart.addSubview(btnLabel)
         btnGoToCart.addSubview(imageArrow)
-        self.view.addSubview(self.txtPrice)
+        mainView.addSubview(self.txtPrice)
         
         
         // constraint
@@ -113,10 +119,17 @@ extension CartViewController {
         constraintTotalPrice(view: self.txtPrice, itemConstraint: self.bottomView) // item label total price
     }
     
+    private func configureMainView() {
+        self.mainView.translatesAutoresizingMaskIntoConstraints = false
+        self.mainView.backgroundColor = .white
+        
+        self.view.addSubview(mainView)
+    }
+    
     private func configureTopView() {
         self.topView.translatesAutoresizingMaskIntoConstraints = false
         self.topView.backgroundColor = .white
-        self.view.addSubview(topView)
+        self.mainView.addSubview(topView)
     }
     
     private func configureCollectionView() {
@@ -130,13 +143,13 @@ extension CartViewController {
         collectionView.delegate = self
         collectionView.register(CartCell.self, forCellWithReuseIdentifier: cellCart)
         collectionView.register(EmptyCell.self, forCellWithReuseIdentifier: cellEmpty)
-        self.view.addSubview(collectionView)
+        self.mainView.addSubview(collectionView)
     }
     
     private func configureBottomView() {
         self.bottomView.translatesAutoresizingMaskIntoConstraints = false
         self.bottomView.backgroundColor = .white
-        self.view.addSubview(bottomView)
+        self.mainView.addSubview(bottomView)
     }
     
     private func configurelbPrice() {
@@ -165,7 +178,7 @@ extension CartViewController {
         btnView.translatesAutoresizingMaskIntoConstraints = false
         btnView.layer.cornerRadius = 15
         btnView.layer.masksToBounds = true
-        let action = UITapGestureRecognizer(target: self, action: #selector(pushToViewCart(sender:)))
+        let action = UITapGestureRecognizer(target: self, action: #selector(pushToViewPayment(sender:)))
         btnView.isUserInteractionEnabled = true
         btnView.addGestureRecognizer(action)
         return btnView
@@ -194,11 +207,21 @@ extension CartViewController {
 // MARK: Constraint
 extension CartViewController {
     // Constraint View
+    
+    private func constraintMainView() {
+        NSLayoutConstraint.activate([
+            mainView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 0),
+            mainView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0),
+            mainView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 0),
+            mainView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0),
+        ])
+    }
+    
     private func constraintTopView() {
         NSLayoutConstraint.activate([
-            topView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 0),
-            topView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0),
-            topView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 0),
+            topView.topAnchor.constraint(equalTo: self.mainView.topAnchor, constant: 15),
+            topView.leadingAnchor.constraint(equalTo: self.mainView.leadingAnchor, constant: 0),
+            topView.rightAnchor.constraint(equalTo: self.mainView.rightAnchor, constant: 0),
             topView.heightAnchor.constraint(equalToConstant: 30)
         ])
     }
@@ -206,17 +229,17 @@ extension CartViewController {
     private func constraintCollectionView() {
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: topView.bottomAnchor, constant: 0),
-            collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0),
-            collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0),
+            collectionView.leadingAnchor.constraint(equalTo: self.mainView.leadingAnchor, constant: 0),
+            collectionView.trailingAnchor.constraint(equalTo: self.mainView.trailingAnchor, constant: 0),
             collectionView.bottomAnchor.constraint(equalTo: bottomView.topAnchor, constant: 0),
         ])
     }
     
     private func constraintbottomView() {
         NSLayoutConstraint.activate([
-            bottomView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0),
-            bottomView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 0),
-            bottomView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0),
+            bottomView.leadingAnchor.constraint(equalTo: self.mainView.leadingAnchor, constant: 0),
+            bottomView.rightAnchor.constraint(equalTo: self.mainView.rightAnchor, constant: 0),
+            bottomView.bottomAnchor.constraint(equalTo: self.mainView.bottomAnchor, constant: 0),
             bottomView.heightAnchor.constraint(equalToConstant: 150)
         ])
     }
@@ -224,7 +247,7 @@ extension CartViewController {
     private func constraintLabel(label: UILabel, itemConstraint: UIView) {
         NSLayoutConstraint.activate([
             label.topAnchor.constraint(equalTo: itemConstraint.topAnchor, constant: 0),
-            label.leadingAnchor.constraint(equalTo: itemConstraint.leadingAnchor, constant: paddingLeading),
+            label.leadingAnchor.constraint(equalTo: itemConstraint.leadingAnchor, constant: paddingLeft),
             label.trailingAnchor.constraint(equalTo: itemConstraint.trailingAnchor, constant: paddingRight),
             label.bottomAnchor.constraint(equalTo: itemConstraint.bottomAnchor, constant: 0),
         ])
@@ -234,7 +257,7 @@ extension CartViewController {
         NSLayoutConstraint.activate([
 //            view.topAnchor.constraint(equalTo: itemConstraint.topAnchor, constant: 5),
             view.centerYAnchor.constraint(equalTo: itemConstraint.centerYAnchor, constant: 0),
-            view.leadingAnchor.constraint(equalTo: itemConstraint.leadingAnchor, constant: paddingLeading),
+            view.leadingAnchor.constraint(equalTo: itemConstraint.leadingAnchor, constant: paddingLeft),
             view.trailingAnchor.constraint(equalTo: itemConstraint.trailingAnchor, constant: paddingRight),
             view.heightAnchor.constraint(equalToConstant: 56)
         ])
@@ -265,7 +288,7 @@ extension CartViewController {
         NSLayoutConstraint.activate([
             view.topAnchor.constraint(equalTo: itemConstraint.topAnchor, constant: 10),
             view.rightAnchor.constraint(equalTo: itemConstraint.rightAnchor, constant: paddingRight),
-            view.leftAnchor.constraint(equalTo: itemConstraint.leftAnchor, constant: paddingLeading),
+            view.leftAnchor.constraint(equalTo: itemConstraint.leftAnchor, constant: paddingLeft),
             view.heightAnchor.constraint(equalToConstant: 20),
         ])
     }
@@ -277,8 +300,11 @@ extension CartViewController{
         print("kkk")
     }
     
-    @objc func pushToViewCart(sender: UITapGestureRecognizer) {
-        print("ppp")
+    @objc func pushToViewPayment(sender: UITapGestureRecognizer) {
+        let view = Storyboard.Cart.paymentVC
+        view.listItems = listItems
+        view.totalPrice = self.totalPrice
+        self.navigationController?.pushViewController(view, animated: true)
     }
     
     private func updatePrice(index: Int, amount: Int){
@@ -308,7 +334,6 @@ extension CartViewController: UICollectionViewDataSource {
             cell.bindingData(item: item)
             
             // caculate total amount again
-            
             cell.backAmount = { amount in
                 self.updatePrice(index: indexPath.row, amount: amount)
             }
@@ -335,7 +360,7 @@ extension CartViewController: UICollectionViewDelegate {
 extension CartViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (self.widthSize - (paddingLeading * 2)), height: 125)
+        return CGSize(width: (self.widthSize - (paddingLeft * 2)), height: 125)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
