@@ -1,0 +1,5 @@
+# Ignore system files
+.DS_Store
+
+# Ignore Xcode project file conflicts
+CoffeHouse/CoffeHouse.xcodeproj/project.pbxproj
