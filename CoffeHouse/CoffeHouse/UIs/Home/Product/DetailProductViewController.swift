@@ -26,9 +26,7 @@ class DetailProductViewController: UIViewController {
         super.viewDidLoad()
         configRadius()
         
-        // Sử dụng ProductManager để tải dữ liệu
         if let products = ProductManager.shared.loadProductData() {
-            // Ví dụ: Chọn sản phẩm đầu tiên để hiển thị
             product = products.first
             loadUI()
         }
@@ -37,10 +35,8 @@ class DetailProductViewController: UIViewController {
     func loadUI() {
         guard let product = product else { return }
         
-        // Hiển thị tên sản phẩm
         product_name.text = product.nameProduct
         
-        // Hiển thị mô tả sản phẩm
         product_description.text = product.productContent
         
         // Hiển thị ảnh sản phẩm
@@ -54,7 +50,6 @@ class DetailProductViewController: UIViewController {
             }
         }
         
-        // Hiển thị size mặc định
         if let defaultSize = product.size.first {
             product_size.setTitle(defaultSize.name_size, for: .normal)
         }
