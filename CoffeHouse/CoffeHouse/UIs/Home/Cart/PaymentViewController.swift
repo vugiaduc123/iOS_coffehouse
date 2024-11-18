@@ -27,16 +27,12 @@ class PaymentViewController: UIViewController{
     private var PaymentMethodView = UIView()
     private var txtMethodPay = UILabel()
     private var IconMethod = UIImageView()
-
-  
+    
     // data
     private let service = Cart.shared
-    
-    
     var listItems:[CartModel] = []
     var totalPrice = 0.0
     var idPaymentMethod = 0
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,15 +40,20 @@ class PaymentViewController: UIViewController{
         configureView()
     }
     
-    deinit{
-        print("kkkkk")
-    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        print("lllllll")
         
+    }
+    
+    deinit {
+        print("llll")
+    }
 }
 
 // MARK: Navigation bar
 extension PaymentViewController{
-  
+    
     // Configure navigation bar
     private func configureNavigationBar() {
         self.navigationController?.navigationBar.changeBackgroundColor(backroundColor: .white)
@@ -122,7 +123,7 @@ extension PaymentViewController {
     }
     
     private func configurePaymenMethodView(){
-   
+        
         PaymentMethodView.backgroundColor = UIColor.systemGray4
         PaymentMethodView.translatesAutoresizingMaskIntoConstraints = false
         PaymentMethodView.layer.cornerRadius = 2.5
@@ -130,7 +131,7 @@ extension PaymentViewController {
         let action = UITapGestureRecognizer(target: self, action: #selector(showDropdown(sender:)))
         PaymentMethodView.isUserInteractionEnabled = true
         PaymentMethodView.addGestureRecognizer(action)
-      
+        
         self.mainView.addSubview(PaymentMethodView)
     }
     
@@ -140,7 +141,6 @@ extension PaymentViewController {
         // create view
         let addressView = generateAddressView()
         let lbDisplayPayment = generatelbDisplayPayment()
-     
         
         // item view button go to order
         let btnGoToOrder = generateBtGo() // button action go destination link
@@ -150,7 +150,7 @@ extension PaymentViewController {
         // item view address
         let icLocation = generateImageLoaction()
         let lbAddress = generateLabelAddress()
-    
+        
         // item view method
         let txtPaymentMethod = generatetxtMethodPay()
         let iconPaymentMethod = generateIconMethod()
@@ -160,16 +160,13 @@ extension PaymentViewController {
         self.bottomView.addSubview(btnGoToOrder)
         self.bottomView.addSubview(addressView)
         self.bottomView.addSubview(lbDisplayPayment)
-    
-        
-        
         btnGoToOrder.addSubview(btnLabel)
         btnGoToOrder.addSubview(imageArrow)
         addressView.addSubview(icLocation)
         addressView.addSubview(lbAddress)
         
         txtMethodPay = txtPaymentMethod
-         IconMethod = iconPaymentMethod
+        IconMethod = iconPaymentMethod
         PaymentMethodView.addSubview(txtPaymentMethod)
         PaymentMethodView.addSubview(iconPaymentMethod)
         PaymentMethodView.addSubview(iconDropdown)
@@ -177,9 +174,7 @@ extension PaymentViewController {
         self.mainView.addSubview(self.txtPrice)
         self.txtPrice.text = "Total: \(totalPrice)$"
         
-        
         // constraint
-        
         constraintAddressView(view: addressView, itemConstraint: bottomView) // view location contain
         constraintImageLocation(view: icLocation, itemConstraint: addressView) // ic location
         constraintLbAddress(view: lbAddress, itemConstraint: icLocation) // txt address
@@ -200,9 +195,6 @@ extension PaymentViewController {
         constraintTxtPaymentMethod(view: txtPaymentMethod, itemConstraint: iconPaymentMethod, iconDropDown: iconDropdown)
         constraintIconDropdown(iconView: iconDropdown, itemConstraint: PaymentMethodView, iconPayment: iconPaymentMethod)
         //    payment method view
-        
-       
-        
     }
     
     private func configurelbPrice() {
@@ -292,7 +284,7 @@ extension PaymentViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }
-  
+    
     private func generatetxtMethodPay() -> UILabel {
         let label = UILabel()
         label.text = "Apple"
@@ -318,8 +310,6 @@ extension PaymentViewController {
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }
-    
-     
 }
 
 
@@ -487,7 +477,10 @@ extension PaymentViewController {
 extension PaymentViewController {
     
     @objc func backToViewController(sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        DispatchQueue.main.async { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.navigationController?.popViewController(animated: true)
+        }
     }
     
     @objc func pushToLocationView(sender: UITapGestureRecognizer) {
@@ -497,7 +490,7 @@ extension PaymentViewController {
     @objc func pushToViewCreateOrder(sender: UITapGestureRecognizer) {
         print("aaaa")
     }
-
+    
     @objc func showDropdown(sender: UITapGestureRecognizer) {
         dropDown()
     }
@@ -507,7 +500,7 @@ extension PaymentViewController {
             print("error get frame view")
             return
         }
-        let drop = DropDownView(frame: frame, mainView: self.mainView, heightTableView: 150, openDirection: .bottom, cornerRadius: 5, borderWidth: 1, borderColor: .gray)
+        let drop = DropDownView(frame: frame, navController: self.navigationController!, openDirection: .bottom, cornerRadius: 5, borderWidth: 1, borderColor: .gray)
         drop.translatesAutoresizingMaskIntoConstraints = false
         let title = ["Apple", "VISA/MASTERCART","Cash"]
         let ids = [0,1,2]
@@ -515,10 +508,10 @@ extension PaymentViewController {
         drop.listName = title
         drop.listId = ids
         drop.icons = icons
-        drop.bacData = { text, idMethod, icon in
-            self.txtMethodPay.text = text
-            self.IconMethod.image = UIImage(named: icon)
-            self.idPaymentMethod = idMethod
+        drop.bacData = { [weak self] text, idMethod, icon in
+            self?.txtMethodPay.text = text
+            self?.IconMethod.image = UIImage(named: icon)
+            self?.idPaymentMethod = idMethod
         }
         self.mainView.addSubview(drop)
     }
@@ -534,14 +527,14 @@ extension PaymentViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            
+        
         let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: cellPay, for: indexPath as IndexPath) as! CartPaymentCell
         
         let item = listItems[indexPath.row]
         cell.bindingData(item: item)
         
         return cell
-
+        
     }
     
     
@@ -551,7 +544,7 @@ extension PaymentViewController: UICollectionViewDataSource {
 }
 
 extension PaymentViewController: UICollectionViewDelegate {
-  
+    
 }
 
 extension PaymentViewController: UICollectionViewDelegateFlowLayout {

@@ -8,10 +8,7 @@
 import Foundation
 import UIKit
 
-
-
 class CartPaymentCell: UICollectionViewCell {
-    
     let imageProduct: UIImageView = {
         let image = UIImageView()
         image.backgroundColor = UIColor.white
@@ -90,7 +87,6 @@ class CartPaymentCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureCell()
-
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -108,7 +104,6 @@ class CartPaymentCell: UICollectionViewCell {
     
     // add view to cell
     func addViews() {
-        
         addSubview(imageProduct)
         addSubview(nameProduct)
         addSubview(sizeProduct)
@@ -150,10 +145,7 @@ class CartPaymentCell: UICollectionViewCell {
             self.amount.text = "SL: 1"
         }
         
-        
         self.scoreRate.text = item.product.rate.description
-        
-        
         addViews()
         constraintItem(sizeItem: item.size, toping: item.topping)
     }

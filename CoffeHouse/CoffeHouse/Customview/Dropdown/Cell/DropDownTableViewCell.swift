@@ -7,11 +7,8 @@
 import Foundation
 import UIKit
 
-
 class DropDownTableViewCell: UITableViewCell {
-    
-    
-    var imageProduct: UIImageView = {
+    var imageMethod: UIImageView = {
         let image = UIImageView()
         image.backgroundColor = UIColor.white
         image.layer.cornerRadius = 14
@@ -25,7 +22,7 @@ class DropDownTableViewCell: UITableViewCell {
         let lb = UILabel()
         lb.textColor = UIColor.black
         lb.font = UIFont.systemFont(ofSize: 10, weight: .medium, width: .standard)
-//        lb.text = "Apple"
+        //        lb.text = "Apple"
         lb.textAlignment = .left
         lb.numberOfLines = 5
         lb.translatesAutoresizingMaskIntoConstraints = false
@@ -37,24 +34,22 @@ class DropDownTableViewCell: UITableViewCell {
         
         configureCell()
         
-        addSubview(imageProduct)
+        addSubview(imageMethod)
         addSubview(labelText)
-      
+        
         constraintItem()
         
     }
-   
+    
     required init?(coder: NSCoder) {
         //From xib or storyboard
         super.init(coder: coder)
     }
     
-    
     func bindingData(title: String, icon: String){
-        self.imageProduct.image = UIImage(named: icon)
+        self.imageMethod.image = UIImage(named: icon)
         self.labelText.text = title
     }
-
     
     // configure cell
     func configureCell() {
@@ -68,19 +63,17 @@ class DropDownTableViewCell: UITableViewCell {
     // constraint item
     func constraintItem() {
         NSLayoutConstraint.activate([
-            imageProduct.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
-            imageProduct.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 0),
-            imageProduct.widthAnchor.constraint(equalToConstant: 25),
-            imageProduct.heightAnchor.constraint(equalToConstant: 25)
+            imageMethod.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
+            imageMethod.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 0),
+            imageMethod.widthAnchor.constraint(equalToConstant: 25),
+            imageMethod.heightAnchor.constraint(equalToConstant: 25)
         ])
-        
         NSLayoutConstraint.activate([
-            labelText.centerYAnchor.constraint(equalTo: imageProduct.centerYAnchor, constant: 0),
-            labelText.leftAnchor.constraint(equalTo: imageProduct.rightAnchor, constant: 5),
+            labelText.centerYAnchor.constraint(equalTo: imageMethod.centerYAnchor, constant: 0),
+            labelText.leftAnchor.constraint(equalTo: imageMethod.rightAnchor, constant: 5),
             labelText.widthAnchor.constraint(equalToConstant: 150)
-//            labelText.heightAnchor.constraint(equalToConstant: 20)
+            //            labelText.heightAnchor.constraint(equalToConstant: 20)
         ])
-        
     }
     
     

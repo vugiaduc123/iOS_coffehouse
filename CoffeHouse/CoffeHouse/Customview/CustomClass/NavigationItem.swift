@@ -8,10 +8,9 @@
 import Foundation
 import UIKit
 
-
 class NavigationItem{
     // Configure
-    func itemBarbtn(icon: String, target: Any?, selector: Selector, sizeIcon: CGFloat) -> UIBarButtonItem {
+    func itemBarbtn(icon: String, target: Any?, selector: Selector, sizeIcon: CGFloat) -> UIBarButtonItem{
         let moreButton = UIButton(frame: CGRect(x: 0, y: 0, width: sizeIcon, height: sizeIcon))
         let image = UIImageView()
         image.image = UIImage(named: icon)
@@ -24,7 +23,6 @@ class NavigationItem{
     
     func itemBarbtnSystem(icon: String, color: UIColor?, target: Any?, selector: Selector, sizeIcon: CGFloat) -> UIBarButtonItem {
         let moreButton = UIButton(frame: CGRect(x: 0, y: 0, width: sizeIcon, height: sizeIcon))
-//        let templateImage = self.image?.withRenderingMode(.alwaysTemplate)
         let image = UIImageView()
         image.image = UIImage(systemName: icon)?.imageWithColor(color: color != nil ? color! : .tintColor)
         moreButton.setBackgroundImage(image.image, for: .normal)

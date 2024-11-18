@@ -25,7 +25,8 @@ enum Storyboard {
     }
     
     enum Cart{
-        
+        static var cartVC = CartViewController()
+        static var paymentVC = PaymentViewController()
     }
     
     enum Profile{

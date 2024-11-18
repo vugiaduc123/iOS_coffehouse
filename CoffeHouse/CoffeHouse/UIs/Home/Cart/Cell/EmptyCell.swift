@@ -8,10 +8,7 @@
 import Foundation
 import UIKit
 
-
 class EmptyCell: UICollectionViewCell {
-    
-    
     let imageProduct: UIImageView = {
         let image = UIImageView()
         image.backgroundColor = UIColor.white
