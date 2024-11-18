@@ -19,9 +19,10 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews (){
         viewCategory.layer.cornerRadius = 15
         viewCategory.layer.masksToBounds = true
+        viewCategory.layer.borderWidth = 2
+        viewCategory.layer.borderColor = UIColor.colorCustomBrown.cgColor
     }
     func setUpCellCategory(categies: CategoryModel) {
-        viewCategory.backgroundColor = .colorCustomBrown
         nameCategory.text = categies.name
         if let imageURL = URL(string: categies.urlImage) {
             imageCategory.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "placeholder"))
@@ -29,4 +30,5 @@ class CategoryCollectionViewCell: UICollectionViewCell {
             imageCategory.image = UIImage(named: "placeholder")
         }
     }
+    func setSelected(_ selected: Bool) { viewCategory.backgroundColor = selected ? UIColor.colorCustomBrown : UIColor.white }
 }
