@@ -62,7 +62,6 @@ extension FavouriteViewController {
         print(favouriteIds)
         
         favouriteProducts = products.filter {favouriteIds.contains($0.idProduct)}
-//        print(favouriteProducts)
         
         tableView.reloadData()
     }

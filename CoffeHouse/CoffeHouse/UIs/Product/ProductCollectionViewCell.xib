@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -93,6 +93,9 @@
                         </constraints>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" image="ic_favories"/>
+                        <connections>
+                            <action selector="btnAddToFavourite:" destination="gTV-IL-0wX" eventType="touchUpInside" id="c1x-eb-wil"/>
+                        </connections>
                     </button>
                 </subviews>
             </view>
@@ -114,6 +117,7 @@
             </constraints>
             <size key="customSize" width="140" height="175"/>
             <connections>
+                <outlet property="btnAddToFavourite" destination="jzc-qo-U0P" id="vKZ-2y-egq"/>
                 <outlet property="imageProduct" destination="TGM-3A-4Sc" id="VwX-NY-PQI"/>
                 <outlet property="name" destination="9QS-1l-3mX" id="oxv-oa-O9b"/>
                 <outlet property="price" destination="gXY-eY-VkZ" id="vzR-XV-pJP"/>

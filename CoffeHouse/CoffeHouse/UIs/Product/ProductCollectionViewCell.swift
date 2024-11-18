@@ -8,7 +8,10 @@ class ProductCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var sizeL: UILabel!
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var imageProduct: UIImageView!
-
+    @IBOutlet weak var btnAddToFavourite: UIButton!
+    
+    var favButtonPressed: (() -> ()) = {}
+    
     var sizes = [SizeModelMain]() {
         didSet {
             updateSizeLabels()
@@ -27,6 +30,10 @@ class ProductCollectionViewCell: UICollectionViewCell {
         self.layer.cornerRadius = 25
     }
 
+    @IBAction func btnAddToFavourite(_ sender: UIButton) {
+        favButtonPressed()
+    }
+    
     func setUpImageSize() {
         imageProduct.translatesAutoresizingMaskIntoConstraints = false
         imageProduct.heightAnchor.constraint(equalToConstant: 100).isActive = true

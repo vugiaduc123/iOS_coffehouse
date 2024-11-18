@@ -20,6 +20,13 @@ class HomeViewController: UIViewController {
         product = loadProductData() ?? []
         setUpCollectView()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        product = loadProductData() ?? []
+        collectionProduct.reloadData()
+    }
+    
     @IBAction func didTapLocation(_ sender: Any) {
         self.navigationController?.pushViewController(LocationViewController(), animated: true)
         self.navigationController?.isNavigationBarHidden = true
@@ -110,6 +117,36 @@ extension HomeViewController: UICollectionViewDelegate,UICollectionViewDataSourc
         let cellProduct = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCollectionViewCell", for: indexPath) as! ProductCollectionViewCell
         cellProduct.sizes = product[indexPath.row].size
         cellProduct.setUpCellProduct(products: product[indexPath.row])
+        
+        // Mark favourite item
+        var itemsWhichAreChecked = UserDefaults.standard.array(forKey: "drinkFavourite") as? [Int] ?? [Int]()
+        if itemsWhichAreChecked.contains(product[indexPath.row].idProduct) {
+            cellProduct.btnAddToFavourite.setImage(UIImage(named: "ic_round-favorite-fill"), for: .normal)
+        } else {
+            cellProduct.btnAddToFavourite.setImage(UIImage(named: "ic_favories"), for: .normal)
+        }
+        
+        cellProduct.favButtonPressed = { [weak self] in
+            guard let self = self else { return }
+            print("Favorite button pressed for product ID: \(product[indexPath.row].idProduct)")
+            
+            var itemsWhichAreChecked = UserDefaults.standard.array(forKey: "drinkFavourite") as? [Int] ?? [Int]()
+            
+            if itemsWhichAreChecked.contains(product[indexPath.row].idProduct) {
+                if let removeId = itemsWhichAreChecked.lastIndex(where: { $0 == self.product[indexPath.row].idProduct }) {
+                    itemsWhichAreChecked.remove(at: removeId)
+                    cellProduct.btnAddToFavourite.setImage(UIImage(named: "ic_favories"), for: .normal)
+                    print("Remove product \(product[indexPath.row].idProduct) from favourite")
+                }
+            } else {
+                itemsWhichAreChecked.append(product[indexPath.row].idProduct)
+                print("add product \(product[indexPath.row].idProduct) to favourite")
+                print(itemsWhichAreChecked)
+                cellProduct.btnAddToFavourite.setImage(UIImage(named: "ic_round-favorite-fill"), for: .normal)
+            }
+            UserDefaults.standard.set(itemsWhichAreChecked, forKey: "drinkFavourite")
+            self.collectionProduct.reloadItems(at: [indexPath])
+        }
         return cellProduct
     }
 }
