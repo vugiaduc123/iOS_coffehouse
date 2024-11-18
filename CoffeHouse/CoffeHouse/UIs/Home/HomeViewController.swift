@@ -149,6 +149,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             collectionProduct.reloadData()
         }
     }
+    
+
 }
 
 extension HomeViewController: UISearchBarDelegate {
@@ -173,11 +175,10 @@ extension HomeViewController: UISearchBarDelegate {
 }
 extension HomeViewController: ProductCollectionViewCellDelegate {
     func didTapFavoriteButton(for product: ProductModel) {
-        var favouriteIds = UserDefaults.standard.array(forKey: "drinkFavourite") as? [Int] ?? []
-        
-        if !favouriteIds.contains(product.idProduct) {
+        var favouriteIds = SaveFavourite().getFavourite(key: "drinkFavourite") as? [Int] ?? []
+        if favouriteIds.contains(product.idProduct) {
             favouriteIds.append(product.idProduct)
-            UserDefaults.standard.setValue(favouriteIds, forKey: "drinkFavourite")
+            SaveFavourite().saveFavourite(favouriteIds: favouriteIds, key: "drinkFavourite")
             print("Added \(product.idProduct) to favourites")
         } else {
             print("\(product.idProduct) is already in favourites")
@@ -187,6 +188,14 @@ extension HomeViewController: ProductCollectionViewCellDelegate {
         let favouriteVC = FavouriteViewController()
         self.navigationController?.pushViewController(favouriteVC, animated: true)
     }
-
+    
 }
-
+struct SaveFavourite {
+    func saveFavourite(favouriteIds: [Int],key: String ) {
+        UserDefaults.standard.setValue(favouriteIds, forKey: key)
+    }
+    func getFavourite(key: String) -> [Int]? {
+       let arrayFavourite = UserDefaults.standard.array(forKey: key) as? [Int] ?? []
+        return arrayFavourite
+    }
+}
