@@ -25,11 +25,11 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
         let favourtieVC = Storyboard.Favourite.favourite
         let favourtieNavigationVC = UINavigationController(rootViewController: favourtieVC)
         favourtieVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "ic_favorite_unselected"), selectedImage: UIImage(named: "ic_favorite_selected"))
-        let profileVC = ProfileViewController()
-                let profileNavigationVC = UINavigationController(rootViewController: profileVC)
-                profileVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "ic_profile_unselected"), selectedImage: UIImage(named: "ic_profile_selected"))
-
-        self.viewControllers = [homeNavigationVC, favourtieNavigationVC,profileNavigationVC]
+//        let profileVC = ProfileViewController()
+//                let profileNavigationVC = UINavigationController(rootViewController: profileVC)
+//                profileVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "ic_profile_unselected"), selectedImage: UIImage(named: "ic_profile_selected"))
+//aa
+        self.viewControllers = [homeNavigationVC, favourtieNavigationVC]
         self.tabBar.backgroundColor = .white
         self.tabBar.tintColor = .colorCustomBrown
         setUpMovingView()

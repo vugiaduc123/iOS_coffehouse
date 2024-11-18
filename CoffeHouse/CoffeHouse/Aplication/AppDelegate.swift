@@ -19,7 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let loginNavigationVC = UINavigationController(rootViewController: loginVC)
         window?.rootViewController = loginNavigationVC
         window?.makeKeyAndVisible()
-        
         return true
     }
 }
