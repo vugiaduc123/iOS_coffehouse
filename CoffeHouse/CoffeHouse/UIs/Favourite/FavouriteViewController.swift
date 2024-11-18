@@ -60,10 +60,7 @@ extension FavouriteViewController {
     func loadFavourites() {
         let favouriteIds = UserDefaults.standard.array(forKey: "drinkFavourite") as? [Int] ?? []
         print(favouriteIds)
-        
         favouriteProducts = products.filter {favouriteIds.contains($0.idProduct)}
-//        print(favouriteProducts)
-        
         tableView.reloadData()
     }
 }
