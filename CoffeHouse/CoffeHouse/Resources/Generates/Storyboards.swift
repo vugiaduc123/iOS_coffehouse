@@ -21,6 +21,7 @@ enum Storyboard {
     }
     
     enum Favourite{
+        static var favourite = FavouriteViewController()
         
     }
     

@@ -439,12 +439,12 @@
         {
             "id": 1,
             "name_size": "M",
-            "price_size": 3.0,
+            "price_size": 3.0
         },
         {
             "id": 2,
             "name_size": "L",
-            "price_size": 5.0,
+            "price_size": 5.0
         }
         ],
         "topping": []
@@ -467,12 +467,12 @@
         {
             "id": 1,
             "name_size": "M",
-            "price_size": 3.0,
+            "price_size": 3.0
         },
         {
             "id": 2,
             "name_size": "L",
-            "price_size": 5.0,
+            "price_size": 5.0
         }
         ],
         "topping": []
@@ -551,12 +551,12 @@
         {
             "id": 1,
             "name_size": "M",
-            "price_size": 3.0,
+            "price_size": 3.0
         },
         {
             "id": 2,
             "name_size": "L",
-            "price_size": 5.0,
+            "price_size": 5.0
         }
         ],
         "topping": []
@@ -579,7 +579,7 @@
         {
             "id": 2,
             "name_size": "L",
-            "price_size": 5.0,
+            "price_size": 5.0
         }
         ],
         "topping": []
@@ -602,12 +602,12 @@
         {
             "id": 1,
             "name_size": "M",
-            "price_size": 3.0,
+            "price_size": 3.0
         },
         {
             "id": 2,
             "name_size": "L",
-            "price_size": 5.0,
+            "price_size": 5.0
         }
         ],
         "topping": []
@@ -625,12 +625,12 @@
         {
             "id": 1,
             "name_size": "M",
-            "price_size": 3.0,
+            "price_size": 3.0
         },
         {
             "id": 2,
             "name_size": "L",
-            "price_size": 5.0,
+            "price_size": 5.0
         }
         ],
         "topping": []
