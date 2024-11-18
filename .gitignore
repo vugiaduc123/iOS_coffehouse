@@ -1,6 +1,6 @@
 
-CoffeHouse/CoffeHouse.xcodeproj/project.xcworkspace/xcuserdata/vuduc.xcuserdatad/UserInterfaceState.xcuserstate
-
-CoffeHouse/CoffeHouse.xcodeproj/project.pbxproj
-
-.DS_Store
+*.xcodeproj/
+*.xcworkspace/
+*.DS_Store
+xcuserdata
+*.generated.swift
