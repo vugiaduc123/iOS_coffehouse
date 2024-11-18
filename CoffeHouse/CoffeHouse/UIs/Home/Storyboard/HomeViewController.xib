@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -22,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W0z-PD-Of5">
-                    <rect key="frame" x="0.0" y="179" width="393" height="109"/>
+                    <rect key="frame" x="0.0" y="185" width="393" height="120"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mz1-ix-Rqf">
                             <rect key="frame" x="35" y="0.0" width="81" height="24"/>
@@ -34,11 +34,8 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="OkL-Yc-BhL">
-                            <rect key="frame" x="35" y="39" width="323" height="70"/>
+                            <rect key="frame" x="35" y="39" width="323" height="81"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="70" id="z2B-zy-XVS"/>
-                            </constraints>
                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vaM-y5-9mE">
                                 <size key="itemSize" width="128" height="128"/>
                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -49,6 +46,7 @@
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
+                        <constraint firstAttribute="height" constant="120" id="9RX-kF-kS2"/>
                         <constraint firstItem="OkL-Yc-BhL" firstAttribute="leading" secondItem="W0z-PD-Of5" secondAttribute="leading" constant="35" id="IpI-uJ-scM"/>
                         <constraint firstItem="OkL-Yc-BhL" firstAttribute="top" secondItem="Mz1-ix-Rqf" secondAttribute="bottom" constant="15" id="O35-jS-TAa"/>
                         <constraint firstAttribute="trailing" secondItem="OkL-Yc-BhL" secondAttribute="trailing" constant="35" id="ZVt-du-yJY"/>
@@ -58,10 +56,10 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aQY-2M-qv6">
-                    <rect key="frame" x="0.0" y="288" width="393" height="530"/>
+                    <rect key="frame" x="0.0" y="305" width="393" height="513"/>
                     <subviews>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="RJW-9M-RKj">
-                            <rect key="frame" x="35" y="20" width="323" height="510"/>
+                            <rect key="frame" x="35" y="20" width="323" height="493"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8PV-v2-jCX">
                                 <size key="itemSize" width="128" height="128"/>
@@ -73,7 +71,6 @@
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="530" id="7Rb-4a-sGx"/>
                         <constraint firstAttribute="trailing" secondItem="RJW-9M-RKj" secondAttribute="trailing" constant="35" id="L2c-KC-KiR"/>
                         <constraint firstItem="RJW-9M-RKj" firstAttribute="top" secondItem="aQY-2M-qv6" secondAttribute="top" constant="20" id="MsO-8w-QbK"/>
                         <constraint firstItem="RJW-9M-RKj" firstAttribute="leading" secondItem="aQY-2M-qv6" secondAttribute="leading" constant="35" id="afY-ft-v66"/>
@@ -81,10 +78,13 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rfz-8x-C5U">
-                    <rect key="frame" x="0.0" y="55" width="393" height="124"/>
+                    <rect key="frame" x="0.0" y="55" width="393" height="130"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vqB-dz-hC0">
-                            <rect key="frame" x="20" y="5" width="285" height="38"/>
+                            <rect key="frame" x="20" y="5" width="285" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="yJQ-N6-oC7"/>
+                            </constraints>
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" image="ic_location" title="Ukraine, Ivano-Frankivsk"/>
@@ -93,10 +93,7 @@
                             </connections>
                         </button>
                         <searchBar contentMode="redraw" placeholder="Search..." translatesAutoresizingMaskIntoConstraints="NO" id="1Qm-ni-3xa">
-                            <rect key="frame" x="35" y="58" width="348" height="56"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="56" id="0Q8-cJ-fMy"/>
-                            </constraints>
+                            <rect key="frame" x="35" y="60" width="348" height="60"/>
                             <textInputTraits key="textInputTraits"/>
                             <scopeButtonTitles>
                                 <string>Title</string>
@@ -107,7 +104,7 @@
                             </connections>
                         </searchBar>
                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NO8-Ua-3NW">
-                            <rect key="frame" x="325" y="0.0" width="48" height="42"/>
+                            <rect key="frame" x="325" y="0.0" width="48" height="44"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" image="ic_phone"/>
                         </button>
@@ -115,6 +112,7 @@
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstItem="vqB-dz-hC0" firstAttribute="leading" secondItem="Rfz-8x-C5U" secondAttribute="leading" constant="20" id="BxO-60-pbL"/>
+                        <constraint firstAttribute="height" constant="130" id="Gth-NR-cKV"/>
                         <constraint firstItem="1Qm-ni-3xa" firstAttribute="top" secondItem="NO8-Ua-3NW" secondAttribute="bottom" constant="16" id="Sur-Fv-QLV"/>
                         <constraint firstAttribute="trailing" secondItem="1Qm-ni-3xa" secondAttribute="trailing" constant="10" id="TWG-fZ-nRx"/>
                         <constraint firstAttribute="bottom" secondItem="1Qm-ni-3xa" secondAttribute="bottom" constant="10" id="YsA-Dg-eOk"/>
