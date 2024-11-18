@@ -27,8 +27,8 @@ class PaymentViewController: UIViewController{
     private var PaymentMethodView = UIView()
     private var txtMethodPay = UILabel()
     private var IconMethod = UIImageView()
-
-  
+    
+    
     // data
     private let service = Cart.shared
     
@@ -36,7 +36,7 @@ class PaymentViewController: UIViewController{
     var listItems:[CartModel] = []
     var totalPrice = 0.0
     var idPaymentMethod = 0
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,14 +47,15 @@ class PaymentViewController: UIViewController{
     deinit{
         print("kkkkk")
     }
-        
+    
 }
 
 // MARK: Navigation bar
 extension PaymentViewController{
-  
+    
     // Configure navigation bar
     private func configureNavigationBar() {
+        self.navigationController?.navigationBar.backItem?.title = ""
         self.navigationController?.navigationBar.changeBackgroundColor(backroundColor: .white)
         self.navigationItem.leftBarButtonItem = NavigationItem().itemBarbtn(icon: Asset.CartIcon.ic_back, target: self, selector: #selector(backToViewController), sizeIcon: 35)
     }
@@ -122,7 +123,7 @@ extension PaymentViewController {
     }
     
     private func configurePaymenMethodView(){
-   
+        
         PaymentMethodView.backgroundColor = UIColor.systemGray4
         PaymentMethodView.translatesAutoresizingMaskIntoConstraints = false
         PaymentMethodView.layer.cornerRadius = 2.5
@@ -130,7 +131,7 @@ extension PaymentViewController {
         let action = UITapGestureRecognizer(target: self, action: #selector(showDropdown(sender:)))
         PaymentMethodView.isUserInteractionEnabled = true
         PaymentMethodView.addGestureRecognizer(action)
-      
+        
         self.mainView.addSubview(PaymentMethodView)
     }
     
@@ -140,7 +141,7 @@ extension PaymentViewController {
         // create view
         let addressView = generateAddressView()
         let lbDisplayPayment = generatelbDisplayPayment()
-     
+        
         
         // item view button go to order
         let btnGoToOrder = generateBtGo() // button action go destination link
@@ -150,7 +151,7 @@ extension PaymentViewController {
         // item view address
         let icLocation = generateImageLoaction()
         let lbAddress = generateLabelAddress()
-    
+        
         // item view method
         let txtPaymentMethod = generatetxtMethodPay()
         let iconPaymentMethod = generateIconMethod()
@@ -160,7 +161,7 @@ extension PaymentViewController {
         self.bottomView.addSubview(btnGoToOrder)
         self.bottomView.addSubview(addressView)
         self.bottomView.addSubview(lbDisplayPayment)
-    
+        
         
         
         btnGoToOrder.addSubview(btnLabel)
@@ -169,7 +170,7 @@ extension PaymentViewController {
         addressView.addSubview(lbAddress)
         
         txtMethodPay = txtPaymentMethod
-         IconMethod = iconPaymentMethod
+        IconMethod = iconPaymentMethod
         PaymentMethodView.addSubview(txtPaymentMethod)
         PaymentMethodView.addSubview(iconPaymentMethod)
         PaymentMethodView.addSubview(iconDropdown)
@@ -201,7 +202,7 @@ extension PaymentViewController {
         constraintIconDropdown(iconView: iconDropdown, itemConstraint: PaymentMethodView, iconPayment: iconPaymentMethod)
         //    payment method view
         
-       
+        
         
     }
     
@@ -292,7 +293,7 @@ extension PaymentViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }
-  
+    
     private func generatetxtMethodPay() -> UILabel {
         let label = UILabel()
         label.text = "Apple"
@@ -319,7 +320,7 @@ extension PaymentViewController {
         return image
     }
     
-     
+    
 }
 
 
@@ -332,7 +333,7 @@ extension PaymentViewController {
             mainView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 0),
             mainView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0),
             mainView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 0),
-            mainView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0),
+            mainView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
         ])
     }
     
@@ -497,7 +498,7 @@ extension PaymentViewController {
     @objc func pushToViewCreateOrder(sender: UITapGestureRecognizer) {
         print("aaaa")
     }
-
+    
     @objc func showDropdown(sender: UITapGestureRecognizer) {
         dropDown()
     }
@@ -534,14 +535,14 @@ extension PaymentViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            
+        
         let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: cellPay, for: indexPath as IndexPath) as! CartPaymentCell
         
         let item = listItems[indexPath.row]
         cell.bindingData(item: item)
         
         return cell
-
+        
     }
     
     
@@ -551,7 +552,7 @@ extension PaymentViewController: UICollectionViewDataSource {
 }
 
 extension PaymentViewController: UICollectionViewDelegate {
-  
+    
 }
 
 extension PaymentViewController: UICollectionViewDelegateFlowLayout {

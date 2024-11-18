@@ -39,12 +39,12 @@ extension HomeViewController {
     private func setUpCollectView() {
         //collectionCategory
         collectionCategory.register(UINib(nibName: "CategoryCollectionViewCell", bundle: nil),
-                             forCellWithReuseIdentifier: "CategoryCollectionViewCell")
+                                    forCellWithReuseIdentifier: "CategoryCollectionViewCell")
         collectionCategory.delegate = self
         collectionCategory.dataSource = self
         //collectionProduct
         collectionProduct.register(UINib(nibName: "ProductCollectionViewCell", bundle: nil),
-                             forCellWithReuseIdentifier: "ProductCollectionViewCell")
+                                   forCellWithReuseIdentifier: "ProductCollectionViewCell")
         collectionProduct.delegate = self
         collectionProduct.dataSource = self
     }
@@ -58,8 +58,10 @@ extension HomeViewController {
             return nil
         }
         do {
-            let proData = try Data(contentsOf: fileURL)
-            let products =  try JSONDecoder().decode([ProductModel].self, from: proData)
+            //            let proData = try Data(contentsOf: fileURL)
+            //            let products =  try JSONDecoder().decode([ProductModel].self, from: proData)
+            let data = try Data(contentsOf: fileURL)
+            let products = try JSONDecoder().decode([ProductModel].self, from: data)
             print("\(products.count)")
             return products
         } catch {
@@ -90,14 +92,15 @@ extension HomeViewController: UICollectionViewDelegate,UICollectionViewDataSourc
         if  collectionView == collectionCategory {
             return category.count
         }
-            return product.count
+        return product.count
         
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if  collectionView == collectionCategory {
             return CGSize(width: 100, height: 30)
         }
-            return CGSize(width: 140, height: 175)
+        let width = (UIScreen.main.bounds.width / 2) - 50
+        return CGSize(width: width, height: 175)
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // Category

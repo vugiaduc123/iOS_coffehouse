@@ -8,7 +8,7 @@
 import UIKit
 
 class DetailProductViewController: UIViewController {
-
+    
     @IBOutlet weak var button_favourite: UIButton!
     @IBOutlet weak var button_back: UIButton!
     
@@ -23,7 +23,7 @@ class DetailProductViewController: UIViewController {
     @IBOutlet weak var height_constraints: NSLayoutConstraint!
     
     var product: detailProduct?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configRadius()
@@ -37,7 +37,7 @@ class DetailProductViewController: UIViewController {
     
     func loadUI() {
         guard let product = product else { return }
-
+        
         product_name.text = product.nameProduct
         
         product_description.text = product.productContent
@@ -52,7 +52,7 @@ class DetailProductViewController: UIViewController {
                 }
             }
         }
-    
+        
         if let defaultSize = product.size.first {
             product_size.setTitle(defaultSize.name_size, for: .normal)
         }

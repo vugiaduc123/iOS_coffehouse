@@ -7,9 +7,7 @@
 import Foundation
 import UIKit
 
-
 class DropDownTableViewCell: UITableViewCell {
-    
     
     var imageProduct: UIImageView = {
         let image = UIImageView()

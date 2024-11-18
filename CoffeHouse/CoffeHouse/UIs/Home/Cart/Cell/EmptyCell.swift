@@ -8,9 +8,7 @@
 import Foundation
 import UIKit
 
-
 class EmptyCell: UICollectionViewCell {
-    
     
     let imageProduct: UIImageView = {
         let image = UIImageView()
@@ -33,7 +31,7 @@ class EmptyCell: UICollectionViewCell {
         lb.translatesAutoresizingMaskIntoConstraints = false
         return lb
     }()
-   
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -41,9 +39,9 @@ class EmptyCell: UICollectionViewCell {
         
         addSubview(imageProduct)
         addSubview(labelText)
-      
+        
         constraintItem()
-
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -72,7 +70,7 @@ class EmptyCell: UICollectionViewCell {
             labelText.centerXAnchor.constraint(equalTo: imageProduct.centerXAnchor, constant: 0),
             labelText.topAnchor.constraint(equalTo: imageProduct.bottomAnchor, constant: 2.5),
             labelText.widthAnchor.constraint(equalToConstant: 150)
-//            labelText.heightAnchor.constraint(equalToConstant: 20)
+            //            labelText.heightAnchor.constraint(equalToConstant: 20)
         ])
         
     }

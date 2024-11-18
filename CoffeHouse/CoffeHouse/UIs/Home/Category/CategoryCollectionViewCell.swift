@@ -8,7 +8,7 @@
 import UIKit
 
 class CategoryCollectionViewCell: UICollectionViewCell {
-
+    
     @IBOutlet weak var nameCategory: UILabel!
     @IBOutlet weak var imageCategory: UIImageView!
     @IBOutlet weak var viewCategory: UIView!

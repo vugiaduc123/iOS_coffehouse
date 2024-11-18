@@ -8,19 +8,19 @@
 import UIKit
 
 class LocationViewController: UIViewController {
-
+    
     @IBOutlet weak var searchBar: UISearchBar!
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpSearchBar()
-
+        
     }
-
-
+    
+    
     @IBAction func didTap(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-
+    
 }
 
 
@@ -39,7 +39,7 @@ extension LocationViewController{
 
 // MARK: METHOD
 extension LocationViewController{
-   
+    
 }
 
 // MARK: COLLETION, TABLEVIEW

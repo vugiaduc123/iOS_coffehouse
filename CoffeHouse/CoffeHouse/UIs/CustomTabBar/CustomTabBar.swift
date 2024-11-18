@@ -22,11 +22,15 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
         let homeNavigationVC = UINavigationController(rootViewController: homeVC)
         homeVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "ic_home_unselected"), selectedImage: UIImage(named: "ic_home_selected"))
         
-        let favourtieVC = Storyboard.Favourite.favourite
+        let favourtieVC = FavouriteViewController()
         let favourtieNavigationVC = UINavigationController(rootViewController: favourtieVC)
         favourtieVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "ic_favorite_unselected"), selectedImage: UIImage(named: "ic_favorite_selected"))
-
-        self.viewControllers = [homeNavigationVC, favourtieNavigationVC]
+        
+        let cartVC = CartViewController()
+        let cartNavigationVC = UINavigationController(rootViewController: cartVC)
+        cartVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "ic_cart_unselected"), selectedImage: UIImage(named: "ic_cart_selected"))
+        
+        self.viewControllers = [homeNavigationVC, favourtieNavigationVC, cartNavigationVC]
         self.tabBar.backgroundColor = .white
         self.tabBar.tintColor = .colorCustomBrown
         setUpMovingView()

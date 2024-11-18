@@ -15,9 +15,9 @@ struct CartModel: Codable{
     var total: Double
     var product : ProductMain
     var size: SizeModelMain? = nil
-    var topping: [ToppingModelMain] = []
+    var topping: [ToppingCart] = []
     
-    init(idCart: Int, userId: Int, amount: Int, total: Double, product: ProductMain, size: SizeModelMain?, topping: [ToppingModelMain] ) {
+    init(idCart: Int, userId: Int, amount: Int, total: Double, product: ProductMain, size: SizeModelMain?, topping: [ToppingCart] ) {
         self.idCart = idCart
         self.userId = userId
         self.amount = amount
@@ -45,7 +45,7 @@ struct CartModel: Codable{
         self.total = try container.decode(Double.self, forKey: .total)
         self.product = try container.decode(ProductMain.self, forKey: .product)
         self.size = try? container.decode(SizeModelMain.self, forKey: .size)
-        self.topping = try! container.decode([ToppingModelMain].self, forKey: .topping)
+        self.topping = try! container.decode([ToppingCart].self, forKey: .topping)
     }
     
 }

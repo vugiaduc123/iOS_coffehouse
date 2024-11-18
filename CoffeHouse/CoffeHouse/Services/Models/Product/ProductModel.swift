@@ -20,6 +20,8 @@ struct ProductModel: Codable{
     var size : [SizeModelMain]
     var topping : [ToppingModelMain]
     
+    
+    
     enum CodingKeys: String, CodingKey{
         case idProduct = "id"
         case idCategory = "category_id"
@@ -31,6 +33,20 @@ struct ProductModel: Codable{
         case isSold = "isSold"
         case size = "size"
         case topping = "topping"
+    }
+    
+    init(from decoder: any Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.idProduct = try container.decode(Int.self, forKey: .idProduct)
+        self.idCategory = try container.decode(Int.self, forKey: .idCategory)
+        self.nameProduct = try container.decode(String.self, forKey: .nameProduct)
+        self.productContent = try container.decode(String.self, forKey: .productContent)
+        self.urlImage = try container.decode(String.self, forKey: .urlImage)
+        self.price = try container.decode(Double.self, forKey: .price)
+        self.rate = try container.decode(Double.self, forKey: .rate)
+        self.isSold = try container.decode(Bool.self, forKey: .isSold)
+        self.size = try container.decode([SizeModelMain].self, forKey: .size)
+        self.topping = try container.decode([ToppingModelMain].self, forKey: .topping)
     }
     
 }

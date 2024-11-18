@@ -8,16 +8,13 @@
 import Foundation
 import UIKit
 
-
-
 class CartPaymentCell: UICollectionViewCell {
-    
     let imageProduct: UIImageView = {
         let image = UIImageView()
         image.backgroundColor = UIColor.white
         image.layer.cornerRadius = 14
         image.clipsToBounds = true
-//        image.image = UIImage(systemName: "flame.fill")
+        //        image.image = UIImage(systemName: "flame.fill")
         image.contentMode = .scaleAspectFill
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
@@ -84,13 +81,12 @@ class CartPaymentCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-   
+    
     var backAmount: ( (Int) -> Void )?
-   
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureCell()
-
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -108,7 +104,6 @@ class CartPaymentCell: UICollectionViewCell {
     
     // add view to cell
     func addViews() {
-        
         addSubview(imageProduct)
         addSubview(nameProduct)
         addSubview(sizeProduct)
@@ -116,7 +111,7 @@ class CartPaymentCell: UICollectionViewCell {
         addSubview(scoreRate)
         addSubview(iconRate)
         addSubview(amount)
-
+        
     }
     
     // get data to display
@@ -136,9 +131,9 @@ class CartPaymentCell: UICollectionViewCell {
         }else{
             self.sizeProduct.isHidden = true
         }
-       
+        
         if item.topping.count != 0{
-           let string = valueTopping(data: item.topping)
+            let string = valueTopping(data: item.topping)
             self.toppingProduct.text = string
         }else{
             self.toppingProduct.isHidden = true
@@ -150,16 +145,13 @@ class CartPaymentCell: UICollectionViewCell {
             self.amount.text = "SL: 1"
         }
         
-        
         self.scoreRate.text = item.product.rate.description
-        
-        
         addViews()
         constraintItem(sizeItem: item.size, toping: item.topping)
     }
-
+    
     // return value topping
-    func valueTopping(data: [ToppingModelMain]) -> String? {
+    func valueTopping(data: [ToppingCart]) -> String? {
         var text = ""
         for i in data.indices{
             let item = data[i]
@@ -179,7 +171,7 @@ class CartPaymentCell: UICollectionViewCell {
 // MARK: Constraint
 extension CartPaymentCell {
     // constraint item
-    func constraintItem(sizeItem: SizeModelMain?, toping: [ToppingModelMain]?) {
+    func constraintItem(sizeItem: SizeModelMain?, toping: [ToppingCart]?) {
         NSLayoutConstraint.activate([
             imageProduct.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
             imageProduct.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 0),
@@ -190,7 +182,7 @@ extension CartPaymentCell {
         NSLayoutConstraint.activate([
             nameProduct.topAnchor.constraint(equalTo: imageProduct.topAnchor, constant: 5),
             nameProduct.leftAnchor.constraint(equalTo: imageProduct.rightAnchor, constant: 10),
-//            nameProduct.rightAnchor.constraint(equalTo: iconRate.leadingAnchor, constant: -5),
+            //            nameProduct.rightAnchor.constraint(equalTo: iconRate.leadingAnchor, constant: -5),
             nameProduct.heightAnchor.constraint(equalToConstant: 15),
             nameProduct.heightAnchor.constraint(equalToConstant: 100)
         ])
@@ -224,18 +216,18 @@ extension CartPaymentCell {
                 toppingProduct.leftAnchor.constraint(equalTo: imageProduct.rightAnchor, constant: 10),
                 toppingProduct.rightAnchor.constraint(equalTo: amount.leftAnchor, constant: -5),
                 toppingProduct.bottomAnchor.constraint(equalTo: imageProduct.bottomAnchor, constant: 0)
-    //            toppingProduct.heightAnchor.constraint(equalToConstant: 10)
+                //            toppingProduct.heightAnchor.constraint(equalToConstant: 10)
             ])
         }
-
+        
         //
         NSLayoutConstraint.activate([
             scoreRate.topAnchor.constraint(equalTo: imageProduct.topAnchor, constant: 0),
             scoreRate.rightAnchor.constraint(equalTo: rightAnchor, constant: -10),
             scoreRate.heightAnchor.constraint(equalToConstant: 10),
-//            scoreRate.widthAnchor.constraint(equalToConstant: 10)
+            //            scoreRate.widthAnchor.constraint(equalToConstant: 10)
         ])
-
+        
         NSLayoutConstraint.activate([
             iconRate.centerYAnchor.constraint(equalTo: scoreRate.centerYAnchor, constant: 0),
             iconRate.rightAnchor.constraint(equalTo: scoreRate.leftAnchor, constant: -2.5),

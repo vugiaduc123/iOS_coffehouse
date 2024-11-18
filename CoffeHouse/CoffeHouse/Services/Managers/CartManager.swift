@@ -41,7 +41,7 @@ class Cart{
 
         }
     
-    func addToCart(userId: Int, product: ProductMain, size: SizeModelMain?, toppings: [ToppingModelMain]? ) {
+    func addToCart(userId: Int, product: ProductMain, size: SizeModelMain?, toppings: [ToppingCart]? ) {
         
 //        guard let size = size else{ print ("item dont have size") }
 //        guard let toppings = toppings else{ print ("item dont have toppings") }
@@ -118,7 +118,7 @@ class Cart{
    }
 
     
-    func calculatedPrice(product: ProductMain, size: SizeModelMain?, toppings: [ToppingModelMain]? ) -> Double{
+    func calculatedPrice(product: ProductMain, size: SizeModelMain?, toppings: [ToppingCart]? ) -> Double{
         
         var total = 0.0
         

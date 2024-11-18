@@ -49,11 +49,11 @@ extension FavouriteViewController {
         }
         
         do {
-               let data = try Data(contentsOf: fileURL)
-               products = try JSONDecoder().decode([ProductModel].self, from: data)
-           } catch {
-               print(error.localizedDescription)
-           }
+            let data = try Data(contentsOf: fileURL)
+            products = try JSONDecoder().decode([ProductModel].self, from: data)
+        } catch {
+            print(error.localizedDescription)
+        }
     }
     
     //load favouries from userdefault

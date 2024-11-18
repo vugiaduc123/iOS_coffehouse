@@ -8,16 +8,20 @@
 import Foundation
 import UIKit
 
-
-
 class CartCell: UICollectionViewCell {
+    var paddingRightBack: NSLayoutConstraint?
+    var paddingRight: NSLayoutConstraint?
+    
+    var iconWidth: NSLayoutConstraint?
+    var iconHeight: NSLayoutConstraint?
+    var iconZeroWidth: NSLayoutConstraint?
+    var iconZeroHeight: NSLayoutConstraint?
     
     let imageProduct: UIImageView = {
         let image = UIImageView()
         image.backgroundColor = UIColor.white
         image.layer.cornerRadius = 14
         image.clipsToBounds = true
-//        image.image = UIImage(systemName: "flame.fill")
         image.contentMode = .scaleAspectFill
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
@@ -26,7 +30,8 @@ class CartCell: UICollectionViewCell {
         var image = UIImage(systemName: "camera.fill")!
         return image
     }()
-    let nameProduct: UILabel = {
+    
+    var nameProduct: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular, width: .standard)
         label.textColor = UIColor.black
@@ -34,8 +39,7 @@ class CartCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
-    let sizeProduct: UILabel = {
+    var sizeProduct: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 11.5, weight: .regular, width: .standard)
         label.textColor = UIColor.black
@@ -43,8 +47,7 @@ class CartCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
-    let toppingProduct: UILabel = {
+    var toppingProduct: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 11.5, weight: .regular, width: .standard)
         label.textColor = UIColor.black
@@ -54,6 +57,7 @@ class CartCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    var stackContent = UIStackView()
     
     let iconRate: UIImageView = {
         let image = UIImageView()
@@ -108,13 +112,30 @@ class CartCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-   
+    
+    let editView: UIImageView = {
+        let view = UIImageView()
+        view.backgroundColor = .tintColor
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    let iconEdit: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(systemName: Asset.CartIcon.ic_edit)?
+            .imageWithColor(color: .white)
+        view.contentMode = .scaleAspectFit
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     var backAmount: ( (Int) -> Void )?
-   
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureCell()
-
+        addViews()
+        constraintItem()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -135,13 +156,14 @@ class CartCell: UICollectionViewCell {
         
         addSubview(imageProduct)
         addSubview(nameProduct)
-        addSubview(sizeProduct)
-        addSubview(toppingProduct)
+        configureStackView()
         addSubview(scoreRate)
         addSubview(iconRate)
         addSubview(minusView)
         addSubview(plusView)
         addSubview(amount)
+        addSubview(editView)
+        editView.addSubview(iconEdit)
         
         // configure
         let tap1 = UITapGestureRecognizer(target: self, action: #selector(minus(sender:)))
@@ -150,9 +172,20 @@ class CartCell: UICollectionViewCell {
         plusView.addGestureRecognizer(tap2)
     }
     
-    // get data to display
-    func bindingData(item: CartModel) {
+    func configureStackView() {
+        let stackContent = UIStackView(arrangedSubviews: [sizeProduct, toppingProduct])
+        stackContent.translatesAutoresizingMaskIntoConstraints = false
+        stackContent.axis = .vertical
+        stackContent.spacing = 0
+        stackContent.alignment = .leading
+        stackContent.distribution = .fillEqually
+        self.stackContent = stackContent
+        addSubview(stackContent)
         
+    }
+    
+    // get data to display
+    func bindingData(item: CartModel, editProduct: Bool) {
         if item.product.full_path != "" {
             self.imageProduct.sd_setImage(with: URL(string: item.product.full_path), placeholderImage: imagePlaceHolder)
         }else{
@@ -162,15 +195,17 @@ class CartCell: UICollectionViewCell {
         
         self.nameProduct.text = "\(item.product.name) / \(item.product.price)$"
         
-        if let size = item.size {
-            self.sizeProduct.text = "Size: \(size.name) / \(size.price) $"
+        if let item = item.size{
+            self.sizeProduct.text = "Size: \(item.name) / \(item.price) $"
+            self.sizeProduct.isHidden = false
         }else{
             self.sizeProduct.isHidden = true
         }
-       
+        
         if item.topping.count != 0{
-           let string = valueTopping(data: item.topping)
+            let string = valueTopping(data: item.topping)
             self.toppingProduct.text = string
+            self.toppingProduct.isHidden = false
         }else{
             self.toppingProduct.isHidden = true
         }
@@ -180,17 +215,13 @@ class CartCell: UICollectionViewCell {
         }else{
             self.amount.text = "1"
         }
-        
-        
         self.scoreRate.text = item.product.rate.description
         
-        
-        addViews()
-        constraintItem(sizeItem: item.size, toping: item.topping)
+        updateConstraint(editProduct: editProduct)
     }
-
+    
     // return value topping
-    func valueTopping(data: [ToppingModelMain]) -> String? {
+    func valueTopping(data: [ToppingCart]) -> String? {
         var text = ""
         for i in data.indices{
             let item = data[i]
@@ -209,8 +240,9 @@ class CartCell: UICollectionViewCell {
 
 // MARK: Constraint
 extension CartCell {
+    
     // constraint item
-    func constraintItem(sizeItem: SizeModelMain?, toping: [ToppingModelMain]?) {
+    func constraintItem() {
         NSLayoutConstraint.activate([
             imageProduct.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
             imageProduct.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 0),
@@ -221,58 +253,26 @@ extension CartCell {
         NSLayoutConstraint.activate([
             nameProduct.topAnchor.constraint(equalTo: imageProduct.topAnchor, constant: 5),
             nameProduct.leftAnchor.constraint(equalTo: imageProduct.rightAnchor, constant: 10),
-//            nameProduct.rightAnchor.constraint(equalTo: iconRate.leadingAnchor, constant: -5),
             nameProduct.heightAnchor.constraint(equalToConstant: 15),
             nameProduct.heightAnchor.constraint(equalToConstant: 100)
         ])
         
+        NSLayoutConstraint.activate([
+            stackContent.topAnchor.constraint(equalTo: nameProduct.bottomAnchor, constant: 0),
+            stackContent.bottomAnchor.constraint(equalTo: imageProduct.bottomAnchor, constant: 2),
+            stackContent.leftAnchor.constraint(equalTo: imageProduct.rightAnchor, constant: 10),
+            stackContent.rightAnchor.constraint(equalTo: minusView.leftAnchor, constant: -5),
+        ])
         
-        if ( (sizeItem) != nil) && (toping == nil) {
-            // constraint label Size
-            NSLayoutConstraint.activate([
-                sizeProduct.topAnchor.constraint(equalTo: nameProduct.bottomAnchor, constant: 10),
-                sizeProduct.leftAnchor.constraint(equalTo: imageProduct.rightAnchor, constant: 10),
-                sizeProduct.heightAnchor.constraint(equalToConstant: 12.5)
-            ])
-            
-        }else if toping != nil && ((sizeItem) == nil) {
-            // constraint label Topping
-            NSLayoutConstraint.activate([
-                toppingProduct.topAnchor.constraint(equalTo: nameProduct.bottomAnchor, constant: 5),
-                toppingProduct.leftAnchor.constraint(equalTo: imageProduct.rightAnchor, constant: 10),
-                toppingProduct.rightAnchor.constraint(equalTo: minusView.leftAnchor, constant: -5)
-            ])
-        }else if ( (sizeItem) != nil) && (toping != nil) {
-            // constraint label Size and Toping
-            NSLayoutConstraint.activate([
-                sizeProduct.topAnchor.constraint(equalTo: nameProduct.bottomAnchor, constant: 10),
-                sizeProduct.leftAnchor.constraint(equalTo: imageProduct.rightAnchor, constant: 10),
-                sizeProduct.heightAnchor.constraint(equalToConstant: 12.5)
-            ])
-            
-            NSLayoutConstraint.activate([
-                toppingProduct.topAnchor.constraint(equalTo: sizeProduct.bottomAnchor, constant: 5),
-                toppingProduct.leftAnchor.constraint(equalTo: imageProduct.rightAnchor, constant: 10),
-                toppingProduct.rightAnchor.constraint(equalTo: minusView.leftAnchor, constant: -5),
-                toppingProduct.bottomAnchor.constraint(equalTo: imageProduct.bottomAnchor, constant: 0)
-    //            toppingProduct.heightAnchor.constraint(equalToConstant: 10)
-            ])
-        }
-
-        //
         NSLayoutConstraint.activate([
             scoreRate.topAnchor.constraint(equalTo: imageProduct.topAnchor, constant: 0),
-            scoreRate.rightAnchor.constraint(equalTo: rightAnchor, constant: -10),
             scoreRate.heightAnchor.constraint(equalToConstant: 10),
-//            scoreRate.widthAnchor.constraint(equalToConstant: 10)
         ])
-
-        NSLayoutConstraint.activate([
-            iconRate.centerYAnchor.constraint(equalTo: scoreRate.centerYAnchor, constant: 0),
-            iconRate.rightAnchor.constraint(equalTo: scoreRate.leftAnchor, constant: -2.5),
-            iconRate.heightAnchor.constraint(equalToConstant: 10),
-            iconRate.widthAnchor.constraint(equalToConstant: 10)
-        ])
+        
+        paddingRight = NSLayoutConstraint(item: scoreRate, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: -80)
+        paddingRightBack = NSLayoutConstraint(item: scoreRate, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: -10)
+        paddingRight?.isActive = false
+        paddingRightBack?.isActive = true
         
         NSLayoutConstraint.activate([
             iconRate.centerYAnchor.constraint(equalTo: scoreRate.centerYAnchor, constant: 0),
@@ -282,7 +282,7 @@ extension CartCell {
         ])
         
         NSLayoutConstraint.activate([
-            plusView.rightAnchor.constraint(equalTo: rightAnchor, constant: -10),
+            plusView.rightAnchor.constraint(equalTo: self.scoreRate.rightAnchor, constant: 0),
             plusView.bottomAnchor.constraint(equalTo: imageProduct.bottomAnchor, constant: 0),
             plusView.heightAnchor.constraint(equalToConstant: 22),
             plusView.widthAnchor.constraint(equalToConstant: 22)
@@ -302,6 +302,52 @@ extension CartCell {
             minusView.heightAnchor.constraint(equalToConstant: 22),
             minusView.widthAnchor.constraint(equalToConstant: 22)
         ])
+        
+        NSLayoutConstraint.activate([
+            editView.rightAnchor.constraint(equalTo: rightAnchor, constant: 0),
+            editView.leftAnchor.constraint(equalTo: scoreRate.rightAnchor, constant: 10),
+            editView.topAnchor.constraint(equalTo: topAnchor, constant: 0),
+            editView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0)
+        ])
+        
+        NSLayoutConstraint.activate([
+            iconEdit.centerXAnchor.constraint(equalTo: editView.centerXAnchor, constant: 0),
+            iconEdit.centerYAnchor.constraint(equalTo: editView.centerYAnchor, constant: 0)
+        ])
+        
+        iconWidth = NSLayoutConstraint(item: iconEdit, attribute: .width, relatedBy: .equal, toItem: .none, attribute: .width, multiplier: 1.0, constant: 30)
+        
+        iconHeight = NSLayoutConstraint(item: iconEdit, attribute: .height, relatedBy: .equal, toItem: .none, attribute: .height, multiplier: 1.0, constant: 30)
+        
+        iconZeroWidth = NSLayoutConstraint(item: iconEdit, attribute: .width, relatedBy: .equal, toItem: .none, attribute: .notAnAttribute, multiplier: 1.0, constant: 0)
+        
+        iconZeroHeight = NSLayoutConstraint(item: iconEdit, attribute: .height, relatedBy: .equal, toItem: .none, attribute: .notAnAttribute, multiplier: 1.0, constant: 0)
+        
+        iconWidth?.isActive = false
+        iconZeroWidth?.isActive = true
+        iconHeight?.isActive = false
+        iconZeroHeight?.isActive = true
+        
+    }
+    
+    func updateConstraint(editProduct: Bool){
+        if editProduct {
+            paddingRight?.isActive = true
+            paddingRightBack?.isActive = false
+            iconWidth?.isActive = true
+            iconHeight?.isActive = true
+            iconZeroWidth?.isActive = false
+            iconZeroHeight?.isActive = false
+        }else{
+            paddingRight?.isActive = false
+            paddingRightBack?.isActive = true
+            iconZeroWidth?.isActive = true
+            iconZeroHeight?.isActive = true
+            iconWidth?.isActive = false
+            iconHeight?.isActive = false
+        }
+        self.setNeedsLayout()
+        self.layoutIfNeeded()
     }
 }
 
@@ -325,7 +371,7 @@ extension CartCell {
             }else{
                 number -= 1
             }
-           
+            
         }
         
         backAmount?(number)
@@ -350,7 +396,7 @@ extension CartCell {
             }else{
                 number += 1
             }
-                
+            
         }
         backAmount?(number)
         self.amount.text = number.description
