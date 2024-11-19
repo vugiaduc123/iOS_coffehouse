@@ -1,6 +1,6 @@
 import UIKit
 import SDWebImage
-
+protocol ProductCollectionViewCellDelegate: AnyObject { func didTapFavoriteButton(for product: ProductModel) }
 class ProductCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var sizeS: UILabel!
@@ -9,11 +9,14 @@ class ProductCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var imageProduct: UIImageView!
 
+    @IBOutlet weak var addFavourite: UIButton!
+    weak var delegate: ProductCollectionViewCellDelegate?
     var sizes = [SizeModelMain]() {
         didSet {
             updateSizeLabels()
         }
     }
+    var product: ProductModel?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,6 +30,10 @@ class ProductCollectionViewCell: UICollectionViewCell {
         self.layer.cornerRadius = 25
     }
 
+    @IBAction func didTapFavourite(_ sender: Any) {
+        guard let product = product else { return }
+        delegate?.didTapFavoriteButton(for: product)
+    }
     func setUpImageSize() {
         imageProduct.translatesAutoresizingMaskIntoConstraints = false
         imageProduct.heightAnchor.constraint(equalToConstant: 100).isActive = true
@@ -44,6 +51,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
     }
 
     func setUpCellProduct(products: ProductModel) {
+        self.product = products
         name.text = products.nameProduct
         price.text = String(products.price) + "$"
         if let imageURL = URL(string: products.urlImage) {
