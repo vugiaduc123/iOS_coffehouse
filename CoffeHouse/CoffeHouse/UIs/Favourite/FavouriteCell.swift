@@ -9,7 +9,7 @@ import UIKit
 import SDWebImage
 
 class FavouriteCell: UITableViewCell {
-   
+    
     @IBOutlet weak var imageProduct: UIImageView!
     
     @IBOutlet weak var rate: UILabel!
@@ -24,20 +24,20 @@ class FavouriteCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-     
+        
         config()
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
     @IBAction func btnRemoveFavourite(_ sender: UIButton) {
         favButtonPressed()
     }
-        
+    
     func bind(with product: ProductModel) {
         name.text = product.nameProduct
         price.text = String(product.price)

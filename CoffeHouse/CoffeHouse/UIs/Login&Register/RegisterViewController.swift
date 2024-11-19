@@ -58,7 +58,7 @@ class RegisterViewController: UIViewController {
     @IBAction func registerAccount(_ sender: UIButton) {
         saveUserData()
     }
-
+    
     //MARK: - Load user data
     private func loadUserData() -> [UserEntity]? {
         guard let fileURL = Bundle.main.url(forResource: "User", withExtension: "json") else {

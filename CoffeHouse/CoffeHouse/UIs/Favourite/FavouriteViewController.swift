@@ -49,21 +49,18 @@ extension FavouriteViewController {
         }
         
         do {
-               let data = try Data(contentsOf: fileURL)
-               products = try JSONDecoder().decode([ProductModel].self, from: data)
-           } catch {
-               print(error.localizedDescription)
-           }
+            let data = try Data(contentsOf: fileURL)
+            products = try JSONDecoder().decode([ProductModel].self, from: data)
+        } catch {
+            print(error.localizedDescription)
+        }
     }
     
     //load favouries from userdefault
     func loadFavourites() {
         let favouriteIds = UserDefaults.standard.array(forKey: "drinkFavourite") as? [Int] ?? []
         print(favouriteIds)
-        
         favouriteProducts = products.filter {favouriteIds.contains($0.idProduct)}
-//        print(favouriteProducts)
-        
         tableView.reloadData()
     }
 }

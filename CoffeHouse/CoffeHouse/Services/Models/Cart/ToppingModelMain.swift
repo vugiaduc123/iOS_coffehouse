@@ -20,4 +20,16 @@ struct ToppingModelMain: Codable{
     }
 }
 
-
+struct ToppingCart: Codable{
+    var idTopping: Int
+    var name: String
+    var amount: Int
+    var price: Double
+    
+    enum CodingKeys: String, CodingKey {
+        case idTopping = "id"
+        case name = "name_topping"
+        case amount = "amount"
+        case price = "price_topping"
+    }
+}
