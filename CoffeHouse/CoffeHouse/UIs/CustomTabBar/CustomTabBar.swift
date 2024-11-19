@@ -25,17 +25,19 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
         let favourtieVC = Storyboard.Favourite.favourite
         let favourtieNavigationVC = UINavigationController(rootViewController: favourtieVC)
         favourtieVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "ic_favorite_unselected"), selectedImage: UIImage(named: "ic_favorite_selected"))
-//        let profileVC = ProfileViewController()
-//                let profileNavigationVC = UINavigationController(rootViewController: profileVC)
-//                profileVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "ic_profile_unselected"), selectedImage: UIImage(named: "ic_profile_selected"))
-//aa
-        self.viewControllers = [homeNavigationVC, favourtieNavigationVC]
+        let profileVC = ProfileViewController()
+        let profileNavigationVC = UINavigationController(rootViewController: profileVC)
+            profileVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "ic_profile_unselected"), selectedImage: UIImage(named: "ic_profile_selected"))
+        let cartVC = CartViewController()
+        let cartNavigationVC = UINavigationController(rootViewController: cartVC)
+            cartVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "ic_cart_unselected"), selectedImage: UIImage(named: "ic_cart_selected"))
+        self.viewControllers = [homeNavigationVC, favourtieNavigationVC, cartNavigationVC, profileNavigationVC]
         self.tabBar.backgroundColor = .white
         self.tabBar.tintColor = .colorCustomBrown
         setUpMovingView()
     }
     func setUpMovingView() {
-        var movingView = UIView()
+        let movingView = UIView()
         movingView.translatesAutoresizingMaskIntoConstraints = false
         movingView.backgroundColor = .colorCustomBrown
         self.view.addSubview(movingView)
