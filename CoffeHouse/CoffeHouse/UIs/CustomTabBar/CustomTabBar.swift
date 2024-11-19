@@ -28,10 +28,7 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
         let profileVC = ProfileViewController()
         let profileNavigationVC = UINavigationController(rootViewController: profileVC)
             profileVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "ic_profile_unselected"), selectedImage: UIImage(named: "ic_profile_selected"))
-        let cartVC = CartViewController()
-        let cartNavigationVC = UINavigationController(rootViewController: cartVC)
-            cartVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "ic_cart_unselected"), selectedImage: UIImage(named: "ic_cart_selected"))
-        self.viewControllers = [homeNavigationVC, favourtieNavigationVC, cartNavigationVC, profileNavigationVC]
+        self.viewControllers = [homeNavigationVC, favourtieNavigationVC, profileNavigationVC]
         self.tabBar.backgroundColor = .white
         self.tabBar.tintColor = .colorCustomBrown
         setUpMovingView()
