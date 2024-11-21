@@ -51,7 +51,7 @@
                                     <constraint firstAttribute="height" constant="17" id="oEj-4Y-Ip1"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="ic_round-favorite"/>
+                                <buttonConfiguration key="configuration" style="plain" image="ic_round-favorite-fill"/>
                                 <connections>
                                     <action selector="btnRemoveFavourite:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="AjQ-Sj-DM6"/>
                                 </connections>
@@ -84,6 +84,9 @@
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="plus.circle.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="addToCartTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="DnW-wD-pP7"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -123,7 +126,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="ic_round-favorite" width="17" height="17"/>
+        <image name="ic_round-favorite-fill" width="17" height="17"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="123"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
