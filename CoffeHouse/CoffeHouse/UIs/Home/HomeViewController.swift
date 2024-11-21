@@ -25,6 +25,10 @@ class HomeViewController: UIViewController {
         filteredProduct = product
         setUpCollectView()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = false
+    }
     @IBAction func didTapLocation(_ sender: Any) {
         self.navigationController?.pushViewController(LocationViewController(), animated: true)
         self.navigationController?.isNavigationBarHidden = true

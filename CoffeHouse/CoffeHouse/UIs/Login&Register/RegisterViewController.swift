@@ -38,6 +38,8 @@ class RegisterViewController: UIViewController {
     func config() {
         configTextField()
         configErrorLabel()
+        let itemLeft = NavigationItem().itemBarbtn(icon: Asset.CartIcon.ic_back, target: self, selector: #selector(backViewLogin), sizeIcon: 35)
+        self.navigationItem.setLeftBarButton(itemLeft, animated: true)
     }
     
     @IBAction func changePasswordVisibility(_ sender: UIButton) {
@@ -51,8 +53,7 @@ class RegisterViewController: UIViewController {
     }
     
     @IBAction func btnLogin(_ sender: UIButton) {
-        let loginVC = LoginViewController()
-        self.navigationController?.pushViewController(loginVC, animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func registerAccount(_ sender: UIButton) {
@@ -133,10 +134,13 @@ class RegisterViewController: UIViewController {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             alert.dismiss(animated: true) {
-                let loginVC = LoginViewController()
-                viewController.navigationController?.pushViewController(loginVC, animated: true)
+                self.navigationController?.popViewController(animated: true)
             }
         }
+    }
+    
+    @objc func backViewLogin(sender: UIButton){
+        self.navigationController?.popViewController(animated: true)
     }
 }
 

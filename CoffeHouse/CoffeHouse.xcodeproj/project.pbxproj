@@ -28,6 +28,10 @@
 		B15E25972CDB635A002CD47E /* Topping.json in Resources */ = {isa = PBXBuildFile; fileRef = B15E25932CDB635A002CD47E /* Topping.json */; };
 		B17584542CE7028E00D5B835 /* Order.json in Resources */ = {isa = PBXBuildFile; fileRef = B17584532CE7028E00D5B835 /* Order.json */; };
 		B175845C2CE703F000D5B835 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B175845A2CE703F000D5B835 /* CustomTabBar.swift */; };
+		B186B9522CEEE6AC00F105AE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B186B9512CEEE6AC00F105AE /* ProfileViewController.swift */; };
+		B186B9542CEEE71600F105AE /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B186B9532CEEE71600F105AE /* UserDataManager.swift */; };
+		B186B9572CEEF55300F105AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B186B9552CEEF55200F105AE /* LaunchScreen.storyboard */; };
+		B186B9582CEEF55300F105AE /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B186B9562CEEF55200F105AE /* ProfileViewController.xib */; };
 		B1B42A742CDA7A9500DC5FB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B42A732CDA7A9500DC5FB1 /* AppDelegate.swift */; };
 		B1B42AAE2CDA7DBA00DC5FB1 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B42AAD2CDA7DBA00DC5FB1 /* Storyboards.swift */; };
 		B1B42AB52CDA7ED300DC5FB1 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1B42AB32CDA7ED300DC5FB1 /* RegisterViewController.xib */; };
@@ -103,6 +107,10 @@
 		B15E25992CDB64A9002CD47E /* User.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = User.json; sourceTree = "<group>"; };
 		B17584532CE7028E00D5B835 /* Order.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Order.json; sourceTree = "<group>"; };
 		B175845A2CE703F000D5B835 /* CustomTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		B186B9512CEEE6AC00F105AE /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		B186B9532CEEE71600F105AE /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
+		B186B9552CEEF55200F105AE /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B186B9562CEEF55200F105AE /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		B1B42A702CDA7A9500DC5FB1 /* CoffeHouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeHouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1B42A732CDA7A9500DC5FB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1B42A7C2CDA7A9800DC5FB1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -288,6 +296,7 @@
 				B1E8FE832CEBB197001A4B2F /* OrderService.swift */,
 				B1E8FE822CEBB197001A4B2F /* ProductManager.swift */,
 				B1F3775C2CE26F7700E418E6 /* CartManager.swift */,
+				B186B9532CEEE71600F105AE /* UserDataManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -346,6 +355,7 @@
 				B1B42AA92CDA7B2E00DC5FB1 /* Storyboard */,
 				B1B42AB42CDA7ED300DC5FB1 /* RegisterViewController.swift */,
 				B100D1732CE50EE2000813D4 /* LoginViewController.swift */,
+				B186B9512CEEE6AC00F105AE /* ProfileViewController.swift */,
 			);
 			name = "Login&Register";
 			path = "../Login&Register";
@@ -354,6 +364,8 @@
 		B1B42AA92CDA7B2E00DC5FB1 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				B186B9552CEEF55200F105AE /* LaunchScreen.storyboard */,
+				B186B9562CEEF55200F105AE /* ProfileViewController.xib */,
 				B100D1712CE50E70000813D4 /* LoginViewController.xib */,
 				B1B42AB32CDA7ED300DC5FB1 /* RegisterViewController.xib */,
 			);
@@ -628,6 +640,7 @@
 				B1E8FE782CEBB12E001A4B2F /* ProductCollectionViewCell.xib in Resources */,
 				B100D1722CE50E70000813D4 /* LoginViewController.xib in Resources */,
 				B15E25952CDB635A002CD47E /* Category.json in Resources */,
+				B186B9572CEEF55300F105AE /* LaunchScreen.storyboard in Resources */,
 				B1B42AB52CDA7ED300DC5FB1 /* RegisterViewController.xib in Resources */,
 				B14D866F2CEA3428005707ED /* LocationViewController.xib in Resources */,
 				B1E8FE732CEBB11E001A4B2F /* Cart.json in Resources */,
@@ -636,6 +649,7 @@
 				B1E0863A2CEBB4BD0001396A /* Product.json in Resources */,
 				B15E25962CDB635A002CD47E /* Size.json in Resources */,
 				B14D866E2CEA3428005707ED /* HomeViewController.xib in Resources */,
+				B186B9582CEEF55300F105AE /* ProfileViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -680,6 +694,7 @@
 				B1E086342CEBB2140001396A /* ExtensionNavigationController.swift in Sources */,
 				B1F377672CE2700100E418E6 /* SizeModelMain.swift in Sources */,
 				B14D86712CEA3428005707ED /* LocationViewController.swift in Sources */,
+				B186B9542CEEE71600F105AE /* UserDataManager.swift in Sources */,
 				B14D868D2CEA34C1005707ED /* ProductModel.swift in Sources */,
 				B1B42AAE2CDA7DBA00DC5FB1 /* Storyboards.swift in Sources */,
 				B14D867A2CEA3435005707ED /* FavouriteCell.swift in Sources */,
@@ -688,6 +703,7 @@
 				B1B42A742CDA7A9500DC5FB1 /* AppDelegate.swift in Sources */,
 				B1F3775B2CE26F6D00E418E6 /* UserEntity.swift in Sources */,
 				B1E086212CEBB2000001396A /* CartCell.swift in Sources */,
+				B186B9522CEEE6AC00F105AE /* ProfileViewController.swift in Sources */,
 				B1B42AB62CDA7ED300DC5FB1 /* RegisterViewController.swift in Sources */,
 				B1E8FE842CEBB197001A4B2F /* ProductManager.swift in Sources */,
 				B1E086362CEBB2140001396A /* ExtensionUImage.swift in Sources */,

@@ -13,10 +13,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {    
         self.window = UIWindow()
-        let loginVC = LoginViewController()
-        let loginNavigationVC = UINavigationController(rootViewController: loginVC)
-        window?.rootViewController = loginNavigationVC
-        window?.makeKeyAndVisible()
+        var navigationVC = UINavigationController()
+       UserDataManager().userMobile { result in
+            switch result{
+            case .value(let user):
+                print(user)
+                let Cusbar = CustomTabBarController()
+                self.window?.rootViewController = Cusbar
+                self.window?.makeKeyAndVisible()
+            case .error(_):
+                let loginVC = LoginViewController()
+                navigationVC = UINavigationController(rootViewController: loginVC)
+                self.window?.rootViewController = navigationVC
+                self.window?.makeKeyAndVisible()
+            }
+        }
         return true
     }
 }
