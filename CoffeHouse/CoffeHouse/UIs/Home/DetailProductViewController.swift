@@ -19,7 +19,7 @@ class DetailProductViewController: UIViewController {
     @IBOutlet weak var product_name: UILabel!
     @IBOutlet weak var product_size: UIButton!
     @IBOutlet weak var product_description: UILabel!
-    @IBOutlet weak var ToppingView: UIView!
+    
     @IBOutlet weak var toppingCollectionView: UICollectionView!
     
     @IBOutlet weak var toppingViewHeightConstraint: NSLayoutConstraint!
@@ -70,11 +70,11 @@ class DetailProductViewController: UIViewController {
 
         // Check if there is topping
         if product.topping.isEmpty {
-            ToppingView.isHidden = true // Hidden if there is not
+            toppingCollectionView.isHidden = true // Hidden if there is not
             toppingViewHeightConstraint.constant = 0
         } else {
-            ToppingView.isHidden = false
-            let height = CGFloat(product.topping.count * 30)
+            toppingCollectionView.isHidden = false
+            let height = CGFloat(product.topping.count * 500)
             toppingViewHeightConstraint.constant = height
             toppingCollectionView.reloadData()
         }
