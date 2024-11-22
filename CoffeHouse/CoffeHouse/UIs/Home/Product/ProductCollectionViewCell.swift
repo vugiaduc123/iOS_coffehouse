@@ -25,6 +25,8 @@ class ProductCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
         setUpImageSize()
+        name.font = FontFamily.Montserrat.semiBold.font(size: 14)
+        price.font = FontFamily.Montserrat.regular.font(size: 12)
         setUpLabel(sizeS)
         setUpLabel(sizeM)
         setUpLabel(sizeL)
@@ -54,6 +56,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
         label.layer.borderWidth = 1
         label.layer.borderColor = UIColor.colorCustomBrown.cgColor
         label.clipsToBounds = true
+        label.font = FontFamily.Montserrat.regular.font(size: 12)
         
     }
 

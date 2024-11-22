@@ -13,6 +13,7 @@ class HomeViewController: UIViewController {
     var filteredProduct = [ProductModel]()
     var isSearching = false
     var selectedCategoryId: Int?
+    var indexPathSelected: Int?
     var selectedCategoryIndexPath: IndexPath?
     @IBOutlet weak var collectionCategory: UICollectionView!
     @IBOutlet weak var collectionProduct: UICollectionView!
@@ -20,10 +21,12 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpSearchBar()
+        setUpCollectView()
         category = loadCateData() ?? []
         product = loadProductData() ?? []
         filteredProduct = product
-        setUpCollectView()
+        collectionCategory.reloadData()
+        collectionProduct.reloadData()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -50,14 +53,27 @@ extension HomeViewController {
         //collectionCategory
         collectionCategory.register(UINib(nibName: "CategoryCollectionViewCell", bundle: nil),
                              forCellWithReuseIdentifier: "CategoryCollectionViewCell")
+        collectionCategory.collectionViewLayout = LeftAlignedHorizontalCollectionViewFlowLayout()
         collectionCategory.delegate = self
         collectionCategory.dataSource = self
+        
+        
         //collectionProduct
         collectionProduct.register(UINib(nibName: "ProductCollectionViewCell", bundle: nil),
                              forCellWithReuseIdentifier: "ProductCollectionViewCell")
         collectionProduct.delegate = self
         collectionProduct.dataSource = self
     }
+    
+    private func setWidthForCategoryCell(item: CategoryModel) -> CGFloat{
+        let view = UILabel()
+        view.text = item.name
+        view.numberOfLines = 1
+        view.sizeToFit()
+        view.font = FontFamily.Montserrat.regular.font(size: 12)
+        return view.frame.width + 35
+    }
+    
 }
 
 // MARK: METHOD
@@ -96,10 +112,7 @@ extension HomeViewController {
 
 // MARK: COLLETION, TABLEVIEW
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-
     // Add property to keep track of selected index path
-   
-
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == collectionCategory {
             return category.count
@@ -109,11 +122,27 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == collectionCategory {
-            return CGSize(width: 100, height: 30)
+            let width = setWidthForCategoryCell(item: category[indexPath.row] )
+            return CGSize(width: width, height: 30)
         }
-        return CGSize(width: 140, height: 175)
+        let width = (self.collectionProduct.frame.width / 2) - 10
+        return CGSize(width: width, height: 180)
     }
+  
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
 
+       if collectionView.numberOfItems(inSection: section) == 1 {
+
+            let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
+
+           return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: collectionView.frame.width - flowLayout.itemSize.width)
+
+       }
+
+       return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+
+   }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // Category
         if collectionView == collectionCategory {
@@ -135,12 +164,12 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         //mark favourite item
         let itemsWhichAreChecked = UserDefaults.standard.array(forKey: "drinkFavourite") as? [Int] ?? [Int]()
-        if itemsWhichAreChecked.contains(product[indexPath.row].idProduct) {
+        if itemsWhichAreChecked.contains(currentProduct.idProduct) {
             cellProduct.btnAddToFavourite.setImage(UIImage(named: "ic_round-favorite-fill"), for: .normal)
         } else {
             cellProduct.btnAddToFavourite.setImage(UIImage(named: "ic_favories"), for: .normal)
         }
-        
+       
         cellProduct.favButtonPressed = { [weak self] in
             guard let self = self else { return }
             print("Favorite button pressed for product ID: \(product[indexPath.row].idProduct)")
@@ -164,22 +193,34 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        
         if collectionView == collectionCategory {
             selectedCategoryId = category[indexPath.row].idCategory // Assuming CategoryModel has an 'id' property
-
             // Filter products based on selected category ID
             filteredProduct = product.filter { $0.idCategory == selectedCategoryId }
             isSearching = true
             
             // Update selected index path
             let previousIndexPath = selectedCategoryIndexPath
-            selectedCategoryIndexPath = indexPath
+            if previousIndexPath == indexPath{
+                isSearching = false
+                selectedCategoryIndexPath = nil
+                collectionCategory.reloadData()
+                collectionProduct.reloadData()
+                return
+            }else{
+                selectedCategoryIndexPath = indexPath
+            }
+            
 
             // Reload collection view to update the selected state
-            collectionView.reloadItems(at: [previousIndexPath, indexPath].compactMap { $0 })
+//            collectionView.reloadItems(at: [previousIndexPath, indexPath].compactMap { $0 })
+            collectionView.reloadData()
             collectionProduct.reloadData()
         }
     }
+
 }
 
 extension HomeViewController: UISearchBarDelegate {
@@ -200,5 +241,57 @@ extension HomeViewController: UISearchBarDelegate {
         filteredProduct = product
         collectionProduct.reloadData()
         searchBar.resignFirstResponder()
+    }
+}
+
+class LeftAlignedHorizontalCollectionViewFlowLayout: UICollectionViewFlowLayout {
+    
+    required override init() {super.init(); common()}
+        required init?(coder aDecoder: NSCoder) {super.init(coder: aDecoder); common()}
+        
+        private func common() {
+            scrollDirection = .horizontal
+            estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+            minimumLineSpacing = -10
+            minimumInteritemSpacing = 8
+        }
+        
+        override func layoutAttributesForElements(
+                        in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+            
+            guard let att = super.layoutAttributesForElements(in:rect) else {return []}
+            
+            let group = att.group(by: {$0.frame.origin.y})
+            
+            var x: CGFloat = sectionInset.left
+            
+            for attr in group {
+                x = sectionInset.left
+                for a in attr {
+                    if a.representedElementCategory != .cell { continue }
+                    a.frame.origin.x = x
+                    x += a.frame.width + minimumInteritemSpacing
+                }
+            }
+            return att
+        }
+}
+
+extension Array {
+    func group<T: Hashable>(by key: (_ element: Element) -> T) -> [[Element]] {
+        var categories: [T: [Element]] = [:]
+        var groups = [[Element]]()
+        for element in self {
+            let key = key(element)
+            if case nil = categories[key]?.append(element) {
+                categories[key] = [element]
+            }
+        }
+        categories.keys.forEach { key in
+            if let group = categories[key] {
+                groups.append(group)
+            }
+        }
+        return groups
     }
 }

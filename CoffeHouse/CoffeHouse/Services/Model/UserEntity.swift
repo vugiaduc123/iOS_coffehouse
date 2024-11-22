@@ -9,15 +9,15 @@ import Foundation
 
 struct UserEntity: Codable {
     let id: Int
-    let name: String
-    let email: String
-    let phone: String
-    let password: String
-    let address: String
-    let latitude: Double
-    let longitude: Double
-    let fullPath: String
-    let isActive: Bool
+    var name: String
+    var email: String
+    var phone: String
+    var password: String
+    var address: String
+    var latitude: Double
+    var longitude: Double
+    var fullPath: String
+    var isActive: Bool
 
     enum CodingKeys: String, CodingKey {
         case id

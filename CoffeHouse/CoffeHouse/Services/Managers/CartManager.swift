@@ -42,10 +42,6 @@ class Cart{
         }
     
     func addToCart(userId: Int, product: ProductMain, size: SizeModelMain?, toppings: [ToppingCart]? ) {
-        
-//        guard let size = size else{ print ("item dont have size") }
-//        guard let toppings = toppings else{ print ("item dont have toppings") }
-        
         // get data
         var arrayItem = [CartModel]()
         let totalPrice = calculatedPrice(product: product, size: size, toppings: toppings)
@@ -78,10 +74,6 @@ class Cart{
                     
                 })
             })
-            
-    
-    
-        
     }
 
      func checkCart(completion: ( ([CartModel]) -> Void) ){
@@ -139,5 +131,4 @@ class Cart{
     }
 
 }
-
 
