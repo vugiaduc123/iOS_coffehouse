@@ -121,7 +121,7 @@ extension FavouriteViewController: UITableViewDataSource {
         //add to cart item
         cell.addButtonPressed = { [weak self] in
             let detailProductVC = DetailProductViewController(nibName: "DetailProductViewController", bundle: .main)
-//            detailProductVC.product = product
+            detailProductVC.idProduct = self!.isFiltering ? self!.filterProducts[indexPath.section].idProduct : self!.favouriteProducts[indexPath.section].idProduct
             self?.navigationController?.pushViewController(detailProductVC, animated: true)
         }        
         return cell
