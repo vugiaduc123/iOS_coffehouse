@@ -61,28 +61,76 @@ class RegisterViewController: UIViewController {
     }
     
     //MARK: - Load user data
-    private func loadUserData() -> [UserEntity]? {
-        guard let fileURL = Bundle.main.url(forResource: "User", withExtension: "json") else {
-            print("file not found.")
-            return nil
-        }
-        
-        do {
-            let userData = try Data(contentsOf: fileURL)
-            let users =  try JSONDecoder().decode([UserEntity].self, from: userData)
-            return users
-        } catch {
-            print(error.localizedDescription)
-            return nil
-        }
-    }
+//    private func loadUserData() -> [UserEntity]? {
+//        guard let fileURL = Bundle.main.url(forResource: "User", withExtension: "json") else {
+//            print("file not found.")
+//            return nil
+//        }
+//        
+//        do {
+//            let userData = try Data(contentsOf: fileURL)
+//            let users =  try JSONDecoder().decode([UserEntity].self, from: userData)
+//            return users
+//        } catch {
+//            print(error.localizedDescription)
+//            return nil
+//        }
+//    }
     
     //MARK: - Save user data
+//    private func saveUserData() {
+//        if validateFields() {
+//            var existingUsers: [UserEntity] = []
+//            
+//            if let loadedUsers =  loadUserData() {
+//                existingUsers = loadedUsers
+//            }
+//            
+//            let maxId = existingUsers.map { $0.id }.max() ?? 0
+//            let newId = maxId + 1
+//            
+//            let newUser: UserEntity = .init(id: newId,
+//                                            name: tfUsername.text ?? "",
+//                                            email: "",
+//                                            phone: tfPhone.text ?? "",
+//                                            password: tfPassword.text ?? "",
+//                                            address: "",
+//                                            latitude: 0.0,
+//                                            longitude: 0.0,
+//                                            fullPath: "",
+//                                            isActive: false)
+//            if existingUsers.contains(where: { $0.phone == newUser.phone })  {
+//                print("phone number has already existed. Choose another.")
+//                lbErrorPhone.text = "This phone number has already existed"
+//                lbErrorPhone.isHidden = false
+//                return
+//            }
+//            
+//            existingUsers.append(newUser)
+//            
+//            let filePath = "/Users/apple/Documents/ios/iOS_coffehouse/CoffeHouse/CoffeHouse/Services/JsonLocal/User.json"
+//            
+//            do {
+//                let jsonEncoder = JSONEncoder()
+//                jsonEncoder.outputFormatting = .prettyPrinted
+//                
+//                let encodedUsers = try? jsonEncoder.encode(existingUsers)
+//                let pathAsURL = URL(fileURLWithPath: filePath)
+//                
+//                try encodedUsers?.write(to: pathAsURL)
+//                print("User data save successfully")
+//                print(pathAsURL.path)
+//                showAlert(on: self)
+//            } catch {
+//                print(error.localizedDescription)
+//            }
+//        }
+//    }
     private func saveUserData() {
         if validateFields() {
             var existingUsers: [UserEntity] = []
             
-            if let loadedUsers =  loadUserData() {
+            if let loadedUsers =  UserDataManager.shared.loadUser() {
                 existingUsers = loadedUsers
             }
             
@@ -105,25 +153,13 @@ class RegisterViewController: UIViewController {
                 lbErrorPhone.isHidden = false
                 return
             }
-            
-            existingUsers.append(newUser)
-            
-            let filePath = "/Users/apple/Documents/ios/iOS_coffehouse/CoffeHouse/CoffeHouse/Services/JsonLocal/User.json"
-            
-            do {
-                let jsonEncoder = JSONEncoder()
-                jsonEncoder.outputFormatting = .prettyPrinted
-                
-                let encodedUsers = try? jsonEncoder.encode(existingUsers)
-                let pathAsURL = URL(fileURLWithPath: filePath)
-                
-                try encodedUsers?.write(to: pathAsURL)
-                print("User data save successfully")
-                print(pathAsURL.path)
-                showAlert(on: self)
-            } catch {
-                print(error.localizedDescription)
-            }
+            UserDataManager.shared.addUserToFileUser(user: newUser, completion: { result in
+                if result{
+                    showAlert(on: self)
+                }else{
+                    showAlertError(on: self)
+                }
+            })
         }
     }
     
@@ -138,6 +174,19 @@ class RegisterViewController: UIViewController {
             }
         }
     }
+    
+    private func showAlertError(on viewController: UIViewController) {
+        let alert = UIAlertController(title: "Failure", message: "failure to create Account", preferredStyle: .alert)
+        
+        viewController.present(alert, animated: true)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            alert.dismiss(animated: true) {
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
+    }
+
     
     @objc func backViewLogin(sender: UIButton){
         self.navigationController?.popViewController(animated: true)

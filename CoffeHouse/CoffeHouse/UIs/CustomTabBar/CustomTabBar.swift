@@ -41,15 +41,18 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
     }
     func setUpMovingView() {
         let movingView = UIView()
+        let witdthView = self.tabBar.frame.width / 4
         movingView.translatesAutoresizingMaskIntoConstraints = false
         movingView.backgroundColor = .colorCustomBrown
         self.view.addSubview(movingView)
         NSLayoutConstraint.activate([
             movingView.heightAnchor.constraint(equalToConstant: 3),
             movingView.widthAnchor.constraint(equalToConstant: 33),
-            movingView.bottomAnchor.constraint(equalTo: self.tabBar.topAnchor, constant: -10),
+            movingView.bottomAnchor.constraint(equalTo: self.tabBar.topAnchor, constant: -2.5),
         ])
-        self.movingViewCenterXConstraint = movingView.centerXAnchor.constraint(equalTo: self.tabBar.centerXAnchor)
+        let tabBarWidth = self.tabBar.frame.width / CGFloat(4.0)
+        let centerX = -(tabBarWidth + tabBarWidth / 2)
+        self.movingViewCenterXConstraint = movingView.centerXAnchor.constraint(equalTo: self.tabBar.centerXAnchor, constant: centerX)
         self.movingViewCenterXConstraint.isActive = true
     }
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {

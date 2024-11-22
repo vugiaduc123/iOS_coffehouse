@@ -39,6 +39,8 @@ class CartViewController: UIViewController, UIGestureRecognizerDelegate {
         
         // API
         getDataCart()
+        
+               
     }
     
 }

@@ -21,6 +21,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         viewCategory.layer.masksToBounds = true
         viewCategory.layer.borderWidth = 2
         viewCategory.layer.borderColor = UIColor.colorCustomBrown.cgColor
+        nameCategory.font = FontFamily.Montserrat.regular.font(size: 12)
     }
     func setUpCellCategory(categies: CategoryModel) {
         nameCategory.text = categies.name
