@@ -104,6 +104,7 @@ extension FavouriteViewController: UITableViewDataSource {
         let product = isFiltering ? filterProducts[indexPath.section] : favouriteProducts[indexPath.section]
         cell.bind(with: product)
         
+        //remove favourite item
         cell.favButtonPressed = { [weak self] in
             var favouriteIds = UserDefaults.standard.array(forKey: "drinkFavourite") as? [Int] ?? []
             
@@ -117,6 +118,12 @@ extension FavouriteViewController: UITableViewDataSource {
             self?.tableView.reloadData()
         }
         
+        //add to cart item
+        cell.addButtonPressed = { [weak self] in
+            let detailProductVC = DetailProductViewController(nibName: "DetailProductViewController", bundle: .main)
+            detailProductVC.product = product
+            self?.navigationController?.pushViewController(detailProductVC, animated: true)
+        }        
         return cell
     }
 }

@@ -9,9 +9,7 @@ import UIKit
 import SDWebImage
 
 class FavouriteCell: UITableViewCell {
-    
     @IBOutlet weak var imageProduct: UIImageView!
-    
     @IBOutlet weak var rate: UILabel!
     @IBOutlet weak var btnAddToCart: UIButton!
     @IBOutlet weak var btnFavourite: UIButton!
@@ -20,6 +18,8 @@ class FavouriteCell: UITableViewCell {
     @IBOutlet weak var backView: UIView!
     
     var favButtonPressed: (() -> ()) = {}
+    var addButtonPressed: (() -> ()) = {}
+    var product: ProductModel?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,9 +38,13 @@ class FavouriteCell: UITableViewCell {
         favButtonPressed()
     }
     
+    @IBAction func addToCartTapped(_ sender: UIButton) {
+        addButtonPressed()
+    }
+    
     func bind(with product: ProductModel) {
         name.text = product.nameProduct
-        price.text = String(product.price)
+        price.text = String(product.price) + "$"
         rate.text = String(product.rate)
         imageProduct.sd_setImage(with: URL(string: product.urlImage), placeholderImage: UIImage(named: "placeholder.png"))
     }

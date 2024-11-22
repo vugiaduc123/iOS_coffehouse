@@ -9,8 +9,11 @@ class ProductCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var imageProduct: UIImageView!
 
+    @IBOutlet weak var btnAddToFavourite: UIButton!
     @IBOutlet weak var addFavourite: UIButton!
+    
     weak var delegate: ProductCollectionViewCellDelegate?
+    var favButtonPressed: (() -> ()) = {}
     var sizes = [SizeModelMain]() {
         didSet {
             updateSizeLabels()
@@ -30,6 +33,10 @@ class ProductCollectionViewCell: UICollectionViewCell {
         self.layer.cornerRadius = 25
     }
 
+    @IBAction func btnAddToFavourite(_ sender: UIButton) {
+        favButtonPressed()
+    }
+    
     @IBAction func didTapFavourite(_ sender: Any) {
         guard let product = product else { return }
         delegate?.didTapFavoriteButton(for: product)

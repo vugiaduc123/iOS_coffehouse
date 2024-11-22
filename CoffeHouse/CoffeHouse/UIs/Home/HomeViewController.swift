@@ -132,7 +132,34 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let currentProduct = isSearching ? filteredProduct[indexPath.row] : product[indexPath.row]
         cellProduct.sizes = currentProduct.size
         cellProduct.setUpCellProduct(products: currentProduct)
-        cellProduct.delegate = self
+        
+        //mark favourite item
+        let itemsWhichAreChecked = UserDefaults.standard.array(forKey: "drinkFavourite") as? [Int] ?? [Int]()
+        if itemsWhichAreChecked.contains(product[indexPath.row].idProduct) {
+            cellProduct.btnAddToFavourite.setImage(UIImage(named: "ic_round-favorite-fill"), for: .normal)
+        } else {
+            cellProduct.btnAddToFavourite.setImage(UIImage(named: "ic_favories"), for: .normal)
+        }
+        
+        cellProduct.favButtonPressed = { [weak self] in
+            guard let self = self else { return }
+            print("Favorite button pressed for product ID: \(product[indexPath.row].idProduct)")
+            
+            var itemsWhichAreChecked = UserDefaults.standard.array(forKey: "drinkFavourite") as? [Int] ?? [Int]()
+            if itemsWhichAreChecked.contains(product[indexPath.row].idProduct) {
+                if let removeId = itemsWhichAreChecked.lastIndex(where: { $0 == self.product[indexPath.row].idProduct }) {
+                    itemsWhichAreChecked.remove(at: removeId)
+                   cellProduct.btnAddToFavourite.setImage(UIImage(named: "ic_favories"), for: .normal)
+                   print("Remove product \(product[indexPath.row].idProduct) from favourite")
+               }
+            } else {
+                itemsWhichAreChecked.append(product[indexPath.row].idProduct)
+               print("add product \(product[indexPath.row].idProduct) to favourite")
+               cellProduct.btnAddToFavourite.setImage(UIImage(named: "ic_round-favorite-fill"), for: .normal)
+            }
+            UserDefaults.standard.set(itemsWhichAreChecked, forKey: "drinkFavourite")
+            self.collectionProduct.reloadItems(at: [indexPath])
+        }
         return cellProduct
     }
 
@@ -153,8 +180,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             collectionProduct.reloadData()
         }
     }
-    
-
 }
 
 extension HomeViewController: UISearchBarDelegate {
@@ -175,31 +200,5 @@ extension HomeViewController: UISearchBarDelegate {
         filteredProduct = product
         collectionProduct.reloadData()
         searchBar.resignFirstResponder()
-    }
-}
-extension HomeViewController: ProductCollectionViewCellDelegate {
-    func didTapFavoriteButton(for product: ProductModel) {
-        var favouriteIds = SaveFavourite().getFavourite(key: "drinkFavourite") as? [Int] ?? []
-        if favouriteIds.contains(product.idProduct) {
-            favouriteIds.append(product.idProduct)
-            SaveFavourite().saveFavourite(favouriteIds: favouriteIds, key: "drinkFavourite")
-            print("Added \(product.idProduct) to favourites")
-        } else {
-            print("\(product.idProduct) is already in favourites")
-        }
-        
-        // Navigate to FavouriteViewController
-        let favouriteVC = FavouriteViewController()
-        self.navigationController?.pushViewController(favouriteVC, animated: true)
-    }
-    
-}
-struct SaveFavourite {
-    func saveFavourite(favouriteIds: [Int],key: String ) {
-        UserDefaults.standard.setValue(favouriteIds, forKey: key)
-    }
-    func getFavourite(key: String) -> [Int]? {
-       let arrayFavourite = UserDefaults.standard.array(forKey: key) as? [Int] ?? []
-        return arrayFavourite
     }
 }
