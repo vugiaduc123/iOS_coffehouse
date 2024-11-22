@@ -20,7 +20,9 @@ class DetailProductViewController: UIViewController {
     @IBOutlet weak var product_size: UIButton!
     @IBOutlet weak var product_description: UILabel!
     
-    @IBOutlet weak var height_constraints: NSLayoutConstraint!
+    @IBOutlet weak var toppingCollectionView: UICollectionView!
+    
+    @IBOutlet weak var toppingViewHeightConstraint: NSLayoutConstraint!
     
     var product: detailProduct?
     
@@ -33,6 +35,11 @@ class DetailProductViewController: UIViewController {
             product = products[3]
             loadUI()
         }
+        toppingCollectionView.delegate = self
+        toppingCollectionView.dataSource = self
+        
+        // Register Cell (cuz i created ToppingCell.xib)
+        toppingCollectionView.register(UINib(nibName: "ToppingCellCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ToppingCell")
     }
     
     func loadUI() {
@@ -57,6 +64,23 @@ class DetailProductViewController: UIViewController {
             product_size.setTitle(defaultSize.name_size, for: .normal)
         }
     }
+    
+    func configureView(with product: detailProduct) {
+        self.product = product
+
+        // Check if there is topping
+        if product.topping.isEmpty {
+            toppingCollectionView.isHidden = true // Hidden if there is not
+            toppingViewHeightConstraint.constant = 0
+        } else {
+            toppingCollectionView.isHidden = false
+            let height = CGFloat(product.topping.count * 500)
+            toppingViewHeightConstraint.constant = height
+            toppingCollectionView.reloadData()
+        }
+        view.layoutIfNeeded()
+    }
+
 }
 
 extension DetailProductViewController {
@@ -70,3 +94,20 @@ extension DetailProductViewController {
         self.contentView.layer.masksToBounds = true
     }
 }
+
+extension DetailProductViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        // Returns the number of toppings (data from product)
+        return product?.topping.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        // Create cells and assign data
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ToppingCell", for: indexPath) as! ToppingCellCollectionViewCell
+        let topping = product?.topping[indexPath.row]
+        cell.configure(with: topping!) // Config cell with topping
+        return cell
+    }
+}
+
+
