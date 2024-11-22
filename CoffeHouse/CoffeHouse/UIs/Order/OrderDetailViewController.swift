@@ -38,7 +38,21 @@ class OrderDetailViewController: UIViewController {
         self.orderCompleted.layer.cornerRadius = 10
         self.orderCompleted.layer.masksToBounds = true
         self.orderCompleted.layer.borderWidth = 0.7
-        
+    }
+    @IBAction func back(_ sender: Any) {
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
 }
+
+

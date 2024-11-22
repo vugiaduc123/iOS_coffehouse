@@ -189,6 +189,15 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             UserDefaults.standard.set(itemsWhichAreChecked, forKey: "drinkFavourite")
             self.collectionProduct.reloadItems(at: [indexPath])
         }
+        
+        cellProduct.goDetail = { [weak self] in
+            let view = DetailProductViewController()
+            view.hidesBottomBarWhenPushed = true
+            view.navigationController?.navigationBar.isHidden = true
+            view.idProduct = self!.isSearching ? self!.filteredProduct[indexPath.row].idProduct : self!.product[indexPath.row].idProduct
+            self?.navigationController?.pushViewController(view, animated: true)
+        }
+        
         return cellProduct
     }
 
@@ -219,6 +228,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             collectionView.reloadData()
             collectionProduct.reloadData()
         }
+    
     }
 
 }

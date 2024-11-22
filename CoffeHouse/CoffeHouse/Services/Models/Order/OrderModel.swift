@@ -35,4 +35,12 @@ struct Topping_Order: Codable {
     var id: Int
     var name_topping: String
     var price_topping: Double
+    var amount:Int = 0
+    
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case name_topping = "name_topping"
+        case price_topping = "price_topping"
+
+    }
 }

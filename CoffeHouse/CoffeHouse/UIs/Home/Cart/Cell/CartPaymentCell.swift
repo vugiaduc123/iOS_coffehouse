@@ -23,34 +23,51 @@ class CartPaymentCell: UICollectionViewCell {
         var image = UIImage(systemName: "camera.fill")!
         return image
     }()
-    let nameProduct: UILabel = {
+    var nameProduct: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14, weight: .regular, width: .standard)
+        label.font = FontFamily.Montserrat.semiBold.font(size: 14)
         label.textColor = UIColor.black
-        label.text = "Espresso / 2$"
+        label.text = "Espresso"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    let sizeProduct: UILabel = {
+    var priceProduct: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 11.5, weight: .regular, width: .standard)
+        label.font = FontFamily.Montserrat.semiBold.font(size: 14)
+        label.textColor = UIColor.red
+        label.text = "2$"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    var sizeProduct: UILabel = {
+        let label = UILabel()
+        label.font = FontFamily.Montserrat.regular.font(size: 11.5)
         label.textColor = UIColor.black
         label.text = "Size: M / 1$"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
-    let toppingProduct: UILabel = {
+    var toppingProduct: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 11.5, weight: .regular, width: .standard)
+        label.font = FontFamily.Montserrat.regular.font(size: 11.5)
         label.textColor = UIColor.black
         label.text = "Topping: Thêm mì / 1$"
-        label.numberOfLines = 5
+        label.numberOfLines = 0
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
+    var viewSpacing: UIView = {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 20))
+        view.backgroundColor = .clear
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+    var  stackContent = UIStackView()
     
     let iconRate: UIImageView = {
         let image = UIImageView()
@@ -65,13 +82,13 @@ class CartPaymentCell: UICollectionViewCell {
     
     let scoreRate: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 10, weight: .regular, width: .standard)
+        label.font = FontFamily.Montserrat.regular.font(size: 13)
         label.textColor = UIColor.black
         label.text = "4.7"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
+
     let amount: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular, width: .standard)
@@ -96,15 +113,21 @@ class CartPaymentCell: UICollectionViewCell {
     // configure cell
     func configureCell() {
         backgroundColor = .white
-        layer.borderWidth = 1
-        layer.borderColor = UIColor.systemGray2.cgColor
+        layer.borderWidth = 2
+        layer.borderColor = UIColor.systemGray5.cgColor
         layer.cornerRadius = 15
-        layer.masksToBounds = true
+        
+        layer.shadowColor =  UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+        layer.shadowOffset = CGSize(width: 0, height: 0.5)
+        layer.shadowRadius = 5
+        layer.shadowOpacity = 0.5
+        layer.masksToBounds = false
     }
     
     // add view to cell
     func addViews() {
         addSubview(imageProduct)
+        addSubview(priceProduct)
         addSubview(nameProduct)
         addSubview(sizeProduct)
         addSubview(toppingProduct)
@@ -156,16 +179,16 @@ class CartPaymentCell: UICollectionViewCell {
         for i in data.indices{
             let item = data[i]
             if i == 0 {
-                text += "\(item.name) / \(item.price)$ / sl: \(item.amount)"
+                text += "+ \(item.name) / \(item.price)$ - qty: \(item.amount)"
             }else{
-                text += " - \(item.name) / \(item.price)$ / sl: \(item.amount)"
+                text += " \n+ \(item.name) / \(item.price)$ - qty: \(item.amount)"
             }
             
         }
-        text = "Topping: \(text)"
+        text = "Topping: \n\(text)"
         return text
     }
-    
+
 }
 
 // MARK: Constraint
@@ -174,24 +197,31 @@ extension CartPaymentCell {
     func constraintItem(sizeItem: SizeModelMain?, toping: [ToppingCart]?) {
         NSLayoutConstraint.activate([
             imageProduct.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
-            imageProduct.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 0),
-            imageProduct.widthAnchor.constraint(equalToConstant: 100),
-            imageProduct.heightAnchor.constraint(equalToConstant: 105)
+            imageProduct.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+//            imageProduct.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 0),
+            imageProduct.widthAnchor.constraint(equalToConstant: 90),
+            imageProduct.heightAnchor.constraint(equalToConstant: 90)
         ])
         
         NSLayoutConstraint.activate([
             nameProduct.topAnchor.constraint(equalTo: imageProduct.topAnchor, constant: 5),
             nameProduct.leftAnchor.constraint(equalTo: imageProduct.rightAnchor, constant: 10),
-            //            nameProduct.rightAnchor.constraint(equalTo: iconRate.leadingAnchor, constant: -5),
             nameProduct.heightAnchor.constraint(equalToConstant: 15),
             nameProduct.heightAnchor.constraint(equalToConstant: 100)
         ])
         
+        NSLayoutConstraint.activate([
+            priceProduct.topAnchor.constraint(equalTo: nameProduct.bottomAnchor, constant: 5),
+            priceProduct.leftAnchor.constraint(equalTo: imageProduct.rightAnchor, constant: 10),
+            priceProduct.heightAnchor.constraint(equalToConstant: 15),
+            priceProduct.heightAnchor.constraint(equalToConstant: 100)
+        ])
+
         
         if ( (sizeItem) != nil) && (toping == nil) {
             // constraint label Size
             NSLayoutConstraint.activate([
-                sizeProduct.topAnchor.constraint(equalTo: nameProduct.bottomAnchor, constant: 10),
+                sizeProduct.topAnchor.constraint(equalTo: priceProduct.bottomAnchor, constant: 10),
                 sizeProduct.leftAnchor.constraint(equalTo: imageProduct.rightAnchor, constant: 10),
                 sizeProduct.heightAnchor.constraint(equalToConstant: 12.5)
             ])
@@ -199,14 +229,14 @@ extension CartPaymentCell {
         }else if toping != nil && ((sizeItem) == nil) {
             // constraint label Topping
             NSLayoutConstraint.activate([
-                toppingProduct.topAnchor.constraint(equalTo: nameProduct.bottomAnchor, constant: 5),
+                toppingProduct.topAnchor.constraint(equalTo: priceProduct.bottomAnchor, constant: 5),
                 toppingProduct.leftAnchor.constraint(equalTo: imageProduct.rightAnchor, constant: 10),
                 toppingProduct.rightAnchor.constraint(equalTo:  amount.leftAnchor, constant: -5)
             ])
         }else if ( (sizeItem) != nil) && (toping != nil) {
             // constraint label Size and Toping
             NSLayoutConstraint.activate([
-                sizeProduct.topAnchor.constraint(equalTo: nameProduct.bottomAnchor, constant: 10),
+                sizeProduct.topAnchor.constraint(equalTo: priceProduct.bottomAnchor, constant: 10),
                 sizeProduct.leftAnchor.constraint(equalTo: imageProduct.rightAnchor, constant: 10),
                 sizeProduct.heightAnchor.constraint(equalToConstant: 12.5)
             ])
@@ -215,14 +245,14 @@ extension CartPaymentCell {
                 toppingProduct.topAnchor.constraint(equalTo: sizeProduct.bottomAnchor, constant: 5),
                 toppingProduct.leftAnchor.constraint(equalTo: imageProduct.rightAnchor, constant: 10),
                 toppingProduct.rightAnchor.constraint(equalTo: amount.leftAnchor, constant: -5),
-                toppingProduct.bottomAnchor.constraint(equalTo: imageProduct.bottomAnchor, constant: 0)
+                toppingProduct.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0)
                 //            toppingProduct.heightAnchor.constraint(equalToConstant: 10)
             ])
         }
         
         //
         NSLayoutConstraint.activate([
-            scoreRate.topAnchor.constraint(equalTo: imageProduct.topAnchor, constant: 0),
+            scoreRate.topAnchor.constraint(equalTo: nameProduct.topAnchor, constant: 0),
             scoreRate.rightAnchor.constraint(equalTo: rightAnchor, constant: -10),
             scoreRate.heightAnchor.constraint(equalToConstant: 10),
             //            scoreRate.widthAnchor.constraint(equalToConstant: 10)
@@ -244,7 +274,7 @@ extension CartPaymentCell {
         
         NSLayoutConstraint.activate([
             amount.rightAnchor.constraint(equalTo: scoreRate.rightAnchor, constant: 0),
-            amount.bottomAnchor.constraint(equalTo: imageProduct.bottomAnchor, constant: 0),
+            amount.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
             amount.heightAnchor.constraint(equalToConstant: 30),
             amount.widthAnchor.constraint(equalToConstant: 50)
         ])

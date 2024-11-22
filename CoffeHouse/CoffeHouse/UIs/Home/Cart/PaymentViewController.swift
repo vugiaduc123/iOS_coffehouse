@@ -36,7 +36,7 @@ class PaymentViewController: UIViewController{
     var listItems:[CartModel] = []
     var totalPrice = 0.0
     var idPaymentMethod = 0
-    
+    var userId = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -124,7 +124,7 @@ extension PaymentViewController {
     
     private func configurePaymenMethodView(){
         
-        PaymentMethodView.backgroundColor = UIColor.systemGray4
+        PaymentMethodView.backgroundColor = UIColor.systemGray5
         PaymentMethodView.translatesAutoresizingMaskIntoConstraints = false
         PaymentMethodView.layer.cornerRadius = 2.5
         PaymentMethodView.layer.masksToBounds = true
@@ -209,7 +209,7 @@ extension PaymentViewController {
     private func configurelbPrice() {
         
         self.txtPrice.text = "Total:  2000$"
-        self.txtPrice.font = UIFont.systemFont(ofSize: 13, weight: .heavy, width: .standard)
+        self.txtPrice.font = FontFamily.Montserrat.semiBold.font(size: 15)
         self.txtPrice.textColor = .black
         self.txtPrice.textAlignment = .right
         self.txtPrice.translatesAutoresizingMaskIntoConstraints = false
@@ -219,7 +219,7 @@ extension PaymentViewController {
     private func generateLabel() -> UILabel {
         let label = UILabel()
         label.text = "YOUR ORDER"
-        label.font = UIFont.systemFont(ofSize: 15, weight: .heavy, width: .standard)
+        label.font = FontFamily.Montserrat.semiBold.font(size: 15)
         label.textColor = .black
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -251,7 +251,7 @@ extension PaymentViewController {
     private func generateLabelBtGo() -> UILabel {
         let label = UILabel()
         label.text = "Creat Order"
-        label.font = UIFont.systemFont(ofSize: 15, weight: .bold, width: .standard)
+        label.font = FontFamily.Montserrat.semiBold.font(size: 15)
         label.textColor = .white
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -277,7 +277,7 @@ extension PaymentViewController {
     private func generateLabelAddress() -> UILabel {
         let label = UILabel()
         label.text = "88/15 Tran Van Dang, P9, Q.3, TP.HCM"
-        label.font = UIFont.systemFont(ofSize: 15, weight: .bold, width: .standard)
+        label.font = FontFamily.Montserrat.regular.font(size: 15)
         label.textColor = .black
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -287,7 +287,7 @@ extension PaymentViewController {
     private func generatelbDisplayPayment() -> UILabel {
         let label = UILabel()
         label.text = "Payment method"
-        label.font = UIFont.systemFont(ofSize: 17, weight: .bold, width: .standard)
+        label.font = FontFamily.Montserrat.semiBold.font(size: 16)
         label.textColor = UIColor.systemGray
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -297,7 +297,7 @@ extension PaymentViewController {
     private func generatetxtMethodPay() -> UILabel {
         let label = UILabel()
         label.text = "Apple"
-        label.font = UIFont.systemFont(ofSize: 15, weight: .bold, width: .standard)
+        label.font = FontFamily.Montserrat.regular.font(size: 15)
         label.textColor = UIColor.black
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -360,7 +360,7 @@ extension PaymentViewController {
             bottomView.leadingAnchor.constraint(equalTo: self.mainView.leadingAnchor, constant: 0),
             bottomView.rightAnchor.constraint(equalTo: self.mainView.rightAnchor, constant: 0),
             bottomView.bottomAnchor.constraint(equalTo: self.mainView.bottomAnchor, constant: 0),
-            bottomView.heightAnchor.constraint(equalToConstant: 325)
+            bottomView.heightAnchor.constraint(equalToConstant: 250)
         ])
     }
     
@@ -387,7 +387,7 @@ extension PaymentViewController {
             view.leadingAnchor.constraint(equalTo: itemConstraint.leadingAnchor, constant: 0),
             view.trailingAnchor.constraint(equalTo: itemConstraint.trailingAnchor, constant: 0),
             view.bottomAnchor.constraint(equalTo: itemConstraint.bottomAnchor, constant: 0),
-            view.heightAnchor.constraint(equalToConstant: 104)
+            view.heightAnchor.constraint(equalToConstant: 80)
         ])
     }
     
@@ -459,7 +459,7 @@ extension PaymentViewController {
     private func constraintIconPaymentMethod(iconView: UIImageView, itemConstraint: UIView) {
         NSLayoutConstraint.activate([
             iconView.centerYAnchor.constraint(equalTo: itemConstraint.centerYAnchor, constant: 0),
-            iconView.leftAnchor.constraint(equalTo: itemConstraint.leftAnchor, constant: 5),
+            iconView.leftAnchor.constraint(equalTo: itemConstraint.leftAnchor, constant: 10),
             iconView.widthAnchor.constraint(equalToConstant: 25),
             iconView.heightAnchor.constraint(equalToConstant: 25),
         ])
@@ -468,7 +468,7 @@ extension PaymentViewController {
     private func constraintTxtPaymentMethod(view: UILabel, itemConstraint: UIImageView, iconDropDown: UIImageView) {
         NSLayoutConstraint.activate([
             view.centerYAnchor.constraint(equalTo: itemConstraint.centerYAnchor, constant: 0),
-            view.leftAnchor.constraint(equalTo: itemConstraint.rightAnchor, constant: 5),
+            view.leftAnchor.constraint(equalTo: itemConstraint.rightAnchor, constant: 10),
             view.rightAnchor.constraint(equalTo: iconDropDown.leftAnchor, constant: 5),
             view.heightAnchor.constraint(equalToConstant: 20),
         ])
@@ -478,10 +478,11 @@ extension PaymentViewController {
         NSLayoutConstraint.activate([
             iconView.centerYAnchor.constraint(equalTo: iconPayment.centerYAnchor, constant: 0),
             iconView.rightAnchor.constraint(equalTo: itemConstraint.rightAnchor, constant: -10),
-            iconView.widthAnchor.constraint(equalToConstant: 20),
-            iconView.heightAnchor.constraint(equalToConstant: 20),
+            iconView.widthAnchor.constraint(equalToConstant: 15),
+            iconView.heightAnchor.constraint(equalToConstant: 15),
         ])
     }
+    
 }
 
 // MARK: Method Action
@@ -496,7 +497,8 @@ extension PaymentViewController {
     }
     
     @objc func pushToViewCreateOrder(sender: UITapGestureRecognizer) {
-        print("aaaa")
+        Cart.shared.removeItemCarct(userId: userId)
+        showAlert(on: self)
     }
     
     @objc func showDropdown(sender: UITapGestureRecognizer) {
@@ -522,6 +524,20 @@ extension PaymentViewController {
             self.idPaymentMethod = idMethod
         }
         self.mainView.addSubview(drop)
+    }
+    
+    private func showAlert(on viewController: UIViewController) {
+        let alert = UIAlertController(title: "Success", message: "Đơn hàng đã được đặt thành công", preferredStyle: .alert)
+        
+        viewController.present(alert, animated: true)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            alert.dismiss(animated: true) {
+                self.listItems.removeAll()
+                let view = TrackingOrderViewController()
+                self.navigationController?.pushViewController(view, animated: true)
+            }
+        }
     }
     
     
@@ -558,7 +574,8 @@ extension PaymentViewController: UICollectionViewDelegate {
 extension PaymentViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (self.widthSize - (paddingLeft * 2)), height: 125)
+        let item = listItems[indexPath.row]
+        return CGSize(width: (self.widthSize - (paddingLeft * 2)), height: CGFloat(item.topping.count*15 + 110))
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

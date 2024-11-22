@@ -14,6 +14,9 @@ class ProductCollectionViewCell: UICollectionViewCell {
     
     weak var delegate: ProductCollectionViewCellDelegate?
     var favButtonPressed: (() -> ()) = {}
+    
+    var goDetail: (() -> ())?
+    
     var sizes = [SizeModelMain]() {
         didSet {
             updateSizeLabels()
@@ -34,7 +37,10 @@ class ProductCollectionViewCell: UICollectionViewCell {
         self.layer.borderColor = UIColor.lightGray.cgColor
         self.layer.cornerRadius = 25
     }
-
+    @IBAction func goDetail(_ sender: Any) {
+        goDetail?()
+    }
+    
     @IBAction func btnAddToFavourite(_ sender: UIButton) {
         favButtonPressed()
     }

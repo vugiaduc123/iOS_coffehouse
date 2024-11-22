@@ -30,19 +30,23 @@ class CartViewController: UIViewController, UIGestureRecognizerDelegate {
     private var listItems:[CartModel] = []
     private var totalPrice = 0.0
     var editItem: Bool = false
-    
+    var idUser = 0
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         // configure
         configureNavigationBar()
         configureView()
-        
-        // API
-        getDataCart()
-        
-               
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let userData = UserDefaults.standard.data(forKey: "loggedInUser"), let user = try? JSONDecoder().decode(UserEntity.self, from: userData) {
+            idUser = user.id
+        }
+        listItems.removeAll()
+        collectionView.reloadData()
+        getDataCart()
+    }
 }
 
 // MARK: Manager Service
@@ -56,6 +60,7 @@ extension CartViewController {
                 totalPrice = items.map( { $0.total } ).reduce(0, +)
                 txtPrice.text = "Total: \(totalPrice)$"
                 collectionView.reloadData()
+                print("====>\(items)")
             }else{
                 txtPrice.isHidden = true
             }
@@ -71,9 +76,9 @@ extension CartViewController{
     private func configureNavigationBar() {
         let asset = Asset.self
         let btnOrder = NavigationItem().itemBarbtn(icon: asset.CartIcon.ic_orderNav,target: self, selector: #selector(pushToViewOrder), sizeIcon: 35)
-        let editCart = NavigationItem().itemBarbtnSystem(icon: asset.CartIcon.ic_edit, color: UIColor(named: asset.CartColor.icon_color), target: self, selector: #selector(editToItem), sizeIcon: 30)
+//        let editCart = NavigationItem().itemBarbtnSystem(icon: asset.CartIcon.ic_edit, color: UIColor(named: asset.CartColor.icon_color), target: self, selector: #selector(editToItem), sizeIcon: 30)
         self.navigationController?.navigationBar.changeBackgroundColor(backroundColor: .white)
-        self.navigationItem.rightBarButtonItems = [btnOrder, editCart]
+        self.navigationItem.rightBarButtonItems = [btnOrder]
     }
 }
 
@@ -148,17 +153,16 @@ extension CartViewController {
         self.mainView.addSubview(bottomView)
     }
     private func configurelbPrice() {
-        self.txtPrice.text = "Total:  2000$"
+        self.txtPrice.text = "Total:  0$"
         self.txtPrice.font = UIFont.systemFont(ofSize: 15, weight: .heavy, width: .standard)
         self.txtPrice.textColor = .black
         self.txtPrice.textAlignment = .right
         self.txtPrice.translatesAutoresizingMaskIntoConstraints = false
-        
     }
     private func generateLabel() -> UILabel {
         let label = UILabel()
-        label.text = "YOUR ORDER"
-        label.font = UIFont.systemFont(ofSize: 15, weight: .heavy, width: .standard)
+        label.text = "YOUR ORDER:"
+        label.font = FontFamily.Montserrat.semiBold.font(size: 16)
         label.textColor = .black
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -177,8 +181,8 @@ extension CartViewController {
     }
     private func generateLabelBtGo() -> UILabel {
         let label = UILabel()
-        label.text = "Go to Cart"
-        label.font = UIFont.systemFont(ofSize: 15, weight: .bold, width: .standard)
+        label.text = "Go to payment"
+        label.font = FontFamily.Montserrat.semiBold.font(size: 15)
         label.textColor = .white
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -196,7 +200,6 @@ extension CartViewController {
 // MARK: Constraint
 extension CartViewController {
     // Constraint View
-    
     private func constraintMainView() {
         NSLayoutConstraint.activate([
             mainView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 0),
@@ -221,12 +224,13 @@ extension CartViewController {
             collectionView.bottomAnchor.constraint(equalTo: bottomView.topAnchor, constant: 0),
         ])
     }
+    
     private func constraintbottomView() {
         NSLayoutConstraint.activate([
             bottomView.leadingAnchor.constraint(equalTo: self.mainView.leadingAnchor, constant: 0),
             bottomView.rightAnchor.constraint(equalTo: self.mainView.rightAnchor, constant: 0),
             bottomView.bottomAnchor.constraint(equalTo: self.mainView.bottomAnchor, constant: 0),
-            bottomView.heightAnchor.constraint(equalToConstant: 150)
+            bottomView.heightAnchor.constraint(equalToConstant: 130)
         ])
     }
     private func constraintLabel(label: UILabel, itemConstraint: UIView) {
@@ -277,6 +281,9 @@ extension CartViewController {
 extension CartViewController{
     
     @objc func pushToViewOrder(sender: UIButton) {
+        let view = TrackingOrderViewController()
+        view.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(view, animated: true)
     }
     
     @objc func editToItem(sender: UIButton) {
@@ -285,16 +292,37 @@ extension CartViewController{
     }
     
     @objc func pushToViewPayment(sender: UITapGestureRecognizer) {
-        let view = PaymentViewController()
-        view.listItems = listItems
-        view.totalPrice = self.totalPrice
-        self.navigationController?.pushViewController(view, animated: true)
+        if listItems.count != 0 {
+            let view = PaymentViewController()
+            view.listItems = listItems
+            view.totalPrice = self.totalPrice
+            view.userId = self.idUser
+            view.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(view, animated: true)
+        }else{
+            showAlertPayment(on: self)
+        }
     }
     
     private func updatePrice(index: Int, amount: Int){
         listItems[index].amount = amount
         totalPrice = listItems.map( { $0.total * Double($0.amount) } ).reduce(0, +)
         txtPrice.text = "Total: \(totalPrice.description)$"
+    }
+}
+
+// MARK: Alert
+extension CartViewController{
+    private func showAlertPayment(on viewController: UIViewController) {
+        let alert = UIAlertController(title: "", message: "Vui lòng thêm sản phẩm vào giỏ hàng?", preferredStyle: .alert)
+        
+        viewController.present(alert, animated: true)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            alert.dismiss(animated: true) {
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
     }
 }
 
@@ -339,7 +367,13 @@ extension CartViewController: UICollectionViewDelegate {
 extension CartViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (self.widthSize - (paddingLeft * 2)), height: 125)
+        
+        if listItems.count != 0 {
+            let item = listItems[indexPath.row]
+            return CGSize(width: (self.widthSize - (paddingLeft * 2)), height: CGFloat(item.topping.count*15 + 110))
+            
+        }
+        return CGSize(width: (self.widthSize - (paddingLeft * 2)), height: 110)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
